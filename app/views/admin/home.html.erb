@@ -1,0 +1,18 @@
+<% provide(:title, "Admin")%>
+<%= render 'layouts/admin_header' %>
+
+<div class="hero-unit">
+	<h1>Admin#home</h1>
+	<p>Find me in app/views/admin/home.html.erb</p>
+	<p>Use this page to manage admin content</p>
+	<ul>
+		<li><%= link_to "Edit Company Info", edit_about_path %></li>
+		<li><%= link_to "Edit Achievements", edit_achievements_path %></a></li>
+		<li><%= link_to "Edit Schedule", edit_schedule_path %></li>
+		<li><%= link_to "Edit FAQ", edit_faq_path %></li>
+		<li><%= link_to "Edit Photos", edit_photo_path %></li>
+		<li><%= link_to "Edit Videos", edit_video_path %></li>
+	</ul>
+	
+	
+</div>

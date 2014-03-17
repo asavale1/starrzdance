@@ -1,0 +1,34 @@
+<% provide(:title, "Admin FAQ")%>
+<%= render 'layouts/admin_header' %>
+
+<div class="center hero-unit">
+	<h1>Admin#faq</h1>
+	<p>Find me in app/views/admin/faq.html.erb</p>
+	<p>Use this page to edit company info</p>
+	<div>
+		<%= form_tag( { :action => 'faq_new' }, :multipart => true) do %>
+			<%= label_tag(:title, "Title") %>
+			<%= text_field_tag(:title) %>
+			<%= label_tag(:content, "Content") %>
+			<%= text_field_tag(:content) %>
+			<%= label_tag(:order, "Order of content") %>
+			<%= number_field_tag(:order) %>
+			<%= submit_tag("Add Line") %>
+		<% end%>
+
+
+		
+		<% unless @faq.nil? %>
+			<% @faq.each do |faq| %>
+				<%= form_tag( {:action => 'faq_edit'}, :multipart => true) do %>
+					<input type="number" name="id" value=<%= faq.id %> style="display: none;"/>
+					<input type="number" name="order" value=<%= faq.order%> />
+					<input type="text" name="title" value=<%= faq.title%> />
+					<input type="text" name="content" value=<%= faq.content%> />
+					<%= submit_tag("Update Line") %>
+				<% end %>
+			<% end %>
+		<% end %>
+		
+	</div>
+</div>
