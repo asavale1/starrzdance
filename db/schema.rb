@@ -11,12 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140317025749) do
+ActiveRecord::Schema.define(version: 20140318024504) do
 
-  create_table "faqs", force: true do |t|
+  create_table "statics", force: true do |t|
     t.string   "title"
-    t.string   "content"
-    t.integer  "order"
+    t.string   "body"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

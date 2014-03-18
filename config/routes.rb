@@ -3,6 +3,7 @@ Starrzdance::Application.routes.draw do
   root 'static_pages#home'
   match '/about', to: 'static_pages#about', via: 'get'
   match '/achievements', to: 'static_pages#achievements', via: 'get'
+  match '/faq', to: 'static_pages#faq', via: 'get'
  
 
   # => Admin Routes 

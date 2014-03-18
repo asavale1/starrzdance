@@ -10,4 +10,9 @@ class StaticPagesController < ApplicationController
 	def achievements
 		puts "\n\nIN ACHIEVEMENTS\n\n"
 	end
+
+	def faq
+		@faq = Static.where("title = ?", "faq").first
+		puts "\n\nIN FAQS\n\n"
+	end
 end

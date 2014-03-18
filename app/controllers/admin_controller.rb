@@ -17,32 +17,28 @@ class AdminController < ApplicationController
 
 	def faq
 		puts "\n\nIN FAQ\n\n"
-		@faq = Faq.all
+		@faq = Static.where("title = ?", "faq").first
 	end
 
 	def faq_new
-		faq = Faq.new
-		faq.title = params[:title]
-		faq.content = params[:content]
-		faq.order = params[:order]
+		faq = Static.new
+		faq.title = "faq"
+		faq.body = params[:content]
 
 		puts "\n\n"
 		puts faq.title
-		puts faq.content
-		puts faq.order
-
-		faq.save
+		puts faq.body
 		puts "\n\nIN FAQ EDIT\n\n"
+		faq.save
 		redirect_to action: 'faq'
 	end
 
 	def faq_edit
-		faq = Faq.find(params[:id])
+		faq = Static.where("title = ?", "faq").first
+		faq.body = params[:content]
 		puts "\n\n"
-		puts faq.title
-		puts faq.content
-		puts faq.order
-		puts "\n\n"
+		puts "IN FAQ EDIT"
+		faq.save
 		redirect_to action: 'faq'
 	end
 
