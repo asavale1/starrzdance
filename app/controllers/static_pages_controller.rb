@@ -4,10 +4,12 @@ class StaticPagesController < ApplicationController
 	end
 
 	def about
+		@about = Static.where("title = ?", "about").first
 		puts "\n\nIN ABOUT\n\n"
 	end
 
 	def achievements
+		@achievements = Static.where("title = ?", "achievements").first
 		puts "\n\nIN ACHIEVEMENTS\n\n"
 	end
 

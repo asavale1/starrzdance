@@ -4,11 +4,51 @@ class AdminController < ApplicationController
 	end
 
 	def about
-		puts "\n\nIN EDIT ABOUT\\n\n"
+		@about = Static.where("title = ?", "about").first
+		puts "\n\nIN ABOUT\n\n"
+	end
+
+	def about_new
+		about = Static.new
+		about.title = "about"
+		about.body = params[:content]
+		about.save
+
+		puts "\n\nIN ABOUT NEW\n\n"
+		redirect_to action: 'about'
+	end
+
+	def about_edit
+		about = Static.where("title = ?", "about").first
+		about.body = params[:content]
+		about.save
+		
+		puts "\n\nIN ABOUT EDIT\n\n"
+		redirect_to action: 'about'
 	end
 
 	def achievements
+		@achievements = Static.where("title = ?", "achievements").first
 		puts "\n\nIN ACHIEVEMENTS\n\n"
+	end
+
+	def achievements_new
+		achievements = Static.new
+		achievements.title = "achievements"
+		achievements.body = params[:content]
+		achievements.save
+
+		puts "\n\nIN ACHIEVEMENTS NEW\n\n"
+		redirect_to action: 'achievements'
+	end
+
+	def achievements_edit
+		achievements = Static.where("title = ?", "achievements").first
+		achievements.body = params[:content]
+		achievements.save
+
+		puts "\n\nIN ACHIEVEMENTS EDIT\n\n"
+		redirect_to action: 'achievements'
 	end
 
 	def schedule

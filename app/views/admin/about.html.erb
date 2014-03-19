@@ -1,8 +1,32 @@
 <% provide(:title, "Admin Company")%>
 <%= render 'layouts/admin_header' %>
 
+<script type="text/javascript">
+	window.onload = function(){
+		$('#content').ckeditor();
+	};
+	$(document).ready($('#content').ckeditor());
+</script>
+
 <div class="center hero-unit">
 	<h1>Admin#company</h1>
 	<p>Find me in app/views/admin/about.html.erb</p>
 	<p>Use this page to edit company info</p>
+	<div>
+		<% if @about.nil? %>
+			<%= form_tag( { :action => 'about_new' }, :multipart => true) do %>
+				<textarea id="content" name="content" rows="25"></textarea>
+				<%= submit_tag("Create Company Info") %>
+			<% end%>
+		<% end %>
+
+		
+		<% unless @about.nil? %>
+			<%= form_tag( {:action => 'about_edit'}, :multipart => true) do %>
+				<textarea id="content" name="content" rows="25"><%= @about.body %></textarea>
+				<%= submit_tag("Update Company Info") %>
+			<% end %>
+		<% end %>
+		
+	</div>
 </div>

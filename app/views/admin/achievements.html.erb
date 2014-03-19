@@ -1,8 +1,32 @@
 <% provide(:title, "Admin Achievements")%>
 <%= render 'layouts/admin_header' %>
 
+<script type="text/javascript">
+	window.onload = function(){
+		$('#content').ckeditor();
+	};
+	$(document).ready($('#content').ckeditor());
+</script>
+
 <div class="center hero-unit">
 	<h1>Admin#achievements</h1>
 	<p>Find me in app/views/admin/achievements.html.erb</p>
 	<p>Use this page to edit company info</p>
+	<div>
+		<% if @achievements.nil? %>
+			<%= form_tag( { :action => 'achievements_new' }, :multipart => true) do %>
+				<textarea id="content" name="content" rows="25"></textarea>
+				<%= submit_tag("Create Achievements") %>
+			<% end%>
+		<% end %>
+
+		
+		<% unless @achievements.nil? %>
+			<%= form_tag( {:action => 'achievements_edit'}, :multipart => true) do %>
+				<textarea id="content" name="content" rows="25"><%= @achievements.body %></textarea>
+				<%= submit_tag("Update Achievements") %>
+			<% end %>
+		<% end %>
+		
+	</div>
 </div>

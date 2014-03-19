@@ -1,7 +1,8 @@
 <% provide(:title, "Achievements")%>
 <%= render 'layouts/header' %>
 
-<div class="center hero-unit">
+<div class="hero-unit">
 	<h1>StaticPages#achievements</h1>
 	<p>Find me in app/views/static_pages/achievements.html.erb</p>
+	<%= @achievements.body.html_safe %>
 </div>

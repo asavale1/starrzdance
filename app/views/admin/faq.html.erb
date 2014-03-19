@@ -1,7 +1,14 @@
 <% provide(:title, "Admin FAQ")%>
 <%= render 'layouts/admin_header' %>
 
-<div class="center hero-unit">
+<script type="text/javascript">
+	window.onload = function(){
+		$('#content').ckeditor();
+	};
+	$(document).ready($('#content').ckeditor());
+</script>
+
+<div class="center hero-unit" data-no-turbolink>
 	<h1>Admin#faq</h1>
 	<p>Find me in app/views/admin/faq.html.erb</p>
 	<p>Use this page to edit company info</p>
