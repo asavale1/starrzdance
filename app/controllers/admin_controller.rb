@@ -3,6 +3,9 @@ class AdminController < ApplicationController
 		puts "\n\nIN ADMIN HOME\n\n"
 	end
 
+	#
+	# => Company Info Management
+	#
 	def about
 		@about = Static.where("title = ?", "about").first
 		puts "\n\nIN ABOUT\n\n"
@@ -22,10 +25,14 @@ class AdminController < ApplicationController
 		about = Static.where("title = ?", "about").first
 		about.body = params[:content]
 		about.save
-		
+
 		puts "\n\nIN ABOUT EDIT\n\n"
 		redirect_to action: 'about'
 	end
+
+	#
+	# => Achievements Management
+	#
 
 	def achievements
 		@achievements = Static.where("title = ?", "achievements").first
@@ -54,6 +61,10 @@ class AdminController < ApplicationController
 	def schedule
 		puts "\n\nIN SCHEDULE\n\n"
 	end
+
+	#
+	# => FAQ Management
+	#
 
 	def faq
 		puts "\n\nIN FAQ\n\n"

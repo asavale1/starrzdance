@@ -9,9 +9,8 @@
 </script>
 
 <div class="center hero-unit" data-no-turbolink>
-	<h1>Admin#faq</h1>
+	<h1>Edit FAQ</h1>
 	<p>Find me in app/views/admin/faq.html.erb</p>
-	<p>Use this page to edit company info</p>
 	<div>
 		<% if @faq.nil? %>
 			<%= form_tag( { :action => 'faq_new' }, :multipart => true) do %>
@@ -23,10 +22,12 @@
 		
 		<% unless @faq.nil? %>
 			<%= form_tag( {:action => 'faq_edit'}, :multipart => true) do %>
-				<textarea id="content" name="content" rows="25"><%= @faq.body %></textarea>
-				<%= submit_tag("Update FAQ") %>
+				<textarea id="content" name="content" rows="25"><%= @faq.body %></textarea><br />
+				<%= submit_tag("Update FAQ", class: "btn btn-primary") %>
 			<% end %>
 		<% end %>
+
+		<%= link_to "View page", faq_path, :target => "_blank", class: "btn btn-success" %>
 		
 	</div>
 </div>

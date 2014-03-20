@@ -1,5 +1,36 @@
 <%= render 'layouts/header' %>
 <div class="center hero-unit">
-	<h1>StaticPages#home</h1>
-	<p>Find me in app/views/static_pages/home.html.erb</p>
+	<script type="text/javascript">
+	  	$(document).ready(function () {
+		    $('.carousel').carousel();
+		});
+	</script>
+
+	<div id="carousel-example-captions" class="carousel slide">
+	    <!-- Indicators -->
+	    <ol class="carousel-indicators">
+	        <li data-target="#carousel-example-captions" data-slide-to="0" class="active"></li>
+	        <li data-target="#carousel-example-captions" data-slide-to="1"></li>
+	    </ol>
+	    
+	    <!-- Wrapper for slides -->
+	    <div class="carousel-inner">
+	        <div class="item active">
+	            <%= image_tag("logo.png") %>
+	            <div class="carousel-caption">aaaaa</div>
+	        </div>
+	        <div class="item">
+	           	<%= image_tag("slogan.png") %>
+	            <div class="carousel-caption">gggggg</div>
+	        </div>
+	    </div>
+	    
+	    <!-- Controls -->
+	    <a class="left carousel-control" href="#carousel-example-captions" data-slide="prev">
+	        <span class="icon-prev"></span>
+	    </a>
+	    <a class="right carousel-control" href="#carousel-example-captions" data-slide="next">
+	        <span class="icon-next"></span>
+	    </a>
+	</div>
 </div>

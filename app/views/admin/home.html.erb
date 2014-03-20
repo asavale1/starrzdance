@@ -2,9 +2,13 @@
 <%= render 'layouts/admin_header' %>
 
 <div class="hero-unit">
-	<h1>Admin#home</h1>
+	<h1>Admin Home</h1>
 	<p>Find me in app/views/admin/home.html.erb</p>
 	<p>Use this page to manage admin content</p>
+	
+	<br />
+	<%= link_to "View Site", root_path, :target => "_blank", class: "btn btn-primary btn-lg" %>
+	<br /><br />
 	<ul>
 		<li><%= link_to "Edit Company Info", edit_about_path %></li>
 		<li><%= link_to "Edit Achievements", edit_achievements_path %></a></li>

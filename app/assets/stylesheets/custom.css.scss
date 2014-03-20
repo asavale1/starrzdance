@@ -24,13 +24,38 @@ textarea {
 	margin-bottom: 10px;
 }
 
-#logo {
-	float: left;
-	margin-right: 10px;
-}
-
 #content{
 	width: 100%;
 }
+
+/*
+Navigation Styling
+*/
+
+@media (min-width: 50px){
+	.sidebar-nav-fixed{
+		position: fixed;
+		top: 30%;
+		float: left;
+		color: #000;
+	}
+	.well{
+		background-color: rgba(0, 0, 0, .4);
+		border-radius: 50px;
+		border-color: transparent;
+	}
+	li{
+		text-transform: uppercase;
+		a {
+			margin: 0;
+			color: #000;
+		}
+	}
+}
+
+#slogan{
+	float: right;
+}
+
 
 

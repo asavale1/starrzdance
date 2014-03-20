@@ -9,9 +9,8 @@
 </script>
 
 <div class="center hero-unit">
-	<h1>Admin#company</h1>
+	<h1>Edit Company Info</h1>
 	<p>Find me in app/views/admin/about.html.erb</p>
-	<p>Use this page to edit company info</p>
 	<div>
 		<% if @about.nil? %>
 			<%= form_tag( { :action => 'about_new' }, :multipart => true) do %>
@@ -23,10 +22,12 @@
 		
 		<% unless @about.nil? %>
 			<%= form_tag( {:action => 'about_edit'}, :multipart => true) do %>
-				<textarea id="content" name="content" rows="25"><%= @about.body %></textarea>
-				<%= submit_tag("Update Company Info") %>
+				<textarea id="content" name="content" rows="25"><%= @about.body %></textarea><br />
+				<%= submit_tag("Update Company Info", class: "btn btn-primary") %>
 			<% end %>
 		<% end %>
+
+		<%= link_to "View page", about_path, :target => "_blank", class: "btn btn-success" %>
 		
 	</div>
 </div>

@@ -9,9 +9,8 @@
 </script>
 
 <div class="center hero-unit">
-	<h1>Admin#achievements</h1>
+	<h1>Edit Achievements</h1>
 	<p>Find me in app/views/admin/achievements.html.erb</p>
-	<p>Use this page to edit company info</p>
 	<div>
 		<% if @achievements.nil? %>
 			<%= form_tag( { :action => 'achievements_new' }, :multipart => true) do %>
@@ -23,10 +22,11 @@
 		
 		<% unless @achievements.nil? %>
 			<%= form_tag( {:action => 'achievements_edit'}, :multipart => true) do %>
-				<textarea id="content" name="content" rows="25"><%= @achievements.body %></textarea>
-				<%= submit_tag("Update Achievements") %>
+				<textarea id="content" name="content" rows="25"><%= @achievements.body %></textarea><br />
+				<%= submit_tag("Update Achievements", class: "btn btn-primary") %>
 			<% end %>
 		<% end %>
 		
+		<%= link_to "View page", achievements_path, :target => "_blank", class: "btn btn-success" %>
 	</div>
 </div>

@@ -1,15 +1,16 @@
-<header class="navbar navbar-fixed-top navbar-inverse">
-	<div class="navbar-inner">
-		<div class="container">
-			<%= link_to(image_tag("logo.png"), root_path, id: "logo") %>
-			<nav>
-				<ul class="nav pull-right">
+<%= link_to(image_tag("logo.png"), root_path, id: "logo") %>
+<%= image_tag("slogan.png", id: "slogan") %>
+<div class="navbar-fixed-top" >
+	<div class="row-fluid">
+		<div class="sidebar-nav-fixed" >
+			<div class="well">
+				<ul class="nav nav-list" >
 					<li><%= link_to "Home", root_path %></li>
 					<li><%= link_to "Company", about_path %></li>
 					<li><%= link_to "Achievements", achievements_path %></li>
 					<li><%= link_to "FAQ", faq_path %></li>
 				</ul>
-			</nav>
-		<div>
+			</div>
+		</div>
 	</div>
-</header>
+</div>
