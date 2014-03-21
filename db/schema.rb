@@ -11,7 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140318024504) do
+ActiveRecord::Schema.define(version: 20140321033155) do
+
+  create_table "schedules", force: true do |t|
+    t.string   "group"
+    t.string   "session"
+    t.string   "time"
+    t.string   "location"
+    t.string   "instructor"
+    t.decimal  "fee"
+    t.integer  "capacity"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "enrolled"
+  end
 
   create_table "statics", force: true do |t|
     t.string   "title"

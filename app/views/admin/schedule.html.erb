@@ -1,8 +1,105 @@
 <% provide(:title, "Admin Schedule")%>
 <%= render 'layouts/admin_header' %>
+<style>
+	#new-text{
+		max-width: 100px;
+		overflow-x: auto;
+	}
+	#new-number{
+		max-width: 100px;
+		overflow-x: auto;
+	}
+  	#external{ 
+        width: 95%; 
+        overflow-x:scroll;  
+        margin-left:5em;
+        overflow-y:visible;
+    }
+    #add-new{
+        position:absolute; 
+        width:5em; 
+        left: 15%;
+    }
+</style>
 
 <div class="center hero-unit">
 	<h1>Admin#schedule</h1>
 	<p>Find me in app/views/admin/schedule.html.erb</p>
 	<p>Use this page to edit company info</p>
+	<div id="external">
+		<table id="schedule" class="table table-bordered">
+			<tr>
+				<td id="add-new">
+					<%= form_tag({:action => 'schedule_new'}, :multipart => true) do %>
+						<%= label_tag(:group, "Group") %>
+				  		<%= text_field_tag(:group, nil ,:id => "new-text") %>
+				  		<%= label_tag(:session, "Session") %>
+				  		<%= text_field_tag(:session, nil,:id => "new-text") %>
+				  		<%= label_tag(:time, "Time") %>
+				  		<%= text_field_tag(:time, nil,:id => "new-text") %>
+				  		<%= label_tag(:location, "Location") %>
+				  		<%= text_field_tag(:location, nil,:id => "new-text") %>
+				  		<%= label_tag(:instructor, "Instructor") %>
+				  		<%= text_field_tag(:instructor, nil,:id => "new-text") %>
+				  		<%= label_tag(:fee, "Fee ($)") %>
+				  		<%= number_field_tag(:fee, 0,{:id => 'new-number', :step => 'any'}) %>
+				  		<%= label_tag(:capacity, "Capacity") %>
+				  		<%= number_field_tag(:capacity, nil, :id => 'new-number') %>
+				  		<%= label_tag(:enrolled, "Enrolled") %>
+				  		<%= number_field_tag(:enrolled, 0, :id => 'new-number') %>
+						<br /><br/><%= submit_tag("Add entry", class: "btn btn-primary") %>
+					<% end %>
+				</td>
+				<td id="show-all">
+					<table id="schedule-list" class="table table-striped">
+						<tr>
+							<th>Group</th>
+							<th>Session</th>
+							<th>Time</th>
+							<th>Location</th>
+							<th>Instructor</th>
+							<th>Fee</th>
+							<th>Capacity</th>
+							<th>Enrolled</th>
+							<th></th>
+						</tr>
+						<% @schedule.each do |sched| %>
+							<%= form_tag({:action => 'schedule_update'}, :multipart => true) do %>
+								<tr>	
+									<td>
+										<%= hidden_field_tag(:id, sched.id) %>
+										<%= text_field_tag(:group, sched.group) %>
+									</td>
+									<td>
+										<%= text_field_tag(:session, sched.session) %>
+									</td>
+									<td >
+										<%= text_field_tag(:time, sched.time) %>
+									</td>
+									<td>
+										<%= text_field_tag(:location, sched.location) %>
+									</td>
+									<td>
+										<%= text_field_tag(:instructor, sched.instructor) %>
+									</td>
+									<td>
+										<%= number_field_tag(:fee, sched.fee, {:class => 'text_field', :step => 'any'}) %>
+									</td>
+									<td>
+										<%= number_field_tag(:capacity, sched.capacity) %>
+									</td>
+									<td>
+										<%= number_field_tag(:enrolled, sched.enrolled) %>
+									</td>
+									<td>
+										<%= submit_tag("Update entry", class: "btn btn-primary") %>
+									</td>								
+								<tr>
+							<% end %>
+						<% end %>
+					</table>
+				</td>
+			</tr>
+		</table>
+	</div>
 </div>

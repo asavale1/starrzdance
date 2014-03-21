@@ -58,8 +58,56 @@ class AdminController < ApplicationController
 		redirect_to action: 'achievements'
 	end
 
+	#
+	# => Schedule Management
+	#
+
 	def schedule
+		@schedule = Schedule.all.sort_by(&:id)
 		puts "\n\nIN SCHEDULE\n\n"
+	end
+
+	def schedule_new
+		puts "\n\nIN SCHEDULE NEW\n\n"
+		sched = Schedule.new
+		sched.group = params[:group].strip
+		sched.session = params[:session].strip
+		sched.time = params[:time].strip
+		sched.location = params[:location].strip
+		sched.instructor = params[:instructor].strip
+		sched.fee = params[:fee]
+		sched.capacity = params[:capacity]
+		sched.enrolled = params[:enrolled]
+
+		sched.save
+
+		puts "\n\n"
+		puts "#{sched.group}"
+		puts "#{sched.session}"
+		puts "#{sched.time}"
+		puts "#{sched.location}"
+		puts "#{sched.instructor}"
+		puts "#{sched.capacity}"
+		puts "#{sched.enrolled}"
+		puts "\n\n"
+		redirect_to action: 'schedule'
+	end
+
+	def schedule_update
+
+		sched = Schedule.find(params[:id])
+		sched.group = params[:group].strip
+		sched.session = params[:session].strip
+		sched.time = params[:time].strip
+		sched.location = params[:location].strip
+		sched.instructor = params[:instructor].strip
+		sched.fee = params[:fee]
+		sched.capacity = params[:capacity]
+		sched.enrolled = params[:enrolled]
+		sched.save
+
+		puts "\n\nIN SCHEDULE UPDATE\n\n"
+		redirect_to action: 'schedule'
 	end
 
 	#
