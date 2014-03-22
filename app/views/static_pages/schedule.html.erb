@@ -1,0 +1,48 @@
+<% provide(:title, "Schedule")%>
+<%= render 'layouts/header' %>
+
+<div class="hero-unit">
+	<h1 class="center">
+		Schedule
+	</h1>
+	<table class="table table-striped table-bordered">
+		<tr>
+			<th>Group</th>
+			<th>Session</th>
+			<th>Time</th>
+			<th>Location</th>
+			<th>Instructor</th>
+			<th>Fee ($)</th>
+			<th>Status</th>
+		</tr>
+		<% @schedule.each do |sched| %>
+			<tr>
+				<td>
+					<%= sched.group %>
+				</td>
+				<td>
+					<%= sched.session %>
+				</td>
+				<td>
+					<%= sched.time %>
+				</td>
+				<td>
+					<%= sched.location %>
+				</td>
+				<td>
+					<%= sched.instructor %>
+				</td>
+				<td>
+					$ <%= sched.fee %>
+				</td>
+				<td>
+					<% if sched.capacity == sched.enrolled %>
+						Not available
+					<% else %>
+						Available
+					<% end %>
+				</td>
+			</tr>
+		<% end %>
+	</table>
+</div>

@@ -3,5 +3,7 @@
 
 <div class="hero-unit">
 	<p>Find me in app/views/static_pages/achievements.html.erb</p>
-	<%= @achievements.body.html_safe %>
+	<% unless @achievements.nil? %>
+		<%= @achievements.body.html_safe %>
+	<% end %>
 </div>

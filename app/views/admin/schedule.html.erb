@@ -42,7 +42,7 @@
 				  		<%= label_tag(:instructor, "Instructor") %>
 				  		<%= text_field_tag(:instructor, nil,:id => "new-text") %>
 				  		<%= label_tag(:fee, "Fee ($)") %>
-				  		<%= number_field_tag(:fee, 0,{:id => 'new-number', :step => 'any'}) %>
+				  		<%= text_field_tag(:fee, "0") %>
 				  		<%= label_tag(:capacity, "Capacity") %>
 				  		<%= number_field_tag(:capacity, nil, :id => 'new-number') %>
 				  		<%= label_tag(:enrolled, "Enrolled") %>
@@ -83,7 +83,7 @@
 										<%= text_field_tag(:instructor, sched.instructor) %>
 									</td>
 									<td>
-										<%= number_field_tag(:fee, sched.fee, {:class => 'text_field', :step => 'any'}) %>
+										<%= text_field_tag(:fee, sched.fee) %>
 									</td>
 									<td>
 										<%= number_field_tag(:capacity, sched.capacity) %>

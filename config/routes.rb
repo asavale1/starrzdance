@@ -4,7 +4,9 @@ Starrzdance::Application.routes.draw do
   match '/about', to: 'static_pages#about', via: 'get'
   match '/achievements', to: 'static_pages#achievements', via: 'get'
   match '/faq', to: 'static_pages#faq', via: 'get'
- 
+  match '/schedule', to: 'static_pages#schedule', via: 'get'
+  match '/register', to: 'static_pages#register', via: 'get'
+  match '/register_new', to: 'static_pages#register_new', via: 'post' 
 
   # => Admin Routes 
   match '/admin', to: 'admin#home', via: 'get'

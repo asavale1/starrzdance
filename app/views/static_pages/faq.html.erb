@@ -3,7 +3,9 @@
 
 <div class="hero-unit">
 	<p>Find me in app/views/static_pages/faq.html.erb</p>
-	<%= @faq.body.html_safe %>
+	<% unless @faq.nil? %>
+		<%= @faq.body.html_safe %>
+	<% end %>
 </div>
 
 
