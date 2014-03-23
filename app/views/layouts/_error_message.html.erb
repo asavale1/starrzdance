@@ -1,0 +1,14 @@
+<% unless @student.nil? %>
+  <div id="error_explanation">
+    <div class="alert alert-error">
+      The form contains <%= pluralize(@student["errors"].count, "error") %>.
+      <% @student["errors"].keys.each do |msg| %>
+        <% if msg == "project_id" %>
+          <p>* must select a session</p>
+        <% else %>
+          <p>* <%= msg.gsub("_"," ") %> <%= @student["errors"][msg] %></p>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+<% end %>

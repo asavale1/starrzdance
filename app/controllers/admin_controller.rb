@@ -141,6 +141,10 @@ class AdminController < ApplicationController
 		redirect_to action: 'faq'
 	end
 
+	def student
+
+	end
+
 	def photo
 		puts "\n\nIN PHOTO\n\n"
 	end

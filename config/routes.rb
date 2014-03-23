@@ -28,6 +28,8 @@ Starrzdance::Application.routes.draw do
   match '/edit_schedule', to: 'admin#schedule', via: 'get'
   match '/edit_schedule_new', to: 'admin#schedule_new', via: 'post'
   match '/edit_schedule_update', to: 'admin#schedule_update', via: 'post'
+
+  match '/edit_student', to: 'admin#student', via: 'get'
   # get "static_pages/home"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

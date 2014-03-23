@@ -1,24 +1,48 @@
 <% provide(:title, "Register")%>
 <%= render 'layouts/header' %>
 
+<script>
+	<% unless @student.nil? %>
+		$(document).ready(function(){
+			var test = "<% @student['email'] %>";
+			console.log("IN HERE");
+			console.log(test);
+			console.log("after");
+			document.getElementById("student_name").value = "<%= @student['student'] %>";
+			document.getElementById("age").value = "<%= @student['age'] %>";
+			document.getElementById("parent_name").value = "<%= @student['parent'] %>";
+			document.getElementById("email").value = "<%= @student['email'] %>";
+			document.getElementById("phone").value = "<%= @student['phone'] %>";
+			document.getElementById("city").value = "<%= @student['city'] %>";
+			document.getElementById("state").value = "<%= @student['state'] %>";
+			document.getElementById("zipcode").value = "<%= @student['zipcode'] %>";
+		});
+		
+	<% end %>
+</script>
+
 <div class="hero-unit">
-	<p>Find me in app/views/static_pages/register.html.erb</p>
 	<h2>Registration</h2>
+	<%= render 'layouts/error_message' %>
+	<h6>* required fields</h6>
 	<%= form_tag( { :action => 'register_new' }, :multipart => true) do %>
-		<%= label_tag(:student_name, "Student Name") %>
-		<%= text_field_tag(:student_name) %>
+		<%= label_tag(:student_name, "Student Name *") %>
+		<%= text_field_tag(:student_name, nil, :id => "student_name") %>	
+		<%= label_tag(:age, "Age *") %>
+		<%= text_field_tag(:age, nil, :id => "age") %>				
 		<%= label_tag(:parent_name, "Parent Name") %>
-		<%= text_field_tag(:parent_name) %>
-		<%= label_tag(:email, "Email") %>
-		<%= text_field_tag(:email) %>
+		<%= text_field_tag(:parent_name, nil, :id => "parent_name") %>
+		<%= label_tag(:email, "Email *") %>
+		<%= text_field_tag(:email, nil, :id => "email") %>
 		<%= label_tag(:phone, "Phone Number") %>
-		<%= text_field_tag(:phone) %>
+		<%= text_field_tag(:phone, nil, :id => "phone") %>
 		<%= label_tag(:city, "City") %>
-		<%= text_field_tag(:city) %>
+		<%= text_field_tag(:city, nil, :id => "city") %>
 		<%= label_tag(:state, "State") %>
-		<%= text_field_tag(:state) %>
+		<%= text_field_tag(:state, nil, :id => "state") %>
 		<%= label_tag(:zipcode, "Zipcode") %>
-		<%= text_field_tag(:zipcode) %>
+		<%= text_field_tag(:zipcode, nil, :id => "zipcode") %>
+		<%= label_tag("Select class *") %>
 		<table class="table">
 			<tr>
 				<th></th>
@@ -33,7 +57,15 @@
 			<% @schedule.each do |sched| %>
 				<tr>
 					<td>
-						<%= radio_button_tag(:schedule, sched.id) %>
+						<% if @student.nil? %>
+							<%= radio_button_tag(:schedule, sched.id) %>
+						<% else %>
+							<% if sched.id == @student["schedule"].to_i %>
+								<%= radio_button_tag(:schedule, sched.id, :checked => true) %>
+							<% else %>
+								<%= radio_button_tag(:schedule, sched.id) %>
+							<% end %>
+						<% end %>
 					</td>
 					<td>
 						<%= sched.group %>
@@ -51,7 +83,7 @@
 						<%= sched.instructor %>
 					</td>
 					<td>
-						$ <%= sched.fee %>
+						$<%= sched.fee %>
 					</td>
 					<td>
 						<% if sched.capacity == sched.enrolled %>

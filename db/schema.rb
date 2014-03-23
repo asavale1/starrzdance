@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140322064951) do
+ActiveRecord::Schema.define(version: 20140323062034) do
 
   create_table "schedules", force: true do |t|
     t.string   "group"
@@ -43,6 +43,8 @@ ActiveRecord::Schema.define(version: 20140322064951) do
     t.integer  "zipcode"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "age"
+    t.integer  "schedule_id"
   end
 
 end
