@@ -10,12 +10,13 @@
 
 <div class="center hero-unit">
 	<h1>Edit Company Info</h1>
-	<p>Find me in app/views/admin/about.html.erb</p>
+	<%= link_to "View page", about_path, :target => "_blank", class: "btn btn-success" %><br /><br />
+	<%= render 'layouts/result' %>
 	<div>
 		<% if @about.nil? %>
 			<%= form_tag( { :action => 'about_new' }, :multipart => true) do %>
-				<textarea id="content" name="content" rows="25"></textarea>
-				<%= submit_tag("Create Company Info") %>
+				<textarea id="content" name="content" rows="25"></textarea><br />
+				<%= submit_tag("Create Company Info", class: "btn btn-primary") %>
 			<% end%>
 		<% end %>
 
@@ -26,8 +27,6 @@
 				<%= submit_tag("Update Company Info", class: "btn btn-primary") %>
 			<% end %>
 		<% end %>
-
-		<%= link_to "View page", about_path, :target => "_blank", class: "btn btn-success" %>
 		
 	</div>
 </div>

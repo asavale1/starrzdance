@@ -1,0 +1,11 @@
+<% unless @result.nil? %>
+	<% if @result == 'true' %>
+		<div class="alert alert-success">
+			<h5>Update Successful</h5>
+		</div>
+	<% else %>
+		<div class="alert alert-error">
+			<h5>Update Failed</h5>
+		</div>
+	<% end %>
+<% end %>

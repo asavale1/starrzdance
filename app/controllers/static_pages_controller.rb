@@ -1,4 +1,6 @@
 class StaticPagesController < ApplicationController
+	include StaticPagesHelper
+
   	def home
   		puts "\n\nIN HOME\n\n"
 	end
@@ -26,42 +28,36 @@ class StaticPagesController < ApplicationController
 	def register
 		unless params[:student].nil?
 			puts "\n\nREGISTER FAIL:\t#{params[:student]}\n\n"
-			puts "#{params[:student]['email']}"
 			@student  = params[:student]
+			@result = params[:result]
+		else
+			unless params[:result].nil?
+				@result = params[:result]
+			end
 		end
 		@schedule = Schedule.all
 		puts "\n\nIN REGISTER\n\n"
 	end
 
 	def register_new
-		
+		puts "\n\nIN REGISTER NEW\n\n"
+
 		student = Student.new
 		student.student_name = params[:student_name].strip
 		student.age = params[:age].strip
 		student.parent_name = params[:parent_name].strip
 		student.email = params[:email].strip
-		student.phone = params[:phone].strip
+		student.phone = clean_phone_input(params[:phone].strip)
 		student.city = params[:city].strip
 		student.state = params[:state].strip
 		student.zipcode = params[:zipcode].strip
 		student.schedule_id = params[:schedule]
 
-		puts "\n\nIN REGISTER NEW\n\n"
-
-		puts "#{params[:student_name]}"
-		puts "#{params[:age]}"
-		puts "#{params[:parent_name]}"
-		puts "#{params[:email]}"
-		puts "#{params[:phone]}"
-		puts "#{params[:city]}"
-		puts "#{params[:state]}"
-		puts "#{params[:zipcode]}"
-		puts "#{params[:schedule]}"
-		puts "\n\n"
-
 		if student.save
-			puts "\n\nSAVE SUCCESS\n\n"
-			redirect_to action: 'register'
+			schedule = Schedule.find(student.schedule_id)
+			schedule.enrolled = schedule.enrolled + 1
+			schedule.save
+			redirect_to action: 'register', :result => true
 		else
 
 			index = 0
@@ -84,8 +80,7 @@ class StaticPagesController < ApplicationController
 						 		"errors" => errors
 							}
 			
-			puts "\n\nSAVE FAIL\n\n"
-			redirect_to action: 'register', :student => student_value
+			redirect_to action: 'register', :student => student_value, :result => false
 		end		
 	end
 end

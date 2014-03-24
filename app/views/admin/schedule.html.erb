@@ -23,13 +23,14 @@
 </style>
 
 <div class="center hero-unit">
-	<h1>Admin#schedule</h1>
-	<p>Find me in app/views/admin/schedule.html.erb</p>
-	<p>Use this page to edit company info</p>
+	<h1>Edit Schedule</h1>
+	<%= link_to "View page", schedule_path, :target => "_blank", class: "btn btn-success" %><br /><br />
+	<%= render 'layouts/result' %>
 	<div id="external">
-		<table id="schedule" class="table table-bordered">
+		<table id="schedule" class="table table-bordered table-condensed">
 			<tr>
 				<td id="add-new">
+					<h4>Add Entry</h4>
 					<%= form_tag({:action => 'schedule_new'}, :multipart => true) do %>
 						<%= label_tag(:group, "Group") %>
 				  		<%= text_field_tag(:group, nil ,:id => "new-text") %>
@@ -42,11 +43,11 @@
 				  		<%= label_tag(:instructor, "Instructor") %>
 				  		<%= text_field_tag(:instructor, nil,:id => "new-text") %>
 				  		<%= label_tag(:fee, "Fee ($)") %>
-				  		<%= text_field_tag(:fee, "0") %>
+				  		<%= text_field_tag(:fee, "0", :id => "new-text") %>
 				  		<%= label_tag(:capacity, "Capacity") %>
-				  		<%= number_field_tag(:capacity, nil, :id => 'new-number') %>
+				  		<%= text_field_tag(:capacity, nil, :id => 'new-number') %>
 				  		<%= label_tag(:enrolled, "Enrolled") %>
-				  		<%= number_field_tag(:enrolled, 0, :id => 'new-number') %>
+				  		<%= text_field_tag(:enrolled, 0, :id => 'new-number') %>
 						<br /><br/><%= submit_tag("Add entry", class: "btn btn-primary") %>
 					<% end %>
 				</td>
@@ -86,10 +87,10 @@
 										<%= text_field_tag(:fee, sched.fee) %>
 									</td>
 									<td>
-										<%= number_field_tag(:capacity, sched.capacity) %>
+										<%= text_field_tag(:capacity, sched.capacity) %>
 									</td>
 									<td>
-										<%= number_field_tag(:enrolled, sched.enrolled) %>
+										<%= text_field_tag(:enrolled, sched.enrolled) %>
 									</td>
 									<td>
 										<%= submit_tag("Update entry", class: "btn btn-primary") %>

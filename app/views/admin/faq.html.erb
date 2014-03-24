@@ -10,12 +10,13 @@
 
 <div class="center hero-unit" data-no-turbolink>
 	<h1>Edit FAQ</h1>
-	<p>Find me in app/views/admin/faq.html.erb</p>
+	<%= link_to "View page", faq_path, :target => "_blank", class: "btn btn-success" %><br /><br />
+	<%= render 'layouts/result' %>
 	<div>
 		<% if @faq.nil? %>
 			<%= form_tag( { :action => 'faq_new' }, :multipart => true) do %>
-				<textarea id="content" name="content" rows="25"></textarea>
-				<%= submit_tag("Create FAQ") %>
+				<textarea id="content" name="content" rows="25"></textarea><br />
+				<%= submit_tag("Create FAQ", class: "btn btn-primary") %>
 			<% end%>
 		<% end %>
 
@@ -26,8 +27,6 @@
 				<%= submit_tag("Update FAQ", class: "btn btn-primary") %>
 			<% end %>
 		<% end %>
-
-		<%= link_to "View page", faq_path, :target => "_blank", class: "btn btn-success" %>
 		
 	</div>
 </div>

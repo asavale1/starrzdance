@@ -10,12 +10,13 @@
 
 <div class="center hero-unit">
 	<h1>Edit Achievements</h1>
-	<p>Find me in app/views/admin/achievements.html.erb</p>
+	<%= link_to "View page", achievements_path, :target => "_blank", class: "btn btn-success" %><br /><br />
+	<%= render 'layouts/result' %>
 	<div>
 		<% if @achievements.nil? %>
 			<%= form_tag( { :action => 'achievements_new' }, :multipart => true) do %>
-				<textarea id="content" name="content" rows="25"></textarea>
-				<%= submit_tag("Create Achievements") %>
+				<textarea id="content" name="content" rows="25"></textarea><br />
+				<%= submit_tag("Create Achievements", class: "btn btn-primary") %>
 			<% end%>
 		<% end %>
 
@@ -26,7 +27,5 @@
 				<%= submit_tag("Update Achievements", class: "btn btn-primary") %>
 			<% end %>
 		<% end %>
-		
-		<%= link_to "View page", achievements_path, :target => "_blank", class: "btn btn-success" %>
 	</div>
 </div>

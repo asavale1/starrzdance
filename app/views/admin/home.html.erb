@@ -3,20 +3,17 @@
 
 <div class="hero-unit">
 	<h1>Admin Home</h1>
-	<p>Find me in app/views/admin/home.html.erb</p>
-	<p>Use this page to manage admin content</p>
+	<p>Use this page to manage admin content</p><br />
 	
-	<br />
 	<%= link_to "View Site", root_path, :target => "_blank", class: "btn btn-primary btn-lg" %>
 	<br /><br />
 	<ul>
-		<li><%= link_to "Edit Company Info", edit_about_path %></li>
-		<li><%= link_to "Edit Achievements", edit_achievements_path %></a></li>
-		<li><%= link_to "Edit Schedule", edit_schedule_path %></li>
-		<li><%= link_to "Edit FAQ", edit_faq_path %></li>
-		<li><%= link_to "Edit Photos", edit_photo_path %></li>
-		<li><%= link_to "Edit Videos", edit_video_path %></li>
+		<li><%= link_to "Company Info", edit_about_path %></li>
+		<li><%= link_to "Achievements", edit_achievements_path %></a></li>
+		<li><%= link_to "Schedule", edit_schedule_path %></li>
+		<li><%= link_to "FAQ", edit_faq_path %></li>
+		<li><%= link_to "Photos", edit_photo_path %></li>
+		<li><%= link_to "Videos", edit_video_path %></li>
+		<li><%= link_to "Students", edit_student_path %></li>
 	</ul>
-	
-	
 </div>

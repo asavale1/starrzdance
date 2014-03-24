@@ -1,6 +1,75 @@
 <% provide(:title, "Admin Students")%>
 <%= render 'layouts/admin_header' %>
 
-<div class="hero-unit">
-	<p>Find me in app/views/static_pages/about.html.erb</p>
+<div class="hero-unit center">
+	<h1>Students Enrolled</h1><br />
+	<div id="student">
+	<table class="table table-bordered table-condensed">
+		<tr>
+			<th>Student ID</th>
+			<th>Student Name</th>
+			<th>Parent Name</th>
+			<th>Age</th>
+			<th>Email</th>
+			<th>Phone</th>
+			<th>City</th>
+			<th>State</th>
+			<th>Zipcode</th>
+			<th>Class Id</th>
+			<th></th>
+		</tr>
+		<% @student.each do |stud| %>
+			<tr>
+				<td><%= stud.id %></td>
+				<td><%= stud.student_name %></td>
+				<td><%= stud.parent_name %></td>
+				<td><%= stud.age %></td>
+				<td><%= stud.email %></td>
+				<td><%= stud.phone %></td>
+				<td><%= stud.city %></td>
+				<td><%= stud.state %></td>
+				<td><%= stud.zipcode %></td>
+				<td>
+					<a href="#" data-toggle="modal" data-target="#myModal<%= stud.schedule_id %>">
+						<%= stud.schedule_id %>
+					</a>
+
+					<div id="myModal<%= stud.schedule_id %>" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+					  <div class="modal-header">
+					    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+					    <h3>Schedule ID <%= stud.schedule_id %></h3>
+					  </div>
+					  <div class="modal-body">
+					  	<% @sched = Schedule.find(stud.schedule_id) %>
+					    <%= render 'layouts/single_schedule' %>
+					  </div>
+					  <div class="modal-footer">
+					    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+					  </div>
+					</div>
+				</td>
+				<td>
+					<a href="#" class="btn btn-primary" data-toggle="modal" data-target="#editModal<%= stud.schedule_id %>">Edit</a><br /><br/>
+					<%= link_to "Delete", edit_student_delete_path, class: "btn btn-primary", :confirm => "Are you sure you want to delete entry #{stud.id}?" %>
+
+					<div id="editModal<%= stud.schedule_id %>" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+					  <div class="modal-header">
+					    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+					    <h3>Edit Student <%= stud.student_name %></h3>
+					  </div>
+					  <div class="modal-body">
+					  	<% @sched = Schedule.find(stud.schedule_id) %>
+					    <%= render 'layouts/single_schedule' %>
+					  </div>
+					  <div class="modal-footer">
+					    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+					  </div>
+					</div>
+
+				</td>
+			</tr>
+		<% end %>
+	</table>
+	</div>
 </div>
+
