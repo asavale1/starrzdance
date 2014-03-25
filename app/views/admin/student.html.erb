@@ -1,8 +1,11 @@
 <% provide(:title, "Admin Students")%>
 <%= render 'layouts/admin_header' %>
 
+<% schedule = Schedule.all %>
+
 <div class="hero-unit center">
 	<h1>Students Enrolled</h1><br />
+	<%= render 'layouts/result' %>
 	<div id="student">
 	<table class="table table-bordered table-condensed">
 		<tr>
@@ -49,23 +52,22 @@
 					</div>
 				</td>
 				<td>
-					<a href="#" class="btn btn-primary" data-toggle="modal" data-target="#editModal<%= stud.schedule_id %>">Edit</a><br /><br/>
-					<%= link_to "Delete", edit_student_delete_path, class: "btn btn-primary", :confirm => "Are you sure you want to delete entry #{stud.id}?" %>
+					<a href="#" class="btn btn-primary" data-toggle="modal" data-target="#editModal<%= stud.id %>">Edit</a><br /><br/>
+					<%= link_to "Delete", edit_student_delete_path(:id => stud.id), class: "btn btn-primary", 
+							data: { confirm: "Are you sure you want to delete entry #{stud.id}?" } %>
 
-					<div id="editModal<%= stud.schedule_id %>" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+					<div id="editModal<%=stud.id%>" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 					  <div class="modal-header">
 					    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
 					    <h3>Edit Student <%= stud.student_name %></h3>
 					  </div>
 					  <div class="modal-body">
-					  	<% @sched = Schedule.find(stud.schedule_id) %>
-					    <%= render 'layouts/single_schedule' %>
+					    <%= render :partial => 'layouts/edit_student', :object => {:stud => stud, :schedule => schedule }%>
 					  </div>
 					  <div class="modal-footer">
 					    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
 					  </div>
 					</div>
-
 				</td>
 			</tr>
 		<% end %>

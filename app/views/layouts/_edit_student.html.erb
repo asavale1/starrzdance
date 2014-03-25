@@ -1,0 +1,68 @@
+<%= form_tag({:action => 'student_update'}, :multipart => true) do %>
+	<%= hidden_field_tag(:id, edit_student[:stud].id) %>
+	<%= label_tag(:student_name, "Student Name") %>
+	<%= text_field_tag(:student_name, edit_student[:stud].student_name) %>
+	<%= label_tag(:parent_name, "Parent Name") %>
+	<%= text_field_tag(:parent_name, edit_student[:stud].parent_name) %>
+	<%= label_tag(:age, "Age") %>
+	<%= text_field_tag(:age, edit_student[:stud].age) %>
+	<%= label_tag(:email, "Email") %>
+	<%= text_field_tag(:email, edit_student[:stud].email) %>
+	<%= label_tag(:phone, "Phone") %>
+	<%= text_field_tag(:phone, edit_student[:stud].phone) %>
+	<%= label_tag(:city, "City") %>
+	<%= text_field_tag(:city, edit_student[:stud].city) %>
+	<%= label_tag(:state, "State") %>
+	<%= text_field_tag(:state, edit_student[:stud].state) %>
+	<%= label_tag(:zipcode, "Zipcode") %>
+	<%= text_field_tag(:zipcode, edit_student[:stud].zipcode) %>
+	<table class="table">
+		<tr>
+			<th></th>
+			<th>Group</th>
+			<th>Session</th>
+			<th>Time</th>
+			<th>Location</th>
+			<th>Instructor</th>
+			<th>Fee ($)</th>
+			<th>Status</th>
+		</tr>
+		<% edit_student[:schedule].each do |sched| %>
+			<tr>
+				<td>
+					<% if sched.id == edit_student[:stud].schedule_id %>
+						<%= radio_button_tag(:schedule_id, sched.id, :checked => true) %>
+					<% else %>
+						<%= radio_button_tag(:schedule_id, sched.id) %>
+					<% end %>
+				</td>
+				<td>
+					<%= sched.group %>
+				</td>
+				<td>
+					<%= sched.session %>
+				</td>
+				<td>
+					<%= sched.time %>
+				</td>
+				<td>
+					<%= sched.location %>
+				</td>
+				<td>
+					<%= sched.instructor %>
+				</td>
+				<td>
+					$<%= sched.fee %>
+				</td>
+				<td>
+					<% if sched.capacity == sched.enrolled %>
+						Not Available
+					<% else %>
+						Available
+					<% end %>
+				</td>
+			</tr>
+		<% end %>
+	</table>
+	<%= submit_tag("Update Student", class: "btn btn-primary") %>
+<% end %>

@@ -158,16 +158,51 @@ class AdminController < ApplicationController
 	# => Students managment
 	#
 	def student
+		unless params[:result].nil?
+			@result = params[:result]
+		end
 		@student = Student.all
 	end
 
 	def student_delete
 		puts "\n\nIN STUDENT DELETE\n\n"
-		redirect_to action: 'student'
+		puts "#{params[:id]}"
+		puts "\n\n"
+		Student.find(params[:id]).destroy
+		redirect_to action: 'student', :result => true
 	end
 
-	def student_edit
+	def student_update
+		puts "\n\nIN STUDENT UPDATE\n\n"
+		student = Student.find(params[:id])
+		student.student_name = params[:student_name].strip
+		student.parent_name = params[:parent_name].strip
+		student.age = params[:age].strip
+		student.email = params[:email].strip
+		student.phone = params[:phone].strip
+		student.city = params[:city].strip
+		student.state = params[:state].strip
+		student.zipcode = params[:zipcode].strip
+		
+		if student.schedule_id == params[:schedule_id]
+			student.schedule_id == params[:schedule_id]
+		else
+			sched = Schedule.find(student.schedule_id)
+			sched.enrolled = sched.enrolled - 1
+			sched.save
 
+			sched = Schedule.find(params[:schedule_id])
+			sched.enrolled = sched.enrolled + 1
+			sched.save
+
+			student.schedule_id = params[:schedule_id]
+		end
+
+		if student.save
+			redirect_to action: 'student', :result => true
+		else
+			redirect_to action: 'student', :result => false
+		end
 	end
 
 	#
