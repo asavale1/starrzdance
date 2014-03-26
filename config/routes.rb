@@ -10,7 +10,6 @@ Starrzdance::Application.routes.draw do
 
   # => Admin Routes 
   match '/admin', to: 'admin#home', via: 'get'
-  match '/edit_photo', to: 'admin#photo', via: 'get'
   match '/edit_video', to: 'admin#video', via: 'get'
   
   match '/edit_faq', to: 'admin#faq', via: 'get'
@@ -32,6 +31,9 @@ Starrzdance::Application.routes.draw do
   match '/edit_student', to: 'admin#student', via: 'get'
   match '/edit_student_delete', to: 'admin#student_delete', via: 'get'
   match '/edit_student_update', to: 'admin#student_update', via: 'post'
+
+  match '/edit_photo', to: 'admin#photo', via: 'get'
+  match '/edit_photo_new', to: 'admin#photo_new', via: 'post'
   # get "static_pages/home"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

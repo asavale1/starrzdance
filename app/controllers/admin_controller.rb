@@ -211,6 +211,18 @@ class AdminController < ApplicationController
 
 	def photo
 		puts "\n\nIN PHOTO\n\n"
+		@photo = Photo.all
+	end
+
+	def photo_new
+		puts "\n\nIN PHOTO NEW\n\n"
+		photo = Photo.new
+		photo.title = params[:title].strip
+		photo.caption = params[:caption].strip
+		photo.image = params[:image]
+		photo.save
+		
+		redirect_to action: 'photo', :result => true
 	end
 
 	#
