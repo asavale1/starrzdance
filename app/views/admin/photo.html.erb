@@ -3,18 +3,20 @@
 
 <div class="center hero-unit">
 	<h1>Admin#photo</h1>
-	<p>Find me in app/views/admin/photo.html.erb</p>
-	<p>Use this page to edit company info</p>
+	<%= render 'layouts/result' %>
 	<table class="table">
 		<tr>
 			<td>
-				<%= form_tag({:action => 'photo_new' }, :multipart => true) do %>
+				<%= form_tag({:action => 'photo_new' }, :multipart => true, class: "form-horizontal") do %>
 					<%= label_tag(:title, "Title") %>
 					<%= text_field_tag(:title) %>
 					<%= label_tag(:caption, "Caption") %>
 					<%= text_field_tag(:caption) %>
+					<%= label_tag(:order, "Order") %>
+					<%= number_field_tag(:order) %>
 					<%= label_tag(:image, "Image") %>
-					<%= file_field_tag(:image) %><br /><br />
+					<%= file_field_tag(:image) %>
+					<br /><br />
 					<%= submit_tag("Upload Photo", class: "btn btn-primary") %>
 				<% end %>
 			</td>
@@ -26,17 +28,58 @@
 						<th>Image</th>
 						<th>Title</th>
 						<th>Caption</th>
+						<th>Order</th>
+						<th></th>
 					</tr>
 					<% @photo.each do |photo| %>
 						<tr>
 							<td>
-								<%= image_tag photo.image.url(:thumb) %>
+								<a href="#" class="btn btn-primary" data-toggle="modal" data-target="#viewModal<%= photo.id %>"><%= image_tag photo.image.url(:thumb) %></a>
+								<div id="viewModal<%=photo.id%>" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+								  <div class="modal-header">
+								    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+								    <h3><%= photo.title %></h3>
+								  </div>
+								  <div class="modal-body">
+								    <%= image_tag photo.image.url %>
+								  </div>
+								  <div class="modal-footer">
+								  	<h4 style="float: left;"><%= photo.caption %></h4>
+								    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+								  </div>
+								</div>
 							</td>
 							<td>
-								<%= image_tag photo.title %>
+								<%= photo.title %>
 							</td>
 							<td>
-								<%= image_tag photo.caption %>
+								<%= photo.caption %>
+							</td>
+							<td>
+								<%= photo.order %>
+							</td>
+							<td>
+								<%= link_to("Delete", edit_photo_delete_path(:id => photo.id), class: "btn btn-primary") %>
+
+								<a href="#" class="btn btn-primary" data-toggle="modal" data-target="#editModal<%= photo.id %>">Edit</a>
+								<div id="editModal<%=photo.id%>" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+									<div class="modal-header">
+								    	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+								    	<h3><%= photo.title %></h3>
+								  	</div>
+								  	<div class="modal-body">
+								    	<%= form_tag({:action => 'photo_edit' }, :multipart => true, class: "form-horizontal") do %>
+								    		<%= hidden_field_tag(:id, photo.id) %>
+								    		<%= label_tag(:title, "Title") %>
+								    		<%= text_field_tag(:title, photo.title) %>
+								    		<%= label_tag(:caption, "Caption") %>
+								    		<%= text_field_tag(:caption, photo.caption) %>
+								    		<%= label_tag(:order, "Order") %>
+								    		<%= number_field_tag(:order, photo.order) %>
+								    		<%= submit_tag("Edit Photo", class: "btn btn-primary") %>
+								    	<% end %>
+								  	</div>
+								</div>
 							</td>
 						</tr>
 					<% end %>

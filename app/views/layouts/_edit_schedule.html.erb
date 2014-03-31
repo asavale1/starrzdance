@@ -1,0 +1,20 @@
+<%= form_tag({:action => 'schedule_update'}, :multipart => true) do %>
+	<%= hidden_field_tag(:id, edit_schedule[:sched].id) %>
+	<%= label_tag(:group, "Group") %>
+	<%= text_field_tag(:group, edit_schedule[:sched].group) %>
+	<%= label_tag(:session, "Session") %>
+	<%= text_field_tag(:session, edit_schedule[:sched].session) %>
+	<%= label_tag(:time, "Time") %>
+	<%= text_field_tag(:time, edit_schedule[:sched].time) %>
+	<%= label_tag(:location, "Location") %>
+	<%= text_field_tag(:location, edit_schedule[:sched].location) %>
+	<%= label_tag(:instructor, "Instructor") %>
+	<%= text_field_tag(:instructor, edit_schedule[:sched].instructor) %>
+	<%= label_tag(:fee, "Fee") %>
+	<%= text_field_tag(:fee, edit_schedule[:sched].fee) %>
+	<%= label_tag(:capacity, "Capacity") %>
+	<%= text_field_tag(:capacity, edit_schedule[:sched].capacity) %>
+	<%= label_tag(:enrolled, "Enrolled") %>
+	<%= text_field_tag(:enrolled, edit_schedule[:sched].enrolled) %><br /><br />
+	<%= submit_tag("Update Schedule", class: "btn btn-primary") %>
+<% end %>

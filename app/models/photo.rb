@@ -6,5 +6,6 @@ class Photo < ActiveRecord::Base
 						}
 
 	validates_attachment_content_type :image, :content_type => ["image/jpg", "image/jpeg", "image/png"]
+	validates_attachment_presence(:image)
 	
 end

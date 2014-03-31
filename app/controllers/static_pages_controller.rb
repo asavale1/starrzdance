@@ -83,4 +83,12 @@ class StaticPagesController < ApplicationController
 			redirect_to action: 'register', :student => student_value, :result => false
 		end		
 	end
+
+	def photo
+		@photo = Photo.all
+	end
+
+	def video
+
+	end
 end

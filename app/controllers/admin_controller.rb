@@ -210,6 +210,9 @@ class AdminController < ApplicationController
 	#
 
 	def photo
+		unless params[:result].nil?
+			@result = params[:result]
+		end
 		puts "\n\nIN PHOTO\n\n"
 		@photo = Photo.all
 	end
@@ -219,10 +222,31 @@ class AdminController < ApplicationController
 		photo = Photo.new
 		photo.title = params[:title].strip
 		photo.caption = params[:caption].strip
+		photo.order = params[:order].to_i
 		photo.image = params[:image]
-		photo.save
-		
+		if photo.save
+			redirect_to action: 'photo', :result => true
+		else
+			redirect_to action: 'photo', :result => false
+		end
+	end
+
+	def photo_delete
+		Photo.find(params[:id]).destroy
 		redirect_to action: 'photo', :result => true
+	end
+
+	def photo_edit
+		photo = Photo.find(params[:id])
+		photo.title = params[:title].strip
+		photo.caption = params[:caption].strip
+		photo.order = params[:order].to_i
+
+		if photo.save
+			redirect_to action: 'photo', :result => true
+		else
+			redirect_to action: 'photo', :result => false
+		end
 	end
 
 	#
@@ -230,6 +254,45 @@ class AdminController < ApplicationController
 	#
 
 	def video
+		unless params[:result].nil?
+			@result = params[:result]
+		end
 		puts "\n\nIN VIDEO\n\n"
+		@video = Video.all
+	end
+
+	def video_new
+		video = Video.new
+		video.title = params[:title].strip
+		video.caption = params[:caption].strip
+		video.order = params[:order].to_i
+		video.clip = params[:clip]
+
+		if video.save
+			redirect_to action: 'video', :result => true
+		else
+			redirect_to action: 'video', :result => false
+		end
+
+		puts "\n\n#{video.errors.full_messages}\n\n"
+		
+	end
+
+	def video_delete
+		Video.find(params[:id]).destroy
+		redirect_to action: 'video', :result => true
+	end
+
+	def video_edit
+		video = Video.find(params[:id])
+		video.title = params[:title].strip
+		video.caption = params[:caption].strip
+		video.order = params[:order].to_i
+
+		if video.save
+			redirect_to action: 'video', :result => true
+		else
+			redirect_to action: 'video', :result => false
+		end
 	end
 end

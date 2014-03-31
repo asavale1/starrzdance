@@ -6,11 +6,12 @@ Starrzdance::Application.routes.draw do
   match '/faq', to: 'static_pages#faq', via: 'get'
   match '/schedule', to: 'static_pages#schedule', via: 'get'
   match '/register', to: 'static_pages#register', via: 'get'
-  match '/register_new', to: 'static_pages#register_new', via: 'post' 
+  match '/register_new', to: 'static_pages#register_new', via: 'post'
+  match '/photos', to: 'static_pages#photo', via: 'get'
+  match '/videos', to: 'static_pages#video', via: 'get' 
 
   # => Admin Routes 
   match '/admin', to: 'admin#home', via: 'get'
-  match '/edit_video', to: 'admin#video', via: 'get'
   
   match '/edit_faq', to: 'admin#faq', via: 'get'
   match '/edit_faq_new', to: 'admin#faq_new', via: 'post'
@@ -34,6 +35,14 @@ Starrzdance::Application.routes.draw do
 
   match '/edit_photo', to: 'admin#photo', via: 'get'
   match '/edit_photo_new', to: 'admin#photo_new', via: 'post'
+  match '/edit_photo_delete', to: 'admin#photo_delete', via: 'get'
+  match '/edit_photo_edit', to: 'admin#photo_edit', via: 'post'
+
+  match '/edit_video', to: 'admin#video', via: 'get'
+  match '/edit_video_new', to: 'admin#video_new', via: 'post'
+  match '/edit_video_delete', to: 'admin#video_delete', via: 'get'
+  match '/edit_video_edit', to: 'admin#video_edit', via: 'post'
+
   # get "static_pages/home"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

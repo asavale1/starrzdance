@@ -9,17 +9,6 @@
 		max-width: 100px;
 		overflow-x: auto;
 	}
-  	#external{ 
-        width: 95%; 
-        overflow-x:scroll;  
-        margin-left:5em;
-        overflow-y:visible;
-    }
-    #add-new{
-        position:absolute; 
-        width:5em; 
-        left: 15%;
-    }
 </style>
 
 <div class="center hero-unit">
@@ -27,7 +16,7 @@
 	<%= link_to "View page", schedule_path, :target => "_blank", class: "btn btn-success" %><br /><br />
 	<%= render 'layouts/result' %>
 	<div id="external">
-		<table id="schedule" class="table table-bordered table-condensed">
+		<table id="schedule" class="table table-condensed">
 			<tr>
 				<td id="add-new">
 					<h4>Add Entry</h4>
@@ -52,7 +41,7 @@
 					<% end %>
 				</td>
 				<td id="show-all">
-					<table id="schedule-list" class="table table-striped">
+					<table id="schedule-list" class="table">
 						<tr>
 							<th>Group</th>
 							<th>Session</th>
@@ -65,38 +54,31 @@
 							<th></th>
 						</tr>
 						<% @schedule.each do |sched| %>
-							<%= form_tag({:action => 'schedule_update'}, :multipart => true) do %>
-								<tr>	
-									<td>
-										<%= hidden_field_tag(:id, sched.id) %>
-										<%= text_field_tag(:group, sched.group) %>
-									</td>
-									<td>
-										<%= text_field_tag(:session, sched.session) %>
-									</td>
-									<td >
-										<%= text_field_tag(:time, sched.time) %>
-									</td>
-									<td>
-										<%= text_field_tag(:location, sched.location) %>
-									</td>
-									<td>
-										<%= text_field_tag(:instructor, sched.instructor) %>
-									</td>
-									<td>
-										<%= text_field_tag(:fee, sched.fee) %>
-									</td>
-									<td>
-										<%= text_field_tag(:capacity, sched.capacity) %>
-									</td>
-									<td>
-										<%= text_field_tag(:enrolled, sched.enrolled) %>
-									</td>
-									<td>
-										<%= submit_tag("Update entry", class: "btn btn-primary") %>
-									</td>								
-								<tr>
-							<% end %>
+							<tr>
+								<td><%= sched.group %></td>
+								<td><%= sched.session %></td>
+								<td><%= sched.time %></td>
+								<td><%= sched.location %></td>
+								<td><%= sched.instructor %></td>
+								<td><%= sched.fee %></td>
+								<td><%= sched.capacity %></td>
+								<td><%= sched.enrolled %></td>
+								<td>
+									<a href="#" class="btn btn-primary" data-toggle="modal" data-target="#editModal<%= sched.id %>">Edit</a>
+									<div id="editModal<%=sched.id%>" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+					  					<div class="modal-header">
+					    					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+					    					<h3>Edit Schedule <%= sched.id %></h3>
+					  					</div>
+					  					<div class="modal-body">
+					    					<%= render :partial => 'layouts/edit_schedule', :object => {:sched => sched }%>
+					  					</div>
+					  					<div class="modal-footer">
+					    					<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+					  					</div>
+									</div>
+								</td>
+							</tr>
 						<% end %>
 					</table>
 				</td>

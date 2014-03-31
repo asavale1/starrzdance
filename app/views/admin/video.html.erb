@@ -2,7 +2,115 @@
 <%= render 'layouts/admin_header' %>
 
 <div class="center hero-unit">
-	<h1>Admin#video</h1>
-	<p>Find me in app/views/admin/video.html.erb</p>
-	<p>Use this page to edit company info</p>
+	<h1>Admin Video</h1>
+	<%= render 'layouts/result' %>
+	<table class="table">
+		<tr>
+			<td>
+				<%= form_tag({:action => 'video_new' }, :multipart => true) do %>
+					<div class="control-group">
+						<%= label_tag(:title, "Title", class: "control-label") %>
+						<div class="controls">
+							<%= text_field_tag(:title) %>
+						</div>
+					</div>
+					<div class="control-group">
+						<%= label_tag(:caption, "Caption", class: "control-label") %>
+						<div class="controls">
+							<%= text_field_tag(:caption) %>
+						</div>	
+					</div>
+					<div class="control-group">
+						<%= label_tag :order, "Order", class: "control-label" %>
+						<div class="controls">
+							<%= number_field_tag(:order) %>
+						</div>
+					</div>
+					<div class="control-group">
+						<%= label_tag(:clip, "Clip", class: "control-label") %>
+						<div class="controls">
+							<%= file_field_tag(:clip) %>		
+						</div>
+					</div>
+					<div class="control-group">
+						<div class="controls">
+							<%= submit_tag("Upload video", class: "btn btn-primary") %>
+						</div>
+					</div>
+				<% end %>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<table class="table">
+					<tr>
+						<th>Video</th>
+						<th>Title</th>
+						<th>Caption</th>
+						<th>Order</th>
+						<th></th>
+					</tr>
+					<% @video.each do |video| %>
+						<tr>
+							<td>
+								<a href="#" class="btn btn-primary" data-toggle="modal" data-target="#videoModal<%= video.id %>">
+									<%= image_tag video.clip.url(:thumb) %>
+								</a>
+
+								<div class="modal fade" id="videoModal<%= video.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="width: 55%; background: #000;">
+									<div class="modal-dialog">
+								    	<div class="modal-content">
+								      		<div class="modal-header" style="background: #000;">
+								        		<button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="color: #fff; margin-top: -5px;">x</button>
+								        		<h4 class="modal-title" id="myModalLabel" style="color: #fff;"><%= video.title %></h4>
+								      		</div>
+								      		<div class="modal-body" style="overflow-y: hidden; background: #000;">
+								      			<%= video_tag video.clip.url(:medium), controls: true, type: "video/mp4", style: "width: 100%;" %>
+								      		</div>
+								      		<div class="modal-footer" style="background: #000;">
+								      			<h4 style="float: left; color: #fff;"><%= video.caption %></h4>
+								        		<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+								      		</div>
+								    	</div>
+								  	</div>
+								</div>
+							</td>
+							<td>
+								<%= label_tag video.title %>
+							</td>
+							<td>
+								<%= label_tag video.caption %>
+							</td>
+							<td>
+								<%= video.order %>
+							</td>
+							<td>
+								<%= link_to("Delete", edit_video_delete_path(:id => video.id), class: "btn btn-primary") %>
+
+								<a href="#" class="btn btn-primary" data-toggle="modal" data-target="#editModal<%= video.id %>">Edit</a>
+								<div id="editModal<%=video.id%>" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+									<div class="modal-header">
+								    	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+								    	<h3><%= video.title %></h3>
+								  	</div>
+								  	<div class="modal-body">
+								    	<%= form_tag({:action => 'video_edit' }, :multipart => true, class: "form-horizontal") do %>
+								    		<%= hidden_field_tag(:id, video.id) %>
+								    		<%= label_tag(:title, "Title") %>
+								    		<%= text_field_tag(:title, video.title) %>
+								    		<%= label_tag(:caption, "Caption") %>
+								    		<%= text_field_tag(:caption, video.caption) %>
+								    		<%= label_tag(:order, "Order") %>
+								    		<%= number_field_tag(:order, video.order) %>
+								    		<%= submit_tag("Update Video", class: "btn btn-primary") %>
+								    	<% end %>
+								  	</div>
+								</div>
+							</td>
+						</tr>
+					<% end %>
+				</table>
+			</td>
+		</tr>
+	</table>
 </div>
