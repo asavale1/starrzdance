@@ -13,7 +13,7 @@
 					<%= label_tag(:caption, "Caption") %>
 					<%= text_field_tag(:caption) %>
 					<%= label_tag(:order, "Order") %>
-					<%= number_field_tag(:order) %>
+					<%= number_field_tag(:order, (Photo.maximum("order") + 1)) %>
 					<%= label_tag(:image, "Image") %>
 					<%= file_field_tag(:image) %>
 					<br /><br />

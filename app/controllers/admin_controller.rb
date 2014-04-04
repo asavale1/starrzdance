@@ -166,9 +166,15 @@ class AdminController < ApplicationController
 
 	def student_delete
 		puts "\n\nIN STUDENT DELETE\n\n"
-		puts "#{params[:id]}"
-		puts "\n\n"
-		Student.find(params[:id]).destroy
+		
+		student = Student.find(params[:id])
+		
+		sched = Schedule.find(student.schedule_id)
+		sched.enrolled = sched.enrolled - 1
+		sched.save
+
+		student.destroy
+
 		redirect_to action: 'student', :result => true
 	end
 
@@ -185,7 +191,7 @@ class AdminController < ApplicationController
 		student.zipcode = params[:zipcode].strip
 		
 		if student.schedule_id == params[:schedule_id]
-			student.schedule_id == params[:schedule_id]
+			student.schedule_id = params[:schedule_id]
 		else
 			sched = Schedule.find(student.schedule_id)
 			sched.enrolled = sched.enrolled - 1

@@ -85,10 +85,10 @@ class StaticPagesController < ApplicationController
 	end
 
 	def photo
-		@photo = Photo.all
+		@photo = Photo.all.sort_by(&:order)
 	end
 
 	def video
-
+		@video = Video.all.sort_by(&:order)
 	end
 end

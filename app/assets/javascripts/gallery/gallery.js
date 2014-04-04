@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(function() {
 	// ======================= imagesLoaded Plugin ===============================
 	// https://github.com/desandro/imagesloaded
 
@@ -212,14 +212,25 @@ $(document).ready(function() {
 					 
 				var $thumb		= $item.find('img'),
 					largesrc	= $thumb.data('large'),
-					title		= $thumb.data('description');
-				
+					caption		= $thumb.data('description');
+				var title 		= $thumb.data('title');
+
 				$('<img/>').load( function() {
 					
-					$rgGallery.find('div.rg-image').empty().append('<img src="' + largesrc + '"/>');
-					
-					if( title )
-						$rgGallery.find('div.rg-caption').show().children('p').empty().text( title );
+					//$rgGallery.find('div.rg-image').empty().append('<img src="' + largesrc + '"/>');
+					$rgGallery.find('div.rg-image').empty().append('<a class="fancybox" title="'+title+'"href="'+largesrc+'"><img src="' + largesrc + '" /></a>');
+
+					if( title && caption ){
+						//$rgGallery.find('div.rg-caption').show().children('p').empty().text( title +"\t"+ caption );
+						$rgGallery.find('div.rg-caption').empty().append('<h3>'+title+'</h3><p>'+caption+'</p>').show();
+					}else if(title){
+						$rgGallery.find('div.rg-caption').empty().append('<h3>'+title+'</h3>').show();
+					}else if(caption){
+						$rgGallery.find('div.rg-caption').empty().append('<p>'+caption+'</p>').show();
+					}else{
+						$rgGallery.find('div.rg-caption').empty().hide();
+					}
+						
 					
 					$loader.hide();
 					

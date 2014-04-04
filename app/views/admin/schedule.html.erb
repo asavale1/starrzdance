@@ -62,7 +62,7 @@
 								<td><%= sched.instructor %></td>
 								<td><%= sched.fee %></td>
 								<td><%= sched.capacity %></td>
-								<td><%= sched.enrolled %></td>
+								<td><%= sched.students.length %></td>
 								<td>
 									<a href="#" class="btn btn-primary" data-toggle="modal" data-target="#editModal<%= sched.id %>">Edit</a>
 									<div id="editModal<%=sched.id%>" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

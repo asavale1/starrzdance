@@ -1,6 +1,33 @@
 <% provide(:title, "Videos")%>
 <%= render 'layouts/header' %>
 
+
+
 <div class="hero-unit">
 	<h2>Videos</h2>
+	<% @video.each do |video| %>
+		<div class="float">
+			<a href="#" data-toggle="modal" data-target="#videoModal<%= video.id %>">
+				<%= image_tag video.clip.url(:thumb) %>
+			</a>
+		</div>
+		<div class="modal fade" id="videoModal<%= video.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="width: 55%; background: #000;">
+			<div class="modal-dialog">
+		    	<div class="modal-content">
+		      		<div class="modal-header" style="background: #000;">
+		        		<button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="color: #fff; margin-top: -5px;">x</button>
+		        		<h4 class="modal-title" id="myModalLabel" style="color: #fff;"><%= video.title %></h4>
+		      		</div>
+		      		<div class="modal-body" style="overflow-y: hidden; background: #000;">
+		      			<%= video_tag video.clip.url(:medium), controls: true, type: "video/mp4", style: "width: 100%;" %>
+		      		</div>
+		      		<div class="modal-footer" style="background: #000;">
+		      			<h4 style="float: left; color: #fff;"><%= video.caption %></h4>
+		        		<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+		      		</div>
+		    	</div>
+		  	</div>
+		</div>
+	<% end %>
 </div>
+
