@@ -8,6 +8,12 @@
   	<%= render 'layouts/shim' %>
 </head>
 <body>
+	<div class="top-bar-outer">
+		<div class="top-bar-inner">
+			<%= link_to(image_tag("logo.png"), root_path, id: "logo") %>
+			<%= image_tag("slogan.png", id: "slogan") %>
+		</div>
+	</div>
 	<div class="container">
 		<%= yield %>
 	</div>

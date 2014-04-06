@@ -1,5 +1,6 @@
 <% provide(:title, "Photos")%>
 <%= render 'layouts/header' %>
+<link rel="stylesheet" type="text/css" href="/assets/static_pages/photo.css.scss">
 
 <noscript>
 	<style>
@@ -28,7 +29,7 @@
 
 
 <div class="hero-unit">
-	<h2>Photos</h2>
+	<h2 id="title">Photos</h2>
 	<div id="rg-gallery" class="rg-gallery">
 		<div class="rg-thumbs">
 			<div class="es-carousel-wrapper">
@@ -72,3 +73,6 @@
 		});
 	});
 </script>
+<link rel="stylesheet" href="/assets/photo_slider/elastislide.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="/assets/photo_slider/style.css" type="text/css" media="screen" />
+

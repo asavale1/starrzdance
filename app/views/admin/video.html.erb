@@ -23,7 +23,12 @@
 					<div class="control-group">
 						<%= label_tag :order, "Order", class: "control-label" %>
 						<div class="controls">
-							<%= number_field_tag(:order, (Video.maximum("order") + 1)) %>
+							<% if Video.all.length > 0 %>
+								<%= number_field_tag(:order, (Video.maximum("order") + 1)) %>
+							<% else %>
+								<%= number_field_tag(:order, 0) %>
+							<% end %>
+							
 						</div>
 					</div>
 					<div class="control-group">
@@ -65,7 +70,12 @@
 								        		<h4 class="modal-title" id="myModalLabel" style="color: #fff;"><%= video.title %></h4>
 								      		</div>
 								      		<div class="modal-body" style="overflow-y: hidden; background: #000;">
-								      			<%= video_tag video.clip.url(:medium), controls: true, type: "video/mp4", style: "width: 100%;" %>
+								      			<video style="width: auto; height: auto;" controls>
+													<source src="<%= video.clip.url(:mp4) %>" type="video/mp4" />
+													<source src="<%= video.clip.url(:ogg) %>" type="video/ogg">
+
+													Your browser does not support the video tag.
+												</video>
 								      		</div>
 								      		<div class="modal-footer" style="background: #000;">
 								      			<h4 style="float: left; color: #fff;"><%= video.caption %></h4>

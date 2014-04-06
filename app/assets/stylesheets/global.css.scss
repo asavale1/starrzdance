@@ -1,0 +1,85 @@
+@import "bootstrap";
+
+html {
+	overflow-y: scroll;
+}
+
+body {
+	padding-top: 60px;
+	background: #64A8D1;
+}
+
+section {
+	overflow: auto;
+}
+
+textarea {
+	resize: vertical;
+}
+
+.center{
+	text-align: center;
+}
+
+.center h1{
+	margin-bottom: 10px;
+}
+
+#content{
+	width: 100%;
+}
+
+/*
+Navigation Styling
+*/
+
+@media (min-width: 50px){
+	.sidebar-nav-fixed{
+		position: fixed;
+		top: 30%;
+		float: left;
+		color: #000;
+	}
+	.well{
+		background-color: rgba(3, 67, 106, .6);
+		border-radius: 50px;
+		border-color: transparent;
+	}
+	li{
+		text-transform: uppercase;
+		a {
+			margin: 0;
+			color: #fff;
+		}
+	}
+}
+
+.top-bar-outer{
+	background: #ADD5ED;
+	margin-top: -60px;
+	padding-left: 20px;
+	padding-right: 20px;
+	padding-top: 20px;
+	margin-bottom: 50px;
+	
+	.top-bar-inner{
+		background: #0969A2;
+		padding: 5px;
+	}
+
+	#slogan{
+		margin-top: 40px;
+		float: right;
+	}
+
+	#logo{
+	}	
+}
+
+
+.hero-unit{
+	background: #fff;
+}
+
+
+

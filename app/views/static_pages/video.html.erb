@@ -1,33 +1,52 @@
 <% provide(:title, "Videos")%>
 <%= render 'layouts/header' %>
 
+<script src="/assets/roundabout/jquery.roundabout.min.js"></script>
+<script src="/assets/roundabout/jquery.roundabout-shapes.min.js"></script>
+<link rel="stylesheet" type="text/css" href="/assets/static_pages/video.css.scss">
 
+<script>
+   	$(document).ready(function() {
+      $('#video-gallery').roundabout();
+   });
+</script>
 
-<div class="hero-unit">
-	<h2>Videos</h2>
-	<% @video.each do |video| %>
-		<div class="float">
-			<a href="#" data-toggle="modal" data-target="#videoModal<%= video.id %>">
-				<%= image_tag video.clip.url(:thumb) %>
-			</a>
-		</div>
-		<div class="modal fade" id="videoModal<%= video.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="width: 55%; background: #000;">
-			<div class="modal-dialog">
-		    	<div class="modal-content">
-		      		<div class="modal-header" style="background: #000;">
-		        		<button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="color: #fff; margin-top: -5px;">x</button>
-		        		<h4 class="modal-title" id="myModalLabel" style="color: #fff;"><%= video.title %></h4>
-		      		</div>
-		      		<div class="modal-body" style="overflow-y: hidden; background: #000;">
-		      			<%= video_tag video.clip.url(:medium), controls: true, type: "video/mp4", style: "width: 100%;" %>
-		      		</div>
-		      		<div class="modal-footer" style="background: #000;">
-		      			<h4 style="float: left; color: #fff;"><%= video.caption %></h4>
-		        		<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-		      		</div>
-		    	</div>
-		  	</div>
-		</div>
-	<% end %>
+<div class="center content">
+	<h2 class="title">Videos</h2>
+	<ul id="video-gallery">
+		<% @video.each do |video| %>
+			<li>
+				<h6><%= video.title %></h6>
+				<a href="#" data-toggle="modal" data-target="#videoModal<%= video.id %>">
+					<%= image_tag video.clip.url(:large) %>
+				</a>
+				<p><%= video.caption %></p>
+			</li>
+		<% end %>
+	</ul>	
 </div>
+<% @video.each do |video| %>
+	<div class="modal fade" id="videoModal<%= video.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
+		<div class="modal-dialog">
+	    	<div class="modal-content">
+	      		<div class="modal-header">
+	        		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+	        		<h4 class="modal-title" id="myModalLabel"><%= video.title %></h4>
+	      		</div>
+	      		<div class="modal-body">
+	      			<video class="video-wrapper" preload="none" controls>
+						<source src="<%= video.clip.url(:mp4) %>" type="video/mp4" />
+						<source src="<%= video.clip.url(:ogg) %>" type="video/ogg">
+
+						Your browser does not support the video tag.
+					</video>
+	      		</div>
+	      		<div class="modal-footer" >
+	      			<h4 style="float: left; color: #fff;"><%= video.caption %></h4>
+	        		<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+	      		</div>
+	    	</div>
+	  	</div>
+	</div>
+<% end %>
 

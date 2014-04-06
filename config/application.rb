@@ -26,5 +26,6 @@ module Starrzdance
     # config.i18n.default_locale = :de
     config.assets.precompile += %w{*.png *.jpg *.jpeg *.gif}
     config.assets.precompile += %w( video-js.swf vjs.eot vjs.svg vjs.ttf vjs.woff )
+    config.assets.precompile += %w{*.mp4}
   end
 end
