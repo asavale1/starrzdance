@@ -13,7 +13,7 @@
 					<%= label_tag(:caption, "Caption") %>
 					<%= text_field_tag(:caption) %>
 					<%= label_tag(:order, "Order") %>
-					<% if Photos.all.length > 0 %>
+					<% if Photo.all.length > 0 %>
 						<%= number_field_tag(:order, (Photo.maximum("order") + 1)) %>
 					<% else %>
 						<%= number_field_tag(:order, 0) %>
