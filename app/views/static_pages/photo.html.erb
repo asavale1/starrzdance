@@ -66,8 +66,8 @@
 <%= javascript_include_tag "fancybox/jquery.mousewheel-3.0.6.pack.js" %>
 <%= javascript_include_tag "fancybox/jquery.fancybox.pack.js?v=2.1.5" %>
 
-
-<link rel="stylesheet" href="/assets/jquery.fancybox.css?v=2.1.5" type="text/css" media="screen" />
+<%= stylesheet_include_tag "jquery.fancybox.css?v=2.1.5" %>
+<!--<link rel="stylesheet" href="/assets/jquery.fancybox.css?v=2.1.5" type="text/css" media="screen" />-->
 
 <script type="text/javascript">
 
@@ -81,6 +81,8 @@
 		});
 	});
 </script>
-<link rel="stylesheet" href="/assets/photo_slider/elastislide.css" type="text/css" media="screen" />
-<link rel="stylesheet" href="/assets/photo_slider/style.css" type="text/css" media="screen" />
+<!--<link rel="stylesheet" href="/assets/photo_slider/elastislide.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="/assets/photo_slider/style.css" type="text/css" media="screen" />-->
+<%= stylesheet_include_tag "photo_slider/elastislide.css" %>
+<%= stylesheet_include_tag "photo_slider/style.css" %>
 
