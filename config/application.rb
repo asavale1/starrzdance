@@ -29,10 +29,13 @@ module Starrzdance
     config.assets.precompile += %w{*.mp4}
     config.assets.precompile += %w( gallery/gallery.js gallery/jquery.easing.1.3.js 
                                     gallery/jquery.elastislide.js gallery/jquery.tmpl.min.js
-                                    photo_slider.elastislide.css photo_slider/style.css )
+                                    photo_slider/elastislide.css photo_slider/style.css )
 
     config.assets.precompile += %w( fancybox/jquery.fancybox.pack.js fancybox/jquery.mousewheel-3.0.6.pack.js
                                     jquery.fancybox.css)
+
+    config.assets.precompile += %w( photo_slider/ajax-loader.gif photo_slider/black.png photo_slider/nav.png
+                                    photo_slider/nav_thumbs.png photo_slider/views.png)
     
 
     config.assets.paths << Rails.root.join("app", "assets", "fonts")
