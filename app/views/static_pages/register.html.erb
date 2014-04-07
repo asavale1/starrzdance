@@ -70,7 +70,7 @@
 				<tr>
 					<td>
 						<% if @student.nil? %>
-							<% if sched.capacity == sched.students.length %>
+							<% if sched.capacity >= sched.students.length %>
 								<%= radio_button_tag(:schedule, sched.id, false, disabled: true ) %>
 							<% else %>
 								<%= radio_button_tag(:schedule, sched.id) %>
@@ -79,7 +79,7 @@
 							<% if sched.id == @student["schedule"].to_i %>
 								<%= radio_button_tag(:schedule, sched.id, :checked => true) %>
 							<% else %>
-								<% if sched.capacity == sched.students.length %>
+								<% if sched.capacity >= sched.students.length %>
 									<%= radio_button_tag(:schedule, sched.id, false, disabled: true ) %>
 								<% else %>
 									<%= radio_button_tag(:schedule, sched.id) %>

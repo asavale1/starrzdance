@@ -1,6 +1,27 @@
 class AdminController < ApplicationController
 	def home
-		puts "\n\nIN ADMIN HOME\n\n"
+		unless params[:result].nil?
+			@result = params[:result]
+		end
+
+		@home = Static.where("title = ?", "home").first
+	end
+
+	def home_new
+		home = Static.new
+		home.title = "home"
+		home.body = params[:content]
+		home.save
+
+		redirect_to action: 'home', :result => true
+	end
+
+	def home_edit
+		home = Static.where("title = ?", "home").first
+		home.body = params[:content]
+		home.save
+
+		redirect_to action: 'home', :result => true
 	end
 
 	#
@@ -12,7 +33,6 @@ class AdminController < ApplicationController
 		end
 
 		@about = Static.where("title = ?", "about").first
-		puts "\n\nIN ABOUT\n\n"
 	end
 
 	def about_new
@@ -21,7 +41,6 @@ class AdminController < ApplicationController
 		about.body = params[:content]
 		about.save
 
-		puts "\n\nIN ABOUT NEW\n\n"
 		redirect_to action: 'about', :result => true
 	end
 
@@ -30,7 +49,6 @@ class AdminController < ApplicationController
 		about.body = params[:content]
 		about.save
 
-		puts "\n\nIN ABOUT EDIT\n\n"
 		redirect_to action: 'about', :result => true
 	end
 
@@ -44,7 +62,6 @@ class AdminController < ApplicationController
 		end
 
 		@achievements = Static.where("title = ?", "achievements").first
-		puts "\n\nIN ACHIEVEMENTS\n\n"
 	end
 
 	def achievements_new
@@ -53,7 +70,6 @@ class AdminController < ApplicationController
 		achievements.body = params[:content]
 		achievements.save
 
-		puts "\n\nIN ACHIEVEMENTS NEW\n\n"
 		redirect_to action: 'achievements', :result => true
 	end
 
@@ -62,7 +78,6 @@ class AdminController < ApplicationController
 		achievements.body = params[:content]
 		achievements.save
 
-		puts "\n\nIN ACHIEVEMENTS EDIT\n\n"
 		redirect_to action: 'achievements', :result => true
 	end
 
@@ -77,11 +92,9 @@ class AdminController < ApplicationController
 		end
 
 		@schedule = Schedule.all.sort_by(&:id)
-		puts "\n\nIN SCHEDULE\n\n"
 	end
 
 	def schedule_new
-		puts "\n\nIN SCHEDULE NEW\n\n"
 
 		sched = Schedule.new
 		sched.group = params[:group].strip
@@ -92,6 +105,7 @@ class AdminController < ApplicationController
 		sched.fee = params[:fee].strip
 		sched.capacity = params[:capacity].strip
 		sched.enrolled = params[:enrolled].strip
+		
 		if sched.save
 			redirect_to action: 'schedule', :result => true
 		else
@@ -100,7 +114,6 @@ class AdminController < ApplicationController
 	end
 
 	def schedule_update
-		puts "\n\nIN SCHEDULE UPDATE\n\n"
 
 		sched = Schedule.find(params[:id])
 		sched.group = params[:group].strip
@@ -113,10 +126,8 @@ class AdminController < ApplicationController
 		sched.enrolled = params[:enrolled].strip
 		
 		if sched.save
-			puts "\n\nUPDATE SUCCESS\n\n"
 			redirect_to action: 'schedule', :result => true
 		else
-			puts "\n\nUPDATE FAIL\n\n"
 			redirect_to action: 'schedule', :result => false
 		end
 	end
@@ -129,13 +140,11 @@ class AdminController < ApplicationController
 		unless params[:result].nil?
 			@result = params[:result]
 		end
-		puts "\n\nIN FAQ\n\n"
+
 		@faq = Static.where("title = ?", "faq").first
 	end
 
-	def faq_new
-		puts "\n\nIN FAQ NEW\n\n"
-		
+	def faq_new		
 		faq = Static.new
 		faq.title = "faq"
 		faq.body = params[:content]
@@ -144,9 +153,7 @@ class AdminController < ApplicationController
 		redirect_to action: 'faq', :result => true
 	end
 
-	def faq_edit
-		puts "\n\nIN FAQ EDIT\n\n"
-		
+	def faq_edit		
 		faq = Static.where("title = ?", "faq").first
 		faq.body = params[:content]		
 		faq.save
@@ -165,7 +172,6 @@ class AdminController < ApplicationController
 	end
 
 	def student_delete
-		puts "\n\nIN STUDENT DELETE\n\n"
 		
 		student = Student.find(params[:id])
 		
@@ -179,7 +185,7 @@ class AdminController < ApplicationController
 	end
 
 	def student_update
-		puts "\n\nIN STUDENT UPDATE\n\n"
+
 		student = Student.find(params[:id])
 		student.student_name = params[:student_name].strip
 		student.parent_name = params[:parent_name].strip
@@ -219,17 +225,17 @@ class AdminController < ApplicationController
 		unless params[:result].nil?
 			@result = params[:result]
 		end
-		puts "\n\nIN PHOTO\n\n"
 		@photo = Photo.all
 	end
 
 	def photo_new
-		puts "\n\nIN PHOTO NEW\n\n"
 		photo = Photo.new
 		photo.title = params[:title].strip
 		photo.caption = params[:caption].strip
 		photo.order = params[:order].to_i
+		photo.home = (params[:home] == "true")? true : false
 		photo.image = params[:image]
+
 		if photo.save
 			redirect_to action: 'photo', :result => true
 		else
@@ -247,6 +253,7 @@ class AdminController < ApplicationController
 		photo.title = params[:title].strip
 		photo.caption = params[:caption].strip
 		photo.order = params[:order].to_i
+		photo.home = (params[:home] == "true")? true : false
 
 		if photo.save
 			redirect_to action: 'photo', :result => true
@@ -263,7 +270,7 @@ class AdminController < ApplicationController
 		unless params[:result].nil?
 			@result = params[:result]
 		end
-		puts "\n\nIN VIDEO\n\n"
+
 		@video = Video.all
 	end
 
@@ -278,10 +285,7 @@ class AdminController < ApplicationController
 			redirect_to action: 'video', :result => true
 		else
 			redirect_to action: 'video', :result => false
-		end
-
-		puts "\n\n#{video.errors.full_messages}\n\n"
-		
+		end		
 	end
 
 	def video_delete

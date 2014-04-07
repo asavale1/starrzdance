@@ -28,13 +28,19 @@
 
 .content{
    margin: 50px;
-   height: 600px;
-   background: #000;
+   margin-top: -20px;
+   height: 650px;
+   background: rgba(35, 93, 121, .5);
+   border-radius: 15px;
    
    #video-gallery{
       margin-top: 275px;
       margin-left: 50px;
-      margin-right: 50px;
+      margin-right: 90px;
+
+      li{
+         padding: 20px;
+      }
    }
 
    .title{

@@ -1,12 +1,21 @@
 @import "bootstrap";
 
+@font-face{
+	font-family: "Kite";
+	src:font-url('KiteOne-Regular.ttf') format('truetype');
+}
+
 html {
 	overflow-y: scroll;
 }
 
 body {
 	padding-top: 60px;
-	background: #64A8D1;
+	background-image: url("/assets/background.jpg");
+	background-size: cover;
+	background-repeat: no-repeat;
+
+	font-family: "Kite";
 }
 
 section {
@@ -36,7 +45,7 @@ Navigation Styling
 @media (min-width: 50px){
 	.sidebar-nav-fixed{
 		position: fixed;
-		top: 30%;
+		top: 40%;
 		float: left;
 		color: #000;
 	}
@@ -55,16 +64,16 @@ Navigation Styling
 }
 
 .top-bar-outer{
-	background: #ADD5ED;
+	background: rgba(255, 255, 255, 0);
 	margin-top: -60px;
 	padding-left: 20px;
-	padding-right: 20px;
 	padding-top: 20px;
 	margin-bottom: 50px;
 	
 	.top-bar-inner{
 		background: #0969A2;
 		padding: 5px;
+		padding-right: 20px;
 	}
 
 	#slogan{

@@ -1,19 +1,36 @@
 <% provide(:title, "Admin")%>
 <%= render 'layouts/admin_header' %>
 
-<div class="hero-unit">
-	<h1>Admin Home</h1>
-	<p>Use this page to manage admin content</p><br />
-	
-	<%= link_to "View Site", root_path, :target => "_blank", class: "btn btn-primary btn-lg" %>
+<link rel="stylesheet" type="text/css" href="/assets/admin/home.css.scss">
+<script type="text/javascript">
+	window.onload = function(){
+		$('#content').ckeditor();
+	};
+	$(document).ready($('#content').ckeditor());
+</script>
+
+<div class="center hero-unit">
+	<h1>Edit Home</h1>
+	<%= render 'layouts/result' %>
+
+	<%= link_to "View Site", root_path, :target => "_blank", class: "btn btn-success btn-lg" %>
 	<br /><br />
-	<ul>
-		<li><%= link_to "Company Info", edit_about_path %></li>
-		<li><%= link_to "Achievements", edit_achievements_path %></a></li>
-		<li><%= link_to "Schedule", edit_schedule_path %></li>
-		<li><%= link_to "FAQ", edit_faq_path %></li>
-		<li><%= link_to "Photos", edit_photo_path %></li>
-		<li><%= link_to "Videos", edit_video_path %></li>
-		<li><%= link_to "Students", edit_student_path %></li>
-	</ul>
+	
+	<div>
+		<% if @home.nil? %>
+			<%= form_tag( { :action => 'home_new' }, :multipart => true) do %>
+				<textarea id="content" name="content" rows="25"></textarea><br />
+				<%= submit_tag("Create Home", class: "btn btn-primary") %>
+			<% end%>
+		<% end %>
+
+		
+		<% unless @home.nil? %>
+			<%= form_tag( {:action => 'home_edit'}, :multipart => true) do %>
+				<textarea id="content" name="content" rows="25"><%= @home.body %></textarea><br />
+				<%= submit_tag("Update Home", class: "btn btn-primary") %>
+			<% end %>
+		<% end %>
+		
+	</div>
 </div>

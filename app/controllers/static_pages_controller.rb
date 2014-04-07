@@ -3,6 +3,7 @@ class StaticPagesController < ApplicationController
 
   	def home
   		puts "\n\nIN HOME\n\n"
+  		@home = Static.where("title = ?", "home").first
 	end
 
 	def about

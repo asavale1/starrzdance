@@ -12,6 +12,8 @@ Starrzdance::Application.routes.draw do
 
   # => Admin Routes 
   match '/admin', to: 'admin#home', via: 'get'
+  match '/admin_home_new', to: 'admin#home_new', via: 'post'
+  match '/admin_home_edit', to: 'admin#home_edit', via: 'post'
   
   match '/edit_faq', to: 'admin#faq', via: 'get'
   match '/edit_faq_new', to: 'admin#faq_new', via: 'post'

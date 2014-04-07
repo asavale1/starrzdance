@@ -1,36 +1,46 @@
 <%= render 'layouts/header' %>
-<div class="center hero-unit">
-	<script type="text/javascript">
-	  	$(document).ready(function () {
-		    $('.carousel').carousel();
-		});
-	</script>
 
-	<div id="carousel-example-captions" class="carousel slide">
-	    <!-- Indicators -->
-	    <ol class="carousel-indicators">
-	        <li data-target="#carousel-example-captions" data-slide-to="0" class="active"></li>
-	        <li data-target="#carousel-example-captions" data-slide-to="1"></li>
-	    </ol>
-	    
-	    <!-- Wrapper for slides -->
-	    <div class="carousel-inner">
-	        <div class="item active">
-	            <%= image_tag("logo.png") %>
-	            <div class="carousel-caption">aaaaa</div>
-	        </div>
-	        <div class="item">
-	           	<%= image_tag("slogan.png") %>
-	            <div class="carousel-caption">gggggg</div>
-	        </div>
-	    </div>
-	    
-	    <!-- Controls -->
-	    <a class="left carousel-control" href="#carousel-example-captions" data-slide="prev">
-	        <span class="icon-prev"></span>
-	    </a>
-	    <a class="right carousel-control" href="#carousel-example-captions" data-slide="next">
-	        <span class="icon-next"></span>
-	    </a>
+<link rel="stylesheet" type="text/css" href="/assets/static_pages/home.css.scss">
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('.carousel').carousel({
+			interval: 5000
+		});
+	});
+</script>
+
+<div class="hero-unit">
+	<div class="gallery">
+		<div id="home-gallery" class = "carousel slide">
+			<div class="carousel-inner">
+				<% count = 0 %>
+				<% Photo.where("home = ?", true).sort_by(&:order).each do |photo| %>
+					<% if count == 0 %>
+						<div class="item active">
+						<% count = count + 1 %>
+					<% else %>
+						<div class="item" >
+					<% end %>
+						<%= image_tag photo.image.url %>
+						<div class="carousel-caption center">
+							<h4><%= photo.title %></h4>
+							<p><%= photo.caption %><p>
+						</div>
+					</div>
+				<% end %>
+			</div>
+
+			<a class="left carousel-control" href="#home-gallery" data-slide="prev">
+				&lsaquo;
+			</a>
+			<a class="right carousel-control" href="#home-gallery" data-slide="next">
+				&rsaquo;
+			</a>
+		</div>
+	</div>
+	<div class="text">
+		<% unless @home.nil? %>
+			<%= @home.body.html_safe %>
+		<% end %>
 	</div>
 </div>
