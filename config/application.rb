@@ -27,10 +27,6 @@ module Starrzdance
     config.assets.precompile += %w{*.png *.jpg *.jpeg *.gif}
     config.assets.precompile += %w( video-js.swf vjs.eot vjs.svg vjs.ttf vjs.woff )
     config.assets.precompile += %w{*.mp4}
-    config.assets.precompile += ['photo_slider/*']
-    config.assets.precompile += ['gallery/*']
-    config.assets.precompile += ['fancybox/*']
-
 
 
     config.assets.paths << Rails.root.join("app", "assets", "fonts")
