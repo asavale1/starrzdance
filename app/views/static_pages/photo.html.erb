@@ -1,6 +1,6 @@
 <% provide(:title, "Photos")%>
 <%= render 'layouts/header' %>
-<link rel="stylesheet" type="text/css" href="/assets/static_pages/photo.css.scss">
+<%= stylesheet_link_tag "static_pages/photo.css" %>
 
 <noscript>
 	<style>
@@ -66,7 +66,7 @@
 <%= javascript_include_tag "fancybox/jquery.mousewheel-3.0.6.pack.js" %>
 <%= javascript_include_tag "fancybox/jquery.fancybox.pack.js?v=2.1.5" %>
 
-<%= stylesheet_link_tag "jquery.fancybox.css?v=2.1.5" %>
+<%= stylesheet_link_tag "jquery.fancybox.css" %>
 <!--<link rel="stylesheet" href="/assets/jquery.fancybox.css?v=2.1.5" type="text/css" media="screen" />-->
 
 <script type="text/javascript">
