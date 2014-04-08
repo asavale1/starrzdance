@@ -34,8 +34,8 @@ module Starrzdance
     config.assets.precompile += %w( fancybox/jquery.fancybox.pack.js fancybox/jquery.mousewheel-3.0.6.pack.js
                                     jquery.fancybox.css)
 
-    config.assets.precompile += %w( photo_slider/ajax-loader.gif photo_slider/black.png photo_slider/nav.png
-                                    photo_slider/nav_thumbs.png photo_slider/views.png)
+    #config.assets.precompile += %w( photo_slider/ajax-loader.gif photo_slider/black.png photo_slider/nav.png
+    #                                photo_slider/nav_thumbs.png photo_slider/views.png)
     
 
     config.assets.paths << Rails.root.join("app", "assets", "fonts")
