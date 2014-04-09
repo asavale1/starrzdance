@@ -303,6 +303,7 @@ class AdminController < ApplicationController
 		if video.save
 			redirect_to action: 'video', :result => true
 		else
+			puts "\n\nHELLO\n\n"
 			video.errors.each do |error|
 				puts "\n#{error.full_messages}\n"
 			end
