@@ -299,9 +299,13 @@ class AdminController < ApplicationController
 		video.caption = params[:caption].strip
 		video.order = params[:order].to_i
 
+
 		if video.save
 			redirect_to action: 'video', :result => true
 		else
+			video.errors.each do |error|
+				puts "\n#{error.full_messages}\n"
+			end
 			redirect_to action: 'video', :result => false
 		end
 	end
