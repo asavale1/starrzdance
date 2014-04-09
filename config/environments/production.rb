@@ -10,7 +10,8 @@ Starrzdance::Application.configure do
     :path => "/:class/:attachment/:id_partition/:style/:filename"
   }
 
-  Paperclip.options[:command_path] = "/app/vendor/ffmpeg/bin/ffmpeg"
+  Paperclip.options[:command_path] = "/app/vendor/ffmpeg/bin"
+
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
