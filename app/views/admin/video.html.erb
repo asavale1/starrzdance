@@ -1,6 +1,10 @@
 <% provide(:title, "Admin Video")%>
 <%= render 'layouts/admin_header' %>
 
+<%= javascript_include_tag "videojs/video.js" %>
+<%= stylesheet_link_tag "videojs/video-js.css" %>
+
+
 <div class="center hero-unit">
 	<h1>Admin Video</h1>
 	<%= render 'layouts/result' %>
@@ -72,7 +76,7 @@
 								      		<div class="modal-body" style="overflow-y: hidden; background: #000;">
 								      			<video style="width: auto; height: auto;" controls>
 													<source src="<%= video.clip.url(:mp4) %>" type="video/mp4" />
-													<source src="<%= video.clip.url(:ogg) %>" type="video/ogg">
+													<source src="<%= video.clip.url(:webm) %>" type="video/webm">
 
 													Your browser does not support the video tag.
 												</video>
