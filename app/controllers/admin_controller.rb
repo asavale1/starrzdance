@@ -269,7 +269,6 @@ class AdminController < ApplicationController
 	def video
 		unless params[:result].nil?
 			@result = params[:result]
-			@errors = params[:error]
 		end
 
 		@video = Video.all
@@ -285,6 +284,9 @@ class AdminController < ApplicationController
 		if video.save
 			redirect_to action: 'video', :result => true
 		else
+			video.errors.full_messages.each do |error|
+				puts "\n#{error}\n"
+			end
 			redirect_to action: 'video', :result => false
 		end		
 	end
@@ -300,16 +302,10 @@ class AdminController < ApplicationController
 		video.caption = params[:caption].strip
 		video.order = params[:order].to_i
 
-
 		if video.save
 			redirect_to action: 'video', :result => true
-		else
-			errors = Array.new
-			video.errors.each do |error|
-				errors.push(error);
-				puts "\n#{error.full_messages}\n"
-			end
-			redirect_to action: 'video', {:result => false, :error => errors}
+		else	
+			redirect_to action: 'video', :result => false
 		end
 	end
 end
