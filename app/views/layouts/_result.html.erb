@@ -6,6 +6,9 @@
 	<% else %>
 		<div class="alert alert-error">
 			<h5>Update Failed</h5>
+			<% @errors.each do |error| %>
+				<p><%= error %></p>
+			<% end %>
 		</div>
 	<% end %>
 <% end %>
