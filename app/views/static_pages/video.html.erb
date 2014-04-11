@@ -34,9 +34,14 @@
 	        		<h4 class="modal-title" id="myModalLabel"><%= video.title %></h4>
 	      		</div>
 	      		<div class="modal-body">
-	      			<video class="video-wrapper" preload="none" controls>
-						<source src="<%= video.clip.url(:mp4) %>" type="video/mp4" />
-						<source src="<%= video.clip.url(:ogg) %>" type="video/ogg">
+	      			<video id="video_<%= video.id %>"
+	      					width = "640px"
+	      					height = "400px" 
+	      					class="video-js vjs-default-skin"
+	      					style="width: 640px; height: 480px; margin-top: -50px;" 
+	      					data-setup="{}"
+	      					controls preload="auto">
+						<source src="<%= video.clip.url(:flv) %>" type="video/mp4" />			
 
 						Your browser does not support the video tag.
 					</video>
