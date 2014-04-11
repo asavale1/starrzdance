@@ -28,13 +28,14 @@ module Starrzdance
     config.assets.precompile += %w{*.png *.jpg *.jpeg *.gif}
     config.assets.precompile += %w( video-js.swf vjs.eot vjs.svg vjs.ttf vjs.woff )
     config.assets.precompile += %w{*.mp4}
-    config.assets.precompile += %w( gallery/gallery.js gallery/jquery.easing.1.3.js 
-                                    gallery/jquery.elastislide.js gallery/jquery.tmpl.min.js
-                                    photo_slider/elastislide.css photo_slider/style.css )
+    #config.assets.precompile += %w( gallery/gallery.js gallery/jquery.easing.1.3.js 
+    #                                gallery/jquery.elastislide.js gallery/jquery.tmpl.min.js
+    #                                photo_slider/elastislide.css photo_slider/style.css )
 
-    config.assets.precompile += %w( fancybox/jquery.fancybox.pack.js fancybox/jquery.mousewheel-3.0.6.pack.js
-                                    jquery.fancybox.css)
-
+    #config.assets.precompile += %w( fancybox/jquery.fancybox.pack.js fancybox/jquery.mousewheel-3.0.6.pack.js
+    #                                jquery.fancybox.css)
+    
+    config.assets.precompile += ['gallery.js', 'gallery.css']
     config.assets.precompile += %w( static_pages/photo.css)
 
     
