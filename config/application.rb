@@ -24,6 +24,7 @@ module Starrzdance
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
+
     config.assets.precompile += %w{*.png *.jpg *.jpeg *.gif}
     config.assets.precompile += %w( video-js.swf vjs.eot vjs.svg vjs.ttf vjs.woff )
     config.assets.precompile += %w{*.mp4}
@@ -36,10 +37,8 @@ module Starrzdance
 
     config.assets.precompile += %w( static_pages/photo.css)
 
-    #config.assets.precompile += %w( photo_slider/ajax-loader.gif photo_slider/black.png photo_slider/nav.png
-    #                                photo_slider/nav_thumbs.png photo_slider/views.png)
     
-
+    config.assets.paths << Rails.root.join('app', 'assets', 'flash')
     config.assets.paths << Rails.root.join("app", "assets", "fonts")
   end
 end

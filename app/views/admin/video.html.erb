@@ -1,8 +1,9 @@
 <% provide(:title, "Admin Video")%>
 <%= render 'layouts/admin_header' %>
 
-<!--<%= javascript_include_tag "videojs/video.js" %>
-<%= stylesheet_link_tag "videojs/video-js.css" %>-->
+<script>
+  videojs.options.flash.swf = "<%= asset_path('name_of_swf') %>"
+</script>
 
 
 <div class="center hero-unit">
@@ -66,15 +67,22 @@
 									<%= image_tag video.clip.url(:thumb) %>
 								</a>
 
-								<div class="modal fade" id="videoModal<%= video.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="width: 55%; background: #000;">
+								<div class="modal fade" id="videoModal<%= video.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="width: 53%; background: #000;">
 									<div class="modal-dialog">
 								    	<div class="modal-content">
 								      		<div class="modal-header" style="background: #000;">
 								        		<button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="color: #fff; margin-top: -5px;">x</button>
 								        		<h4 class="modal-title" id="myModalLabel" style="color: #fff;"><%= video.title %></h4>
 								      		</div>
-								      		<div class="modal-body" style="overflow-y: hidden; background: #000;">
-								      			<video style="width: auto; height: auto;" controls>
+								      		<div class="modal-body" 
+								      			style="height: 640px; overflow-y: hidden; background: #000;">
+								      			<video id="video_<%= video.id %>"
+								      					width = "640px"
+								      					height = "400px" 
+								      					class="video-js vjs-default-skin"
+								      					style="width: 640px; height: 480px; margin-top: -50px;" 
+								      					data-setup="{}"
+								      					controls preload="auto">
 													<source src="<%= video.clip.url(:mp4) %>" type="video/mp4" />
 													<source src="<%= video.clip.url(:webm) %>" type="video/webm">
 

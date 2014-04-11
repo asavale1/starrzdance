@@ -10,4 +10,5 @@
  *
  *= require_self
  *= require global.css
+ *= require_tree ./videojs
  */
