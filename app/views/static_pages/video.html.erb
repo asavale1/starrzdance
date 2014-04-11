@@ -1,9 +1,9 @@
 <% provide(:title, "Videos")%>
 <%= render 'layouts/header' %>
 
-<script src="/assets/roundabout/jquery.roundabout.min.js"></script>
-<script src="/assets/roundabout/jquery.roundabout-shapes.min.js"></script>
-<link rel="stylesheet" type="text/css" href="/assets/static_pages/video.css.scss">
+<%= javascript_include_tag "video" %>
+
+<%= stylesheet_link_tag "static_pages/video.css" %>
 
 <script>
    	$(document).ready(function() {
