@@ -35,7 +35,7 @@ module Starrzdance
     config.assets.precompile += ['admin.css']
     config.assets.precompile += ['static_pages.css']
 
-    #config.assets.precompile += %w( static_pages/photo.css)
+    config.assets.precompile += %w( static_pages/video.css)
 
     
     config.assets.paths << Rails.root.join('app', 'assets', 'flash')
