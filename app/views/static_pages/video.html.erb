@@ -33,7 +33,8 @@
 	        		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
 	        		<h4 class="modal-title" id="myModalLabel"><%= video.title %></h4>
 	      		</div>
-	      		<div class="modal-body">
+	      		<div class="modal-body" 
+	      			style="height: 640px; overflow-y: hidden; background: #000;">
 	      			<video id="video_<%= video.id %>"
 	      					width = "640px"
 	      					height = "400px" 
@@ -41,7 +42,7 @@
 	      					style="width: 640px; height: 480px; margin-top: -50px;" 
 	      					data-setup="{}"
 	      					controls preload="auto">
-						<source src="<%= video.clip.url(:flv) %>"/>			
+						<source src="<%= video.clip.url(:flv) %>" type="video/mp4" />			
 
 						Your browser does not support the video tag.
 					</video>
