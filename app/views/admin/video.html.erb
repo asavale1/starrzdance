@@ -11,8 +11,9 @@
 
 <div class="center hero-unit">
 	<h1>Admin Video</h1>
+	<%= link_to "View page", {:controller=>'static_pages',:action => 'video'}, target: "_blank", class: "btn btn-success" %>
+	<%= link_to "Admin home", {:controller=>'admin',:action => 'home'}, class: "btn btn-primary" %>
 	<%= render 'layouts/result' %>
-	<a class="btn btn-success" href="<%= video_path %>">View page</a>
 	<table class="table">
 		<tr>
 			<td>
