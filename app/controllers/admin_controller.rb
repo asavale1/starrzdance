@@ -1,4 +1,6 @@
 class AdminController < ApplicationController
+	#before_action :authenticate_admin!
+
 	def home
 		unless params[:result].nil?
 			@result = params[:result]
