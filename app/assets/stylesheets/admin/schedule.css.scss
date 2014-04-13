@@ -1,0 +1,19 @@
+
+#external{
+	margin-left: -50px;
+	#new-text{
+		max-width: 100px;
+		overflow-x: auto;
+	}
+	#new-number{
+		max-width: 100px;
+		overflow-x: auto;
+	}
+
+	.columns{
+		max-width: 150px;
+		overflow-x: auto;
+		max-height: 100px;
+		overflow-y: auto;
+	}
+}

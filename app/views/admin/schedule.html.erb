@@ -1,25 +1,14 @@
 <% provide(:title, "Admin Schedule")%>
 <%= render 'layouts/admin_header' %>
-<style>
-	#new-text{
-		max-width: 100px;
-		overflow-x: auto;
-	}
-	#new-number{
-		max-width: 100px;
-		overflow-x: auto;
-	}
-	#external{
-		margin-left: -50px;
-	}
-</style>
+
+<%= stylesheet_link_tag "admin/schedule.css" %>
 
 <div class="center hero-unit">
 	<h1>Edit Schedule</h1>
 	<%= link_to "View page", schedule_path, :target => "_blank", class: "btn btn-success" %><br /><br />
 	<%= render 'layouts/result' %>
 	<div id="external">
-		<table id="schedule" class="table table-bordered table-condensed">
+		<table id="schedule" class="table table-condensed">
 			<tr>
 				<td id="add-new">
 					<h4>Add Entry</h4>
@@ -44,16 +33,16 @@
 					<% end %>
 				</td>
 				<td id="show-all">
-					<table id="schedule-list" class="table">
+					<table id="schedule-list" class="table table-bordered">
 						<tr>
-							<th>Group</th>
-							<th>Session</th>
-							<th>Time</th>
-							<th>Location</th>
-							<th>Instructor</th>
-							<th>Fee</th>
-							<th>Capacity</th>
-							<th>Enrolled</th>
+							<th class="columns">Group</th>
+							<th class="columns">Session</th>
+							<th class="columns">Time</th>
+							<th class="columns">Location</th>
+							<th class="columns">Instructor</th>
+							<th class="columns">Fee</th>
+							<th class="columns">Capacity</th>
+							<th class="columns">Enrolled</th>
 							<th></th>
 						</tr>
 						<% @schedule.each do |sched| %>
