@@ -9,6 +9,9 @@
 		max-width: 100px;
 		overflow-x: auto;
 	}
+	#external{
+		margin-left: -50px;
+	}
 </style>
 
 <div class="center hero-unit">
@@ -16,7 +19,7 @@
 	<%= link_to "View page", schedule_path, :target => "_blank", class: "btn btn-success" %><br /><br />
 	<%= render 'layouts/result' %>
 	<div id="external">
-		<table id="schedule" class="table table-condensed">
+		<table id="schedule" class="table table-bordered table-condensed">
 			<tr>
 				<td id="add-new">
 					<h4>Add Entry</h4>
