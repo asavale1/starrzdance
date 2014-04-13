@@ -48,6 +48,12 @@
 						</div>
 					</div>
 					<div class="control-group">
+						<%= label_tag(:url, "Youtube Url", class: "control-label") %>
+						<div class="controls">
+							<%= text_field_tag(:url) %>
+						</div>
+					</div>
+					<div class="control-group">
 						<div class="controls">
 							<%= submit_tag("Upload video", class: "btn btn-primary") %>
 						</div>
@@ -69,7 +75,11 @@
 						<tr>
 							<td>
 								<a href="#" class="btn btn-primary" data-toggle="modal" data-target="#videoModal<%= video.id %>">
-									<%= image_tag video.clip.url(:thumb) %>
+									<% if video.url.nil? %>
+										<%= image_tag video.clip.url(:thumb) %>
+									<% else %>
+										<%= image_tag video.thumbnail, width: "100px", height: "100px" %>
+									<% end %>
 								</a>
 
 								<div class="modal fade" id="videoModal<%= video.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="width: 53%; background: #000;">
@@ -81,17 +91,24 @@
 								      		</div>
 								      		<div class="modal-body" 
 								      			style="height: 640px; overflow-y: hidden; background: #000;">
-								      			<video id="video_<%= video.id %>"
+								      			<% if video.url.nil? %>
+								      				<video id="video_<%= video.id %>"
 								      					width = "640px"
 								      					height = "400px" 
 								      					class="video-js vjs-default-skin"
 								      					style="width: 640px; height: 480px; margin-top: -50px;" 
 								      					data-setup="{}"
 								      					controls preload="auto">
-													<source src="<%= video.clip.url(:flv) %>" type="video/mp4" />			
+														<source src="<%= video.clip.url(:flv) %>" type="video/mp4" />			
 
-													Your browser does not support the video tag.
-												</video>
+														Your browser does not support the video tag.
+													</video>
+								      			<% else %>
+								      				<iframe width="100%" height="100%"
+														src="<%= video.url %>">
+													</iframe>
+								      			<% end %>
+								      			
 								      		</div>
 								      		<div class="modal-footer" style="background: #000;">
 								      			<h4 style="float: left; color: #fff;"><%= video.caption %></h4>

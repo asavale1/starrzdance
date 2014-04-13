@@ -1,5 +1,7 @@
 class AdminController < ApplicationController
-	#before_action :authenticate_admin!
+	before_action :authenticate_admin!
+
+	include AdminHelper
 
 	def home
 		unless params[:result].nil?
@@ -99,14 +101,14 @@ class AdminController < ApplicationController
 	def schedule_new
 
 		sched = Schedule.new
-		sched.group = params[:group].strip
-		sched.session = params[:session].strip
-		sched.time = params[:time].strip
-		sched.location = params[:location].strip
-		sched.instructor = params[:instructor].strip
-		sched.fee = params[:fee].strip
-		sched.capacity = params[:capacity].strip
-		sched.enrolled = params[:enrolled].strip
+		sched.group = check_nil(params[:group])
+		sched.session = check_nil(params[:session])
+		sched.time = check_nil(params[:time])
+		sched.location = check_nil(params[:location])
+		sched.instructor = check_nil(params[:instructor])
+		sched.fee = check_nil(params[:fee])
+		sched.capacity = check_nil(params[:capacity])
+		sched.enrolled = check_nil(params[:enrolled])
 		
 		if sched.save
 			redirect_to action: 'schedule', :result => true
@@ -118,14 +120,14 @@ class AdminController < ApplicationController
 	def schedule_update
 
 		sched = Schedule.find(params[:id])
-		sched.group = params[:group].strip
-		sched.session = params[:session].strip
-		sched.time = params[:time].strip
-		sched.location = params[:location].strip
-		sched.instructor = params[:instructor].strip
-		sched.fee = params[:fee].strip
-		sched.capacity = params[:capacity].strip
-		sched.enrolled = params[:enrolled].strip
+		sched.group = check_nil(params[:group])
+		sched.session = check_nil(params[:session])
+		sched.time = check_nil(params[:time])
+		sched.location = check_nil(params[:location])
+		sched.instructor = check_nil(params[:instructor])
+		sched.fee = check_nil(params[:fee])
+		sched.capacity = check_nil(params[:capacity])
+		sched.enrolled = check_nil(params[:enrolled])
 		
 		if sched.save
 			redirect_to action: 'schedule', :result => true
@@ -189,14 +191,14 @@ class AdminController < ApplicationController
 	def student_update
 
 		student = Student.find(params[:id])
-		student.student_name = params[:student_name].strip
-		student.parent_name = params[:parent_name].strip
-		student.age = params[:age].strip
-		student.email = params[:email].strip
-		student.phone = params[:phone].strip
-		student.city = params[:city].strip
-		student.state = params[:state].strip
-		student.zipcode = params[:zipcode].strip
+		student.student_name = check_nil(params[:student_name])
+		student.parent_name = check_nil(params[:parent_name])
+		student.age = check_nil(params[:age])
+		student.email = check_nil(params[:email])
+		student.phone = check_nil(params[:phone])
+		student.city = check_nil(params[:city])
+		student.state = check_nil(params[:state])
+		student.zipcode = check_nil(params[:zipcode])
 		
 		if student.schedule_id == params[:schedule_id]
 			student.schedule_id = params[:schedule_id]
@@ -232,8 +234,8 @@ class AdminController < ApplicationController
 
 	def photo_new
 		photo = Photo.new
-		photo.title = params[:title].strip
-		photo.caption = params[:caption].strip
+		photo.title = check_nil(params[:title])
+		photo.caption = check_nil(params[:caption])
 		photo.order = params[:order].to_i
 		photo.home = (params[:home] == "true")? true : false
 		photo.image = params[:image]
@@ -252,8 +254,8 @@ class AdminController < ApplicationController
 
 	def photo_edit
 		photo = Photo.find(params[:id])
-		photo.title = params[:title].strip
-		photo.caption = params[:caption].strip
+		photo.title = check_nil(params[:title])
+		photo.caption = check_nil(params[:caption])
 		photo.order = params[:order].to_i
 		photo.home = (params[:home] == "true")? true : false
 
@@ -278,10 +280,13 @@ class AdminController < ApplicationController
 
 	def video_new
 		video = Video.new
-		video.title = params[:title].strip
-		video.caption = params[:caption].strip
+		video.title = check_nil(params[:title])
+		video.caption = check_nil(params[:caption])
 		video.order = params[:order].to_i
 		video.clip = params[:clip]
+		video.url = parse_url(check_nil(params[:url]))
+		video.thumbnail = get_thumbnail(check_nil(params[:url]))
+		puts "\n\n#{parse_url(video.url)}\n\n"
 
 		if video.save
 			redirect_to action: 'video', :result => true
@@ -300,8 +305,8 @@ class AdminController < ApplicationController
 
 	def video_edit
 		video = Video.find(params[:id])
-		video.title = params[:title].strip
-		video.caption = params[:caption].strip
+		video.title = check_nil(params[:title])
+		video.caption = check_nil(params[:caption])
 		video.order = params[:order].to_i
 
 		if video.save

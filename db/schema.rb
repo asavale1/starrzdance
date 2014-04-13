@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140412062553) do
+ActiveRecord::Schema.define(version: 20140413193929) do
 
   create_table "admins", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -88,6 +88,8 @@ ActiveRecord::Schema.define(version: 20140412062553) do
     t.integer  "clip_file_size"
     t.datetime "clip_updated_at"
     t.integer  "order"
+    t.string   "url"
+    t.string   "thumbnail"
   end
 
 end
