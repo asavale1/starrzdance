@@ -21,7 +21,11 @@
 			<li>
 				<h6><%= video.title %></h6>
 				<a href="#" data-toggle="modal" data-target="#videoModal<%= video.id %>">
-					<%= image_tag video.clip.url(:large) %>
+					<% if video.url.nil? %>
+						<%= image_tag video.clip.url(:large) %>
+					<% else %>
+						<%= image_tag video.thumbnail, width: "400px", height: "400px" %>
+					<% end %>
 				</a>
 				<p><%= video.caption %></p>
 			</li>
@@ -38,20 +42,23 @@
 	      		</div>
 	      		<div class="modal-body" 
 	      			style="height: 640px; overflow-y: hidden; background: #000;">
-	      			<video id="video_<%= video.id %>"
-	      					width = "640px"
-	      					height = "400px" 
-	      					class="video-js vjs-default-skin"
-	      					style="width: 640px; height: 480px; margin-top: -50px;" 
-	      					data-setup="{}"
-	      					controls preload="auto">
-						<source src="<%= video.clip.url(:flv) %>" type="video/mp4" />			
+	      			<% if video.url.nil? %>
+		      			<video id="video_<%= video.id %>"
+		      					width = "640px"
+		      					height = "400px" 
+		      					class="video-js vjs-default-skin"
+		      					style="width: 640px; height: 480px; margin-top: -50px;" 
+		      					data-setup="{}"
+		      					controls preload="auto">
+							<source src="<%= video.clip.url(:flv) %>" type="video/mp4" />			
 
-						Your browser does not support the video tag.
-					</video>
-					<!--<iframe width="100%" height="100%"
-						src="http://www.youtube.com/embed/XGSy3_Czz8k">
-					</iframe>-->
+							Your browser does not support the video tag.
+						</video>
+					<% else %>
+						<iframe width="100%" height="100%"
+							src="<%= video.url %>">
+						</iframe>
+					<% end %>
 	      		</div>
 	      		<div class="modal-footer" >
 	      			<h4 style="float: left; color: #fff;"><%= video.caption %></h4>

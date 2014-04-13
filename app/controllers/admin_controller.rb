@@ -286,7 +286,6 @@ class AdminController < ApplicationController
 		video.clip = params[:clip]
 		video.url = parse_url(check_nil(params[:url]))
 		video.thumbnail = get_thumbnail(check_nil(params[:url]))
-		puts "\n\n#{parse_url(video.url)}\n\n"
 
 		if video.save
 			redirect_to action: 'video', :result => true

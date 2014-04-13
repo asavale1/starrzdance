@@ -1,6 +1,8 @@
 <% provide(:title, "About")%>
 <%= render 'layouts/header' %>
 
+<%= stylesheet_link_tag "static_pages/about.css" %>
+
 <div class="hero-unit">
 	<% unless @about.nil? %> 
 		<%= @about.body.html_safe %>
