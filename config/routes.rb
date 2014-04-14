@@ -33,6 +33,7 @@ Starrzdance::Application.routes.draw do
   match '/edit_schedule_update', to: 'admin#schedule_update', via: 'post'
 
   match '/edit_student', to: 'admin#student', via: 'get'
+  match '/edit_student_new', to: 'admin#student_new', via: 'post'
   match '/edit_student_delete', to: 'admin#student_delete', via: 'get'
   match '/edit_student_update', to: 'admin#student_update', via: 'post'
 

@@ -5,82 +5,71 @@
 
 <div class="center hero-unit">
 	<h1>Edit Schedule</h1>
-	<%= link_to "View page", schedule_path, :target => "_blank", class: "btn btn-success" %><br /><br />
+	
+	<%= link_to "View page", schedule_path, :target => "_blank", class: "btn btn-success" %>
+	<a href="#" data-toggle="modal" data-target="#addSchedule" class="btn btn-primary">Add Schedule</a><br /><br/>
+
 	<%= render 'layouts/result' %>
+
 	<div id="external">
-		<table id="schedule" class="table table-condensed">
+		<table id="schedule" class="table table-bordered table-striped table-condensed">
 			<tr>
-				<td id="add-new">
-					<h4>Add Entry</h4>
-					<%= form_tag({:action => 'schedule_new'}, :multipart => true) do %>
-						<%= label_tag(:group, "Group") %>
-				  		<%= text_field_tag(:group, nil ,:id => "new-text") %>
-				  		<%= label_tag(:session, "Session") %>
-				  		<%= text_field_tag(:session, nil,:id => "new-text") %>
-				  		<%= label_tag(:time, "Time") %>
-				  		<%= text_field_tag(:time, nil,:id => "new-text") %>
-				  		<%= label_tag(:location, "Location") %>
-				  		<%= text_field_tag(:location, nil,:id => "new-text") %>
-				  		<%= label_tag(:instructor, "Instructor") %>
-				  		<%= text_field_tag(:instructor, nil,:id => "new-text") %>
-				  		<%= label_tag(:fee, "Fee ($)") %>
-				  		<%= text_field_tag(:fee, "0", :id => "new-text") %>
-				  		<%= label_tag(:capacity, "Capacity") %>
-				  		<%= text_field_tag(:capacity, nil, :id => 'new-number') %>
-				  		<%= label_tag(:enrolled, "Enrolled") %>
-				  		<%= text_field_tag(:enrolled, 0, :id => 'new-number') %>
-						<br /><br/><%= submit_tag("Add entry", class: "btn btn-primary") %>
-					<% end %>
-				</td>
-				<td id="show-all">
-					<table id="schedule-list" class="table table-bordered">
-						<tr>
-							<th class="columns">Group</th>
-							<th class="columns">Session</th>
-							<th class="columns">Time</th>
-							<th class="columns">Location</th>
-							<th class="columns">Instructor</th>
-							<th class="columns">Fee</th>
-							<th class="columns">Capacity</th>
-							<th class="columns">Enrolled</th>
-							<th></th>
-						</tr>
-						<% @schedule.each do |sched| %>
-							<tr>
-								<td><%= sched.group %></td>
-								<td><%= sched.session %></td>
-								<td><%= sched.time %></td>
-								<td><%= sched.location %></td>
-								<td><%= sched.instructor %></td>
-								<td><%= sched.fee %></td>
-								<td><%= sched.capacity %></td>
-								<td>
-									<% if sched.enrolled.to_i > sched.students.length %>
-										<%= sched.enrolled %>
-									<% else %>
-										<%= sched.students.length %>
-									<% end %>
-								</td>
-								<td>
-									<a href="#" class="btn btn-primary" data-toggle="modal" data-target="#editModal<%= sched.id %>">Edit</a>
-									<div id="editModal<%=sched.id%>" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-					  					<div class="modal-header">
-					    					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-					    					<h3>Edit Schedule <%= sched.id %></h3>
-					  					</div>
-					  					<div class="modal-body">
-					    					<%= render :partial => 'layouts/edit_schedule', :object => {:sched => sched }%>
-					  					</div>
-					  					<div class="modal-footer">
-					    					<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-					  					</div>
-									</div>
-								</td>
-							</tr>
-						<% end %>
-					</table>
-				</td>
+				<th class="columns">Group</th>
+				<th class="columns">Session</th>
+				<th class="columns">Time</th>
+				<th class="columns">Location</th>
+				<th class="columns">Instructor</th>
+				<th class="columns">Fee</th>
+				<th class="columns">Capacity</th>
+				<th class="columns">Enrolled</th>
+				<th></th>
 			</tr>
+			<% @schedule.each do |sched| %>
+				<tr>
+					<td><%= sched.group %></td>
+					<td><%= sched.session %></td>
+					<td><%= sched.time %></td>
+					<td><%= sched.location %></td>
+					<td><%= sched.instructor %></td>
+					<td><%= sched.fee %></td>
+					<td><%= sched.capacity %></td>
+					<td>
+						<% if sched.enrolled.to_i > sched.students.length %>
+							<%= sched.enrolled %>
+						<% else %>
+							<%= sched.students.length %>
+						<% end %>
+					</td>
+					<td>
+						<a href="#" class="btn btn-primary" data-toggle="modal" data-target="#editModal<%= sched.id %>">Edit</a>
+						<div id="editModal<%=sched.id%>" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		  					<div class="modal-header">
+		    					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+		    					<h3>Edit Schedule <%= sched.id %></h3>
+		  					</div>
+		  					<div class="modal-body">
+		    					<%= render :partial => 'admin/partials/edit_schedule', :object => {:sched => sched }%>
+		  					</div>
+		  					<div class="modal-footer">
+		    					<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+		  					</div>
+						</div>
+					</td>
+				</tr>
+			<% end %>
 		</table>
 	</div>
+</div>
+
+<div id="addSchedule" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-header">
+    	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    	<h3>New Schedule</h3>
+  	</div>
+  	<div class="modal-body">
+  		<%= render :partial => 'admin/partials/new_schedule'%>
+  	</div>
+  	<div class="modal-footer">
+    	<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+  	</div>
 </div>

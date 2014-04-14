@@ -28,7 +28,6 @@ class StaticPagesController < ApplicationController
 
 	def register
 		unless params[:student].nil?
-			puts "\n\nREGISTER FAIL:\t#{params[:student]}\n\n"
 			@student  = params[:student]
 			@result = params[:result]
 		else
@@ -37,11 +36,9 @@ class StaticPagesController < ApplicationController
 			end
 		end
 		@schedule = Schedule.all
-		puts "\n\nIN REGISTER\n\n"
 	end
 
 	def register_new
-		puts "\n\nIN REGISTER NEW\n\n"
 
 		student = Student.new
 		student.student_name = params[:student_name].strip

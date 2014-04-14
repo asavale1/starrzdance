@@ -173,6 +173,30 @@ class AdminController < ApplicationController
 			@result = params[:result]
 		end
 		@student = Student.all
+		@schedule = Schedule.all
+	end
+
+	def student_new
+		student = Student.new
+		student.student_name = check_nil(params[:student_name])
+		student.parent_name = check_nil(params[:parent_name])
+		student.age = check_nil(params[:age])
+		student.email = check_nil(params[:email])
+		student.phone = check_nil(params[:phone])
+		student.city = check_nil(params[:city])
+		student.state = check_nil(params[:state])
+		student.zipcode = check_nil(params[:zipcode])
+		student.schedule_id = params[:schedule]
+
+		sched = Schedule.find(params[:schedule])
+		sched.enrolled = sched.enrolled + 1
+		sched.save
+
+		if student.save
+			redirect_to action: 'student', :result => true
+		else
+			redirect_to action: 'student', :result => false
+		end
 	end
 
 	def student_delete

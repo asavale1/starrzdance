@@ -1,0 +1,19 @@
+<%= form_tag({:action => 'schedule_new'}, :multipart => true) do %>
+	<%= label_tag(:group, "Group") %>
+	<%= text_field_tag(:group, nil ,:id => "new-text") %>
+	<%= label_tag(:session, "Session") %>
+	<%= text_field_tag(:session, nil,:id => "new-text") %>
+	<%= label_tag(:time, "Time") %>
+	<%= text_field_tag(:time, nil,:id => "new-text") %>
+	<%= label_tag(:location, "Location") %>
+	<%= text_field_tag(:location, nil,:id => "new-text") %>
+	<%= label_tag(:instructor, "Instructor") %>
+	<%= text_field_tag(:instructor, nil,:id => "new-text") %>
+	<%= label_tag(:fee, "Fee ($)") %>
+	<%= text_field_tag(:fee, "0", :id => "new-text") %>
+	<%= label_tag(:capacity, "Capacity") %>
+	<%= text_field_tag(:capacity, nil, :id => 'new-number') %>
+	<%= label_tag(:enrolled, "Enrolled") %>
+	<%= text_field_tag(:enrolled, 0, :id => 'new-number') %>
+	<br /><br/><%= submit_tag("Add entry", class: "btn btn-primary") %>
+<% end %>
