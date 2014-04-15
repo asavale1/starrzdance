@@ -188,11 +188,10 @@ class AdminController < ApplicationController
 		student.zipcode = check_nil(params[:zipcode])
 		student.schedule_id = params[:schedule]
 
-		sched = Schedule.find(params[:schedule])
-		sched.enrolled = sched.enrolled + 1
-		sched.save
-
 		if student.save
+			sched = Schedule.find(params[:schedule])
+			sched.enrolled = sched.enrolled + 1
+			sched.save
 			redirect_to action: 'student', :result => true
 		else
 			student.errors.full_messages.each do |error|
@@ -226,22 +225,20 @@ class AdminController < ApplicationController
 		student.city = check_nil(params[:city])
 		student.state = check_nil(params[:state])
 		student.zipcode = check_nil(params[:zipcode])
-		
-		if student.schedule_id == params[:schedule_id]
-			student.schedule_id = params[:schedule_id]
-		else
-			sched = Schedule.find(student.schedule_id)
-			sched.enrolled = sched.enrolled - 1
-			sched.save
 
-			sched = Schedule.find(params[:schedule_id])
-			sched.enrolled = sched.enrolled + 1
-			sched.save
-
-			student.schedule_id = params[:schedule_id]
-		end
+		temp = student.schedule_id
+		student.schedule_id = params[:schedule_id]
 
 		if student.save
+			unless student.schedule_id == temp
+				sched = Schedule.find(student.schedule_id)
+				sched.enrolled = sched.enrolled - 1
+				sched.save
+
+				sched = Schedule.find(params[:schedule_id])
+				sched.enrolled = sched.enrolled + 1
+				sched.save
+			end
 			redirect_to action: 'student', :result => true
 		else
 			redirect_to action: 'student', :result => false
