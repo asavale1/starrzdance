@@ -195,6 +195,9 @@ class AdminController < ApplicationController
 		if student.save
 			redirect_to action: 'student', :result => true
 		else
+			video.errors.full_messages.each do |error|
+				puts "\n#{error}\n"
+			end
 			redirect_to action: 'student', :result => false
 		end
 	end
