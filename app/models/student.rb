@@ -1,7 +1,7 @@
 class Student < ActiveRecord::Base
 	belongs_to :schedule
 
-	VALID_EMAIL_REGEX = /^([\w\.%\+\-]+)@([\w\-]+\.)+([\w]{2,})$/i
+	VALID_EMAIL_REGEX = /\A([\w\.%\+\-]+)@([\w\-]+\.)+([\w]{2,})\Z/i
 	LETTERS_REGEX = /\A[a-zA-Z ]+\Z/
 	NUMBERS_REGEX = /\A[1-9+]\Z/
 
