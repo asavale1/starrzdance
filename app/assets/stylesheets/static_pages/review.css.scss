@@ -1,0 +1,22 @@
+.hero-unit{
+	#top-table{
+		width: 100%;
+
+		td{
+			width: 50%;
+			text-align: left;
+			padding-left: 50px;
+		}
+		
+		.title{
+			text-align: right;
+			padding-right: 50px;
+		}
+	}
+
+	.confirm-box{
+		width: 100%;
+		padding-top: 25px;
+		text-align: center;
+	}
+}

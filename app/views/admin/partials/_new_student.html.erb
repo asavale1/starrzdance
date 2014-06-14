@@ -15,6 +15,9 @@
 	<%= text_field_tag(:state) %>
 	<%= label_tag(:zipcode, "Zipcode") %>
 	<%= text_field_tag(:zipcode) %>
+	<%= label_tag(:paid, "Paid") %>
+	<%= select_tag("paid", options_for_select(["not paid", "online", "paid"])) %>
+	
 	<table class="table">
 		<tr>
 			<th></th>

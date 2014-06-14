@@ -1,39 +1,38 @@
+require "json"
+
+
 class StaticPagesController < ApplicationController
+	
 	include StaticPagesHelper
 
   	def home
-  		puts "\n\nIN HOME\n\n"
+  		puts "\n\n"
+  		puts params
+  		puts "\n\n"
   		@home = Static.where("title = ?", "home").first
 	end
 
 	def about
 		@about = Static.where("title = ?", "about").first
-		puts "\n\nIN ABOUT\n\n"
 	end
 
 	def achievements
 		@achievements = Static.where("title = ?", "achievements").first
-		puts "\n\nIN ACHIEVEMENTS\n\n"
 	end
 
 	def faq
 		@faq = Static.where("title = ?", "faq").first
-		puts "\n\nIN FAQS\n\n"
 	end
 
 	def schedule
 		@schedule = Schedule.all
-		puts "\n\nIN SCHEDULE\n\n"
 	end
 
 	def register
-		unless params[:student].nil?
-			@student  = params[:student]
-			@result = params[:result]
-		else
-			unless params[:result].nil?
-				@result = params[:result]
-			end
+
+		unless params[:notification].nil?
+			@result = params[:notification]["result"]
+			@message = params[:notification]["message"]
 		end
 		@schedule = Schedule.all
 	end
@@ -51,35 +50,42 @@ class StaticPagesController < ApplicationController
 		student.zipcode = params[:zipcode].strip
 		student.schedule_id = params[:schedule]
 
-		if student.save
+		
+		if params[:submit] == "Register"
+			student.paid = "not paid"
+			student.save
+
 			schedule = Schedule.find(student.schedule_id)
 			schedule.enrolled = schedule.enrolled + 1
 			schedule.save
-			redirect_to action: 'register', :result => true
-		else
-
-			index = 0
-			errors = Hash.new
-			temp = student.errors.to_hash
-			temp.each_pair do |msg|
-				errors[msg[0]] = msg[1][0]
-			end
-
-
-			student_value = {	"student" => student.student_name,
-								"age" => student.age,
-						 		"parent" => student.parent_name,
-						 		"email" => student.email,
-						 		"phone" => student.phone,
-						 		"city" => student.city,
-						 		"state" => student.state,
-						 		"zipcode" => student.zipcode,
-						 		"schedule" => student.schedule_id,
-						 		"errors" => errors
-							}
 			
-			redirect_to action: 'register', :student => student_value, :result => false
-		end		
+			redirect_to action: 'register', :notification => {
+				:result => true, :message => "Registration Successful" }
+		else
+			student.paid = "online"
+			student.save
+			
+			schedule = Schedule.find(student.schedule_id)
+			schedule.enrolled = schedule.enrolled + 1
+			schedule.save
+
+			order_info =	{ 	:fees => schedule.fee,
+								:name => student.student_name,
+								:email => student.email,
+								:group => schedule.group,
+								:time => schedule.time,
+								:location => schedule.location,
+								:id => schedule.id
+							}
+			redirect_to action: "review", order_info: order_info
+			
+		end
+				
+	end
+
+	def review
+		@order_info = params[:order_info]
+
 	end
 
 	def photo
@@ -89,4 +95,5 @@ class StaticPagesController < ApplicationController
 	def video
 		@video = Video.all.sort_by(&:order)
 	end
+
 end

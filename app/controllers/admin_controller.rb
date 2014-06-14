@@ -187,7 +187,7 @@ class AdminController < ApplicationController
 		student.state = check_nil(params[:state])
 		student.zipcode = check_nil(params[:zipcode])
 		student.schedule_id = params[:schedule]
-
+		student.paid = params[:paid]
 		if student.save
 			sched = Schedule.find(params[:schedule])
 			sched.enrolled = sched.enrolled + 1
@@ -225,6 +225,7 @@ class AdminController < ApplicationController
 		student.city = check_nil(params[:city])
 		student.state = check_nil(params[:state])
 		student.zipcode = check_nil(params[:zipcode])
+		student.paid = params[:paid]
 
 		temp = student.schedule_id
 		student.schedule_id = params[:schedule_id]

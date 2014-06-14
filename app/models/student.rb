@@ -14,4 +14,5 @@ class Student < ActiveRecord::Base
 	validates :city, format: {with: LETTERS_REGEX}, :allow_blank => true
 	validates :state, format: {with: LETTERS_REGEX}, :allow_blank => true
 	validates :schedule_id, presence: true
+	validates :paid, :inclusion => ["not paid", "online", "paid"]
 end

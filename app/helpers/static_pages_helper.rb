@@ -6,4 +6,5 @@ module StaticPagesHelper
 
 		return input
 	end
+
 end

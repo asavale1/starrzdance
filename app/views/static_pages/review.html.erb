@@ -1,0 +1,86 @@
+<% provide(:title, "Review")%>
+
+<%= stylesheet_link_tag "static_pages/review.css" %>
+<%= javascript_include_tag "static_pages/review.js" %>
+
+<div class="hero-unit">
+	<h2 class="center"> Review Registration </h2>
+	<table id="top-table">
+		<tr>
+			<td class="title">
+				<h4>Total</h4>
+			</td>
+			<td>
+				<h5>$<%= @order_info[:fees] %></h5>
+			</td>
+		</tr>
+		<tr>
+			<td class="title">
+				<h4>Name</h4>
+			</td>
+			<td>
+				<h5><%= @order_info[:name] %></h5>
+			</td>
+		</tr>
+		<tr>
+			<td class="title">
+				<h4>Email</h4>
+			</td>
+			<td>
+				<h5><%= @order_info[:email] %></h5>
+			</td>
+		</tr>
+		<tr>
+			<td class="title">
+				<h4>Group</h4>
+			</td>
+			<td>
+				<h5><%= @order_info[:group] %></h5>
+			</td>
+		</tr>
+		<tr>
+			<td class="title">
+				<h4>Session</h4>
+			</td>
+			<td>
+				<h5><%= @order_info[:session] %></h5>
+			</td>
+		</tr>
+		<tr>
+			<td class="title">
+				<h4>Time</h4>
+			</td>
+			<td>
+				<h5><%= @order_info[:time] %></h5>
+			</td>
+		</tr>
+		<tr>
+			<td class="title">
+				<h4>Location</h4>
+			</td>
+			<td>
+				<h5><%= @order_info[:location] %></h5>
+			</td>
+		</tr>
+	</table>
+	<%= form_tag( "https://www.sandbox.paypal.com/cgi-bin/webscr", :multipart => true, class: "form-horizontal", target: "_blank") do %>
+		<%= hidden_field_tag("cmd", "_xclick") %>
+		<%= hidden_field_tag("business", "asavale1-facilitator@yahoo.com") %>
+		<%= hidden_field_tag("ls", "US") %>
+		<%= hidden_field_tag("item_name", "#{@order_info[:name]}'s fees dance") %>
+		<%= hidden_field_tag("item_number", "#{@order_info[:id]}") %>
+		<%= hidden_field_tag("amount", "#{@order_info[:fees]}") %>
+		<%= hidden_field_tag("currency_code", "USD") %>
+		<%= hidden_field_tag("button_subtype", "services") %>
+		<%= hidden_field_tag("tax_rate", "0.000") %>
+		<%= hidden_field_tag("shipping", "0.00") %>
+		<%= hidden_field_tag("return", url_for(register_path)) %>
+		<%= hidden_field_tag("cancel_return", url_for(register_path)) %>
+		<%= hidden_field_tag("notify_url", url_for(root_path)) %>
+		<%= hidden_field_tag("bn", "PP-BuyNowBF:btn_buynow_SM.gif:NonHosted") %>
+		<%= submit_tag("Confirm Registration", name: "submit",class: "register btn btn-primary",id: "confirm", onclick: "onSubmit()") %>
+	<% end%>
+	<%= link_to("Home", root_path, id: "home", class: "btn btn-primary") %>
+</h2>
+</div>
+

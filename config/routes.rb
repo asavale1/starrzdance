@@ -10,6 +10,8 @@ Starrzdance::Application.routes.draw do
   match '/register_new', to: 'static_pages#register_new', via: 'post'
   match '/photos', to: 'static_pages#photo', via: 'get'
   match '/videos', to: 'static_pages#video', via: 'get' 
+  match '/review', to: 'static_pages#review', via: 'get'
+  match '/purchase', to: 'static_pages#purchase', via: 'get'
 
   # => Admin Routes 
   match '/admin', to: 'admin#home', via: 'get'

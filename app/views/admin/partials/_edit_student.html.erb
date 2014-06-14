@@ -16,7 +16,10 @@
 	<%= text_field_tag(:state, edit_student[:stud].state) %>
 	<%= label_tag(:zipcode, "Zipcode") %>
 	<%= text_field_tag(:zipcode, edit_student[:stud].zipcode) %>
-	<table class="table">
+	<%= label_tag(:paid, "Paid") %>
+	<%= select_tag("paid", options_for_select(["not paid", "online", "paid"],edit_student[:stud].paid)) %>
+	
+	<table class="table" style="margin-top: 10px;">
 		<tr>
 			<th></th>
 			<th>Group</th>
