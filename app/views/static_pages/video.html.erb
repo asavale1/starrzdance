@@ -16,33 +16,7 @@
 <script>
   videojs.options.flash.swf = "<%= asset_path('video-js.swf') %>"
 </script>
-<!--<style>
-	.roundabout-moveable-item {
-		width: 100%;
-		background-color: #000;
-		border: 1px solid #999;
-	}
-	table.outer{
-		width: 100%;
-	}
-	table.outer h6{
-		color: #fff;
-		padding: 5px;
-		font-size: 20px;
-	}
-	table.outer p{
-		color: #fff;
-		padding: 5px;
-	}
-	table.outer tr td{
-		width: 100%;
-	}
 
-	table.inner td.table-body{
-		width: 33%;
-	}
-
-</style>-->
 <div class="center content" >
 	<h2 class="title">Videos</h2>
 	<ul id="video-gallery">
@@ -61,8 +35,8 @@
 							<table class="inner">
 								<td class="table-body extra">
 									<a href="">
-										<!--<%= image_tag "arrow-left.png", class: "left-arrow previous" %>-->
-										<i class="icon-arrow-left previous"></i>
+										<%= image_tag "arrow-left.png", class: "left-arrow previous" %>
+										<!--<i class="icon-arrow-left previous"></i>-->
 									</a>
 								</td>
 								<td class="table-body">
