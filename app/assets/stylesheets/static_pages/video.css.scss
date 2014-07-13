@@ -5,7 +5,44 @@
    height: auto;
    width: auto;
 }
-
+/**
+.roundabout-moveable-item {
+   width: 100%;
+   background-color: #000;
+   border: 1px solid #999;
+   .outer{
+      width: 100%;
+      tr{
+         td{
+            width: 100%;
+            .inner{
+               tr{   
+                  td.table-body{
+                     width: 33%;
+                     .left-arrow{
+                        width: 50%;
+                     }
+                     .right-arrow{
+                        width: 50%;
+                     }
+                  }
+               }
+            }
+         }
+      }
+      h6{
+         color: #fff;
+         padding: 5px;
+         font-size: 20px;
+      }
+      p{
+         color: #fff;
+         padding: 5px;
+      }
+      
+   }
+}
+**/
 
 
 
