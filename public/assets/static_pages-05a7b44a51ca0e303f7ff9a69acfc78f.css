@@ -1,0 +1,229 @@
+/* line 1, /home/ameya/Documents/rubyonrails/starrzdance/app/assets/stylesheets/static_pages/about.css.scss */
+.hero-unit {
+  background: -webkit-radial-gradient(white, rgba(255, 255, 255, 0));
+  background: -o-radial-gradient(white, rgba(255, 255, 255, 0));
+  background: -moz-radial-gradient(white, rgba(255, 255, 255, 0));
+  background: radial-gradient(white, rgba(255, 255, 255, 0));
+  margin-left: 50px;
+}
+/* line 1, /home/ameya/Documents/rubyonrails/starrzdance/app/assets/stylesheets/static_pages/achievements.css.scss */
+.hero-unit {
+  margin-left: 50px;
+  background: -webkit-radial-gradient(white, rgba(255, 255, 255, 0));
+  background: -o-radial-gradient(white, rgba(255, 255, 255, 0));
+  background: -moz-radial-gradient(white, rgba(255, 255, 255, 0));
+  background: radial-gradient(white, rgba(255, 255, 255, 0));
+}
+/* line 1, /home/ameya/Documents/rubyonrails/starrzdance/app/assets/stylesheets/static_pages/faq.css.scss */
+.hero-unit {
+  background: -webkit-radial-gradient(white, rgba(255, 255, 255, 0));
+  background: -o-radial-gradient(white, rgba(255, 255, 255, 0));
+  background: -moz-radial-gradient(white, rgba(255, 255, 255, 0));
+  background: radial-gradient(white, rgba(255, 255, 255, 0));
+  margin-left: 50px;
+}
+/* line 1, /home/ameya/Documents/rubyonrails/starrzdance/app/assets/stylesheets/static_pages/home.css.scss */
+.hero-unit {
+  background: rgba(255, 255, 255, 0);
+}
+/* line 4, /home/ameya/Documents/rubyonrails/starrzdance/app/assets/stylesheets/static_pages/home.css.scss */
+.hero-unit .gallery {
+  background: #000;
+  margin-top: -100px;
+  padding: 50px;
+}
+/* line 10, /home/ameya/Documents/rubyonrails/starrzdance/app/assets/stylesheets/static_pages/home.css.scss */
+.hero-unit .gallery .carousel-inner img {
+  width: 100%;
+  height: 400px;
+}
+/* line 15, /home/ameya/Documents/rubyonrails/starrzdance/app/assets/stylesheets/static_pages/home.css.scss */
+.hero-unit .gallery .right, .hero-unit .gallery .left {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+/* line 20, /home/ameya/Documents/rubyonrails/starrzdance/app/assets/stylesheets/static_pages/home.css.scss */
+.hero-unit .text {
+  margin-top: 30px;
+  border-radius: 5px;
+  background: rgba(35, 93, 121, 0.5);
+}
+/* line 1, /home/ameya/Documents/rubyonrails/starrzdance/app/assets/stylesheets/static_pages/photo.css.scss */
+.hero-unit {
+  background: #000;
+  margin-left: 50px;
+}
+
+/* line 7, /home/ameya/Documents/rubyonrails/starrzdance/app/assets/stylesheets/static_pages/photo.css.scss */
+#title {
+  color: #fff;
+  text-align: center;
+  font-size: 30px;
+}
+/* line 2, /home/ameya/Documents/rubyonrails/starrzdance/app/assets/stylesheets/static_pages/review.css.scss */
+.hero-unit #top-table {
+  width: 100%;
+}
+/* line 5, /home/ameya/Documents/rubyonrails/starrzdance/app/assets/stylesheets/static_pages/review.css.scss */
+.hero-unit #top-table td {
+  width: 50%;
+  text-align: left;
+  padding-left: 50px;
+}
+/* line 11, /home/ameya/Documents/rubyonrails/starrzdance/app/assets/stylesheets/static_pages/review.css.scss */
+.hero-unit #top-table .title {
+  text-align: right;
+  padding-right: 50px;
+}
+/* line 17, /home/ameya/Documents/rubyonrails/starrzdance/app/assets/stylesheets/static_pages/review.css.scss */
+.hero-unit .purchase {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+/* line 1, /home/ameya/Documents/rubyonrails/starrzdance/app/assets/stylesheets/static_pages/schedule.css.scss */
+.hero-unit {
+  margin-left: 50px;
+}
+/* line 4, /home/ameya/Documents/rubyonrails/starrzdance/app/assets/stylesheets/static_pages/schedule.css.scss */
+.hero-unit #title {
+  color: #000;
+}
+/* line 8, /home/ameya/Documents/rubyonrails/starrzdance/app/assets/stylesheets/static_pages/schedule.css.scss */
+.hero-unit .blue-row {
+  background: #03436A;
+}
+/* line 10, /home/ameya/Documents/rubyonrails/starrzdance/app/assets/stylesheets/static_pages/schedule.css.scss */
+.hero-unit .blue-row td {
+  color: #fff;
+}
+/* line 14, /home/ameya/Documents/rubyonrails/starrzdance/app/assets/stylesheets/static_pages/schedule.css.scss */
+.hero-unit .light-row {
+  background: rgba(35, 93, 121, 0.5);
+}
+/* line 16, /home/ameya/Documents/rubyonrails/starrzdance/app/assets/stylesheets/static_pages/schedule.css.scss */
+.hero-unit .light-row td {
+  color: #000;
+}
+/* line 1, /home/ameya/Documents/rubyonrails/starrzdance/app/assets/stylesheets/static_pages/video.css.scss */
+.roundabout-holder {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  height: auto;
+  width: auto;
+}
+
+/* line 9, /home/ameya/Documents/rubyonrails/starrzdance/app/assets/stylesheets/static_pages/video.css.scss */
+.roundabout-moveable-item {
+  width: 100%;
+  background-color: #000;
+  border: 1px solid #999;
+}
+/* line 13, /home/ameya/Documents/rubyonrails/starrzdance/app/assets/stylesheets/static_pages/video.css.scss */
+.roundabout-moveable-item .outer {
+  width: 100%;
+}
+/* line 16, /home/ameya/Documents/rubyonrails/starrzdance/app/assets/stylesheets/static_pages/video.css.scss */
+.roundabout-moveable-item .outer tr td {
+  width: 100%;
+}
+/* line 20, /home/ameya/Documents/rubyonrails/starrzdance/app/assets/stylesheets/static_pages/video.css.scss */
+.roundabout-moveable-item .outer tr td .inner tr td.table-body {
+  width: 33%;
+}
+/* line 22, /home/ameya/Documents/rubyonrails/starrzdance/app/assets/stylesheets/static_pages/video.css.scss */
+.roundabout-moveable-item .outer tr td .inner tr td.table-body .left-arrow {
+  width: 50%;
+}
+/* line 25, /home/ameya/Documents/rubyonrails/starrzdance/app/assets/stylesheets/static_pages/video.css.scss */
+.roundabout-moveable-item .outer tr td .inner tr td.table-body .right-arrow {
+  width: 50%;
+}
+/* line 33, /home/ameya/Documents/rubyonrails/starrzdance/app/assets/stylesheets/static_pages/video.css.scss */
+.roundabout-moveable-item .outer h6 {
+  color: #fff;
+  padding: 5px;
+  font-size: 20px;
+}
+/* line 38, /home/ameya/Documents/rubyonrails/starrzdance/app/assets/stylesheets/static_pages/video.css.scss */
+.roundabout-moveable-item .outer p {
+  color: #fff;
+  padding: 5px;
+}
+
+/* line 48, /home/ameya/Documents/rubyonrails/starrzdance/app/assets/stylesheets/static_pages/video.css.scss */
+.content {
+  margin: 50px;
+  margin-top: -20px;
+  height: 650px;
+  background: rgba(35, 93, 121, 0.5);
+  border-radius: 15px;
+}
+/* line 55, /home/ameya/Documents/rubyonrails/starrzdance/app/assets/stylesheets/static_pages/video.css.scss */
+.content #video-gallery {
+  margin-top: 275px;
+  margin-left: 120px;
+  margin-right: 160px;
+}
+/* line 60, /home/ameya/Documents/rubyonrails/starrzdance/app/assets/stylesheets/static_pages/video.css.scss */
+.content #video-gallery li {
+  width: 100%;
+  padding: 20px;
+}
+/* line 66, /home/ameya/Documents/rubyonrails/starrzdance/app/assets/stylesheets/static_pages/video.css.scss */
+.content .title {
+  padding-top: 10px;
+  color: #fff;
+}
+
+/* line 74, /home/ameya/Documents/rubyonrails/starrzdance/app/assets/stylesheets/static_pages/video.css.scss */
+.modal {
+  background: #000;
+  width: 55%;
+}
+/* line 78, /home/ameya/Documents/rubyonrails/starrzdance/app/assets/stylesheets/static_pages/video.css.scss */
+.modal .modal-content {
+  width: 100%;
+  height: 100%;
+}
+/* line 82, /home/ameya/Documents/rubyonrails/starrzdance/app/assets/stylesheets/static_pages/video.css.scss */
+.modal .modal-content .modal-header {
+  background: #000;
+}
+/* line 85, /home/ameya/Documents/rubyonrails/starrzdance/app/assets/stylesheets/static_pages/video.css.scss */
+.modal .modal-content .modal-header .modal-title {
+  color: #fff;
+}
+/* line 88, /home/ameya/Documents/rubyonrails/starrzdance/app/assets/stylesheets/static_pages/video.css.scss */
+.modal .modal-content .modal-header .close {
+  color: #fff;
+  margin-top: -10px;
+}
+/* line 94, /home/ameya/Documents/rubyonrails/starrzdance/app/assets/stylesheets/static_pages/video.css.scss */
+.modal .modal-content .modal-body {
+  overflow-y: hidden;
+  background: #000;
+}
+/* line 98, /home/ameya/Documents/rubyonrails/starrzdance/app/assets/stylesheets/static_pages/video.css.scss */
+.modal .modal-content .modal-body .video-wrapper {
+  width: 640px;
+  height: 480px;
+}
+/* line 104, /home/ameya/Documents/rubyonrails/starrzdance/app/assets/stylesheets/static_pages/video.css.scss */
+.modal .modal-content .modal-footer {
+  background: #000;
+  margin-top: 20px;
+}
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+
+ */
