@@ -6,25 +6,44 @@
    width: auto;
 }
 .roundabout-moveable-item {
-   height: auto;
-   width: auto;
-   cursor: pointer;
+   width: 100%;
    background-color: #000;
    border: 1px solid #999;
-   p{
-      color: #fff;
-      padding: 5px;
-      text-align: left;
+   .outer{
+      width: 100%;
+      tr{
+         td{
+            width: 100%;
+            .inner{
+               tr{   
+                  td.table-body{
+                     width: 33%;
+                     .left-arrow{
+                        width: 50%;
+                     }
+                     .right-arrow{
+                        width: 50%;
+                     }
+                  }
+               }
+            }
+         }
+      }
+      h6{
+         color: #fff;
+         padding: 5px;
+         font-size: 20px;
+      }
+      p{
+         color: #fff;
+         padding: 5px;
+      }
+      
    }
-   h6{
-      color: #fff;
-      padding: 5px;
-      font-size: 20px;
-   }  
 }
-.roundabout-in-focus {
-   cursor: auto;
-}
+
+
+
 
 .content{
    margin: 50px;
@@ -39,6 +58,7 @@
       margin-right: 160px;
 
       li{
+         width: 100%;
          padding: 20px;
       }
    }

@@ -7,7 +7,10 @@
 
 <script>
    	$(document).ready(function() {
-      $('#video-gallery').roundabout();
+      $('#video-gallery').roundabout({
+      	btnNext: ".next",
+      	btnPrev: ".previous"
+      });
    });
 </script>
 <script>
@@ -19,21 +22,64 @@
 	<ul id="video-gallery">
 		<% @video.each do |video| %>
 			<li>
-				<h6><%= video.title %></h6>
-				<a href="#" data-toggle="modal" data-target="#videoModal<%= video.id %>">
+				<table class="outer">
+					<tr>
+						<td class="table-header">	
+							<div class="video-title">
+								<h6><%= video.title %></h6>
+							</div>	
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<table class="inner">
+								<td class="table-body extra">
+									<a href="">
+										<%= image_tag "arrow-left.png", class: "left-arrow previous" %>
+									</a>
+								</td>
+								<td class="table-body">
+									<a href="#" data-toggle="modal" data-target="#videoModal<%= video.id %>">
+										<% if video.url.nil? %>
+											<%= image_tag video.clip.url(:large) %>
+										<% else %>
+											<%= image_tag video.thumbnail, width: "400px", height: "400px" %>
+										<% end %>
+									</a>
+								</td>
+								<td class="table-body extra">
+									<a href="">
+										<%= image_tag "arrow-right.png", class: "right-arrow next" %>
+									</a>
+								</td>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<p><%= video.caption %></p>
+						</td>
+					</tr>
+				</table>
+<!--				<h6><%= video.title %></h6>
+				
 					<% if video.url.nil? %>
 						<%= image_tag video.clip.url(:large) %>
 					<% else %>
 						<%= image_tag video.thumbnail, width: "400px", height: "400px" %>
 					<% end %>
+				<a href="#" data-toggle="modal" data-target="#videoModal<%= video.id %>">
+					<p>Watch</p>
 				</a>
-				<p><%= video.caption %></p>
+
+				<p class="next">Next</p>
+				<p><%= video.caption %></p>-->
 			</li>
 		<% end %>
-	</ul>	
+	</ul>
 </div>
 <% @video.each do |video| %>
-	<div class="modal fade" id="videoModal<%= video.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
+	<div class="modal fade hide" id="videoModal<%= video.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
 		<div class="modal-dialog">
 	    	<div class="modal-content">
 	      		<div class="modal-header">
