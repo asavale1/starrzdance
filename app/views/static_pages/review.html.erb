@@ -66,25 +66,27 @@
 	<%= form_tag( "https://www.paypal.com/cgi-bin/webscr", :multipart => true, class: "form-horizontal", target: "_blank") do %>
 		<%= hidden_field_tag("cmd", "_xclick") %>
 		<%= hidden_field_tag("business", "M9N8Y8G8WPT6U") %>
-		<%= hidden_field_tag("ls", "US") %>
-		<%= hidden_field_tag("item_name", "#{@order_info[:name]}'s fees dance") %>
+		<%= hidden_field_tag("lc", "US") %>
+		<%= hidden_field_tag("item_name", "#{@order_info[:name]}'s dance fees") %>
 		<%= hidden_field_tag("item_number", "#{@order_info[:id]}") %>
 		<%= hidden_field_tag("amount", "#{@order_info[:fees]}") %>
 		<%= hidden_field_tag("currency_code", "USD") %>
 		<%= hidden_field_tag("button_subtype", "services") %>
 		<%= hidden_field_tag("tax_rate", "0.000") %>
 		<%= hidden_field_tag("shipping", "0.00") %>
-		<%= hidden_field_tag("return", url_for(register_path)) %>
-		<%= hidden_field_tag("cancel_return", url_for(register_path)) %>
-		<%= hidden_field_tag("notify_url", url_for(root_path)) %>
 		<%= hidden_field_tag("bn", "PP-BuyNowBF:btn_buynow_SM.gif:NonHosted") %>
 		<div class="purchase">
 			<%= submit_tag("Confirm Registration", name: "submit",class: "register btn btn-primary",id: "confirm", onclick: "onSubmit()") %>
 		</div>
 	<% end%>
+
 	<div class="purchase">
 		<%= link_to("Home", root_path, id: "home", class: "btn btn-primary") %>
 	</div>
 </h2>
 </div>
+
+<!--<%= hidden_field_tag("return", url_for(register_path)) %>
+		<%= hidden_field_tag("cancel_return", url_for(register_path)) %>
+		<%= hidden_field_tag("notify_url", url_for(root_path)) %>-->
 
