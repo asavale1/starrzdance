@@ -10,7 +10,7 @@ Starrzdance::Application.configure do
     :path => "/:class/:attachment/:id_partition/:style/:filename"
   }
 
-  config.action_mailer.default_url_options = { :host => 'quiet-springs-7387.herokuapp.com' }
+  config.action_mailer.default_url_options = { :host => 'quiet-springs-7387.herokuapp.com', :protocol => 'http' }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = false
@@ -18,7 +18,7 @@ Starrzdance::Application.configure do
   config.action_mailer.smtp_settings = {
     address: "smtp.gmail.com",
     port: 587,
-    domain: "quiet-springs-7387.herokuapp.com",
+    #domain: "quiet-springs-7387.herokuapp.com",
     authentication: "plain",
     enable_starttls_auto: true,
     user_name: ENV["GMAIL_USERNAME"],
