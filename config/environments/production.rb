@@ -18,6 +18,7 @@ Starrzdance::Application.configure do
   config.action_mailer.smtp_settings = {
     address: "smtp.gmail.com",
     port: 587,
+    tls: true,
     #domain: "quiet-springs-7387.herokuapp.com",
     authentication: "plain",
     enable_starttls_auto: true,
