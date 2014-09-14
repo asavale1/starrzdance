@@ -10,7 +10,7 @@ Starrzdance::Application.configure do
     :path => "/:class/:attachment/:id_partition/:style/:filename"
   }
 
-  config.action_mailer.default_url_options = { :host => 'www.starrzdance.com', :protocol => 'http' }
+  config.action_mailer.default_url_options = { :host => 'www.starrzdance.com' }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = false
@@ -19,7 +19,7 @@ Starrzdance::Application.configure do
     address: "smtp.gmail.com",
     port: 587,
     tls: true,
-    #domain: "gmail.com",
+    domain: "gmail.com",
     authentication: "plain",
     enable_starttls_auto: true,
     user_name: ENV["GMAIL_USERNAME"],
