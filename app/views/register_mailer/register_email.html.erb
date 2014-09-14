@@ -1,0 +1,81 @@
+<h1><%= @student.student_name %> Resgistered</h1>
+
+<div>
+	<h3>Student</h3>
+	<table class="table">
+		<tr>
+			<th>Name</th>
+			<td><%= @student.student_name %></td>
+		</tr>
+		<tr>
+			<th>Age</th>
+			<td><%= @student.age %></td>
+		</tr>
+		<tr>
+			<th>Parent</th>
+			<td><%= @student.parent_name %></td>
+		</tr>
+	</table>
+</div>
+<div>
+	<h3>Contact</h3>
+	<table>
+		<tr>
+			<th>Email</th>
+			<td><%= @student.email %></td>
+		</tr>
+		<tr>
+			<th>Phone</th>
+			<td><%= @student.phone %></td>
+		</tr>
+	</table>
+</div>
+
+<div>
+	<% unless @student.city.nil? or @student.state.nil? or @student.zipcode.nil? %>
+		<h3>Address</h3>
+		<strong><%= @student.city %>, <%= @student.state %>, <%= @student.zipcode %></strong>
+	<% end %>
+</div>
+
+<div>
+	<h3>Class</h3>
+	<table>
+		<tr>
+			<th>Group</th>
+			<td><%= @schedule.group %></td>
+		</tr>
+		<tr>
+			<th>Session</th>
+			<td><%= @schedule.session %></td>
+		</tr>
+		<tr>
+			<th>Time</th>
+			<td><%= @schedule.time %></td>
+		</tr>
+		<tr>
+			<th>Location</th>
+			<td><%= @schedule.location %></td>
+		</tr>
+		<tr>
+			<th>Instructor</th>
+			<td><%= @schedule.instructor %></td>
+		</tr>
+		<tr>
+			<th>Fee</th>
+			<td><%= @schedule.fee %></td>
+		</tr>
+		<tr>
+			<th>Paid</th>
+			<td><%= @student.paid %></td>
+		</tr>
+		<tr>
+			<th>Capacity</th>
+			<td><%= @schedule.capacity %></td>
+		</tr>
+		<tr>
+			<th>Enrolled</th>
+			<td><%= @schedule.enrolled %></td>
+		</tr>
+	</table>
+</div>

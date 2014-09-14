@@ -1,3 +1,15 @@
+#
+# student_name 	=> varchar(255)
+# parent_name	=> varchar(255)
+# email 		=> varchar(255)
+# phone 		=> integer
+# city			=> varchar(255)
+# state			=> varchar(255)
+# zipcode 		=> integer
+# age			=> integer
+# schedule_id	=> integer
+# paid 			=> varchar(255)
+#
 class Student < ActiveRecord::Base
 	belongs_to :schedule
 

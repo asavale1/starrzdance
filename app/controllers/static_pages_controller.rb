@@ -7,7 +7,9 @@ class StaticPagesController < ApplicationController
 
   	def home
   		puts "\n\n"
-  		puts params
+  		puts Student.last.student_name
+  		puts Schedule.last.group
+  		RegisterMailer.register_email(Student.last, Schedule.find(Student.last.schedule_id)).deliver
   		puts "\n\n"
   		@home = Static.where("title = ?", "home").first
 	end
