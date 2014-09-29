@@ -166,6 +166,35 @@ class AdminController < ApplicationController
 	end
 
 	#
+	# => Events management
+	#
+
+	def events
+		unless params[:result].nil?
+			@result = params[:result]
+		end
+
+		@events = Static.where("title = ? ", "events").first
+	end
+
+	def events_new
+		event = Static.new
+		event.title = "events"
+		event.body = params[:content]
+		event.save
+
+		redirect_to action: "events", :result => true
+	end
+
+	def events_edit
+		events = Static.where("title = ? ", "events").first
+		events.body = params[:content]
+		events.save
+
+		redirect_to action: "events", :result => true
+	end
+
+	#
 	# => Students managment
 	#
 	def student

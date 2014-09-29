@@ -1,0 +1,32 @@
+<% provide(:title, "Admin Events")%>
+<%= render 'layouts/admin_header' %>
+
+<script type="text/javascript">
+	window.onload = function(){
+		$('#content').ckeditor();
+	};
+	$(document).ready($('#content').ckeditor());
+</script>
+
+<div class="center hero-unit">
+	<h1>Edit Events Info</h1>
+	<%= link_to "View page", events_path, :target => "_blank", class: "btn btn-success" %><br /><br />
+	<%= render 'layouts/result' %>
+	<div>
+		<% if @events.nil? %>
+			<%= form_tag( { :action => 'events_new' }, :multipart => true) do %>
+				<textarea id="content" name="content" rows="25"></textarea><br />
+				<%= submit_tag("Create Events Info", class: "btn btn-primary") %>
+			<% end%>
+		<% end %>
+
+		
+		<% unless @events.nil? %>
+			<%= form_tag( {:action => 'events_edit'}, :multipart => true) do %>
+				<textarea id="content" name="content" rows="25"><%= @events.body %></textarea><br />
+				<%= submit_tag("Update Events Info", class: "btn btn-primary") %>
+			<% end %>
+		<% end %>
+		
+	</div>
+</div>

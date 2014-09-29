@@ -12,6 +12,7 @@ Starrzdance::Application.routes.draw do
   match '/videos', to: 'static_pages#video', via: 'get' 
   match '/review', to: 'static_pages#review', via: 'get'
   match '/purchase', to: 'static_pages#purchase', via: 'get'
+  match '/events', to: 'static_pages#events', via: 'get'
 
   # => Admin Routes 
   match '/admin', to: 'admin#home', via: 'get'
@@ -29,6 +30,10 @@ Starrzdance::Application.routes.draw do
   match '/edit_about', to: 'admin#about', via: 'get'
   match '/edit_about_new', to: 'admin#about_new', via: 'post'
   match '/edit_about_edit', to: 'admin#about_edit', via: 'post'
+
+  match '/edit_events', to: 'admin#events', via: 'get'
+  match '/edit_events_new', to: 'admin#events_new', via: 'post'
+  match '/edit_events_edit', to: 'admin#events_edit', via: 'post'
 
   match '/edit_schedule', to: 'admin#schedule', via: 'get'
   match '/edit_schedule_new', to: 'admin#schedule_new', via: 'post'

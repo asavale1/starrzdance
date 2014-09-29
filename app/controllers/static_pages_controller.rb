@@ -6,11 +6,6 @@ class StaticPagesController < ApplicationController
 	include StaticPagesHelper
 
   	def home
-  		puts "\n\n"
-  		puts Student.last.student_name
-  		puts Schedule.last.group
-  		#RegisterMailer.register_email(Student.last, Schedule.find(Student.last.schedule_id)).deliver
-  		puts "\n\n"
   		@home = Static.where("title = ?", "home").first
 	end
 
@@ -24,6 +19,10 @@ class StaticPagesController < ApplicationController
 
 	def faq
 		@faq = Static.where("title = ?", "faq").first
+	end
+
+	def events
+		@events = Static.where('title = ?', 'events').first
 	end
 
 	def schedule

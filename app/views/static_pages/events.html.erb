@@ -1,0 +1,10 @@
+<% provide(:title, "Events")%>
+<%= render 'layouts/header' %>
+
+<%= stylesheet_link_tag "static_pages/events.css" %>
+
+<div class="hero-unit">
+	<% unless @events.nil? %> 
+		<%= @events.body.html_safe %>
+	<% end %>
+</div>

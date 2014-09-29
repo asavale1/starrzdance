@@ -1,3 +1,5 @@
+<%= stylesheet_link_tag "admin/header.css" %>
+
 <header class="navbar navbar-fixed-top navbar-inverse">
 	<div class="navbar-inner">
 		<div class="container">
@@ -11,6 +13,7 @@
 					<li><%= link_to "Photos", edit_photo_path %></li>
 					<li><%= link_to "Videos", edit_video_path %></li>
 					<li><%= link_to "Students", edit_student_path %></li>
+					<li><%= link_to "Events", edit_events_path %></li>
 					<li><%= link_to "Sign out", destroy_admin_session_path, :method => :delete %></li>
 				</ul>
 			</nav>
