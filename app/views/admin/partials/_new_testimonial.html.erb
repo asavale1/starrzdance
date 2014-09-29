@@ -1,0 +1,9 @@
+<%= form_tag({:action => 'testimonials_new'}, :multipart => true) do %>
+	<%= label_tag(:name, "Name") %>
+	<%= text_field_tag(:name, nil) %>
+	<%= label_tag(:content, "Content") %>
+	<%= text_area_tag(:content, nil) %>
+	<%= label_tag(:show, "Show") %>
+	<%= select_tag :show, options_for_select([ true, false ], true) %>
+	<br /><br/><%= submit_tag("Add entry", class: "btn btn-primary") %>
+<% end %>

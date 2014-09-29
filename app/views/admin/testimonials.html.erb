@@ -1,0 +1,57 @@
+<% provide(:title, "Admin Testimonials")%>
+<%= render 'layouts/admin_header' %>
+
+<div class="center hero-unit">
+	<h1>Edit Testimonials</h1>
+
+	<a href="#" data-toggle="modal" data-target="#addTestimonial" class="btn btn-primary">
+		Add Testimonial
+	</a>
+
+	<br /><br/>
+	
+	<%= render 'layouts/result' %>
+	<table class="table">
+		<tr>
+			<th>Name</th>
+			<th>Content</th>
+			<th>Show</th>
+			<th></th>
+		</tr>
+		<% @testimonials.each do |testimonial| %>
+			<tr>
+				<td><%= testimonial.name %></td>
+				<td><%= testimonial.content %></td>
+				<td><%= testimonial.show %></td>
+				<td>
+					<a href="#" class="btn btn-primary" data-toggle="modal" data-target="#editModal<%= testimonial.id %>">Edit</a>
+						<div id="editModal<%=testimonial.id%>" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		  					<div class="modal-header">
+		    					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+		    					<h3>Edit Testimonial <%= testimonial.id %></h3>
+		  					</div>
+		  					<div class="modal-body">
+		    					<%= render :partial => 'admin/partials/edit_testimonial', :object => {:testimonial => testimonial }%>
+		  					</div>
+		  					<div class="modal-footer">
+		    					<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+		  					</div>
+						</div>
+				</td>
+			</tr>
+		<% end %>	
+	</table>
+</div>
+
+<div id="addTestimonial" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-header">
+    	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    	<h3>New Testimonial</h3>
+  	</div>
+  	<div class="modal-body">
+  		<%= render :partial => 'admin/partials/new_testimonial'%>
+  	</div>
+  	<div class="modal-footer">
+    	<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+  	</div>
+</div>

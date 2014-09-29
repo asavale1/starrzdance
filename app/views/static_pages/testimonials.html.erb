@@ -1,0 +1,23 @@
+<% provide(:title, "Testimonials")%>
+<%= render 'layouts/header' %>
+
+<%= stylesheet_link_tag "static_pages/testimonials.css" %>
+
+<div class="hero-unit">
+	<h2 id='title'>Here's what people are saying</h2>
+	<table>
+		<% @testimonials.each do |testimonial| %>
+			<tr>
+				<td>
+					<div class="content">
+
+						<%= testimonial.content %>
+					</div>
+					<div class="name">
+						<%= "- #{testimonial.name}" %>
+					</div>
+				</td>
+			</tr>
+		<% end %>
+	</table>
+</div>

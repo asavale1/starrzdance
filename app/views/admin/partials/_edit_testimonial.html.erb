@@ -1,0 +1,11 @@
+<%= form_tag({:action => 'testimonials_edit'}, :multipart => true) do %>
+	<%= hidden_field_tag(:id, edit_testimonial[:testimonial].id) %>
+	<%= label_tag(:name, "Name") %>
+	<%= text_field_tag(:name, edit_testimonial[:testimonial].name ) %>
+	<%= label_tag(:content, "Content") %>
+	<%= text_area_tag(:content, edit_testimonial[:testimonial].content) %>
+	<%= label_tag(:show, "Show") %>
+	<%= select_tag :show, options_for_select([ true, false ], edit_testimonial[:testimonial].show ) %>
+	<br /><br />
+	<%= submit_tag("Update Testimonial", class: "btn btn-primary") %>
+<% end %>

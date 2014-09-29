@@ -194,6 +194,34 @@ class AdminController < ApplicationController
 		redirect_to action: "events", :result => true
 	end
 
+	def testimonials
+		unless params[:result].nil?
+			@result = params[:result]
+		end
+
+		@testimonials = Testimonial.all
+	end
+
+	def testimonials_new
+		testimonial = Testimonial.new
+		testimonial.name = params[:name]
+		testimonial.content = params[:content]
+		testimonial.show = params[:show]
+		testimonial.save
+
+		redirect_to action: "testimonials", :result => true
+	end
+
+	def testimonials_edit
+		testimonial = Testimonial.find(params[:id])
+		testimonial.name = params[:name]
+		testimonial.content = params[:content]
+		testimonial.show = params[:show]
+		testimonial.save
+
+		redirect_to action: "testimonials", :result => true
+	end
+
 	#
 	# => Students managment
 	#

@@ -13,6 +13,7 @@ Starrzdance::Application.routes.draw do
   match '/review', to: 'static_pages#review', via: 'get'
   match '/purchase', to: 'static_pages#purchase', via: 'get'
   match '/events', to: 'static_pages#events', via: 'get'
+  match '/testimonials', to: 'static_pages#testimonials', via: 'get'
 
   # => Admin Routes 
   match '/admin', to: 'admin#home', via: 'get'
@@ -38,6 +39,10 @@ Starrzdance::Application.routes.draw do
   match '/edit_schedule', to: 'admin#schedule', via: 'get'
   match '/edit_schedule_new', to: 'admin#schedule_new', via: 'post'
   match '/edit_schedule_update', to: 'admin#schedule_update', via: 'post'
+
+  match '/edit_testimonials', to: 'admin#testimonials', via: "get"
+  match '/edit_testimonials_new', to: "admin#testimonials_new", via: "post"
+  match '/edit_testimonials_edit', to: 'admin#testimonials_edit', via: "post"
 
   match '/edit_student', to: 'admin#student', via: 'get'
   match '/edit_student_new', to: 'admin#student_new', via: 'post'

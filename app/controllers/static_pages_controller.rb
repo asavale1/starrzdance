@@ -25,6 +25,10 @@ class StaticPagesController < ApplicationController
 		@events = Static.where('title = ?', 'events').first
 	end
 
+	def testimonials
+		@testimonials = Testimonial.where("show = ?", true)
+	end
+
 	def schedule
 		@schedule = Schedule.all
 	end

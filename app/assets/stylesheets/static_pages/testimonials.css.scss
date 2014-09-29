@@ -1,0 +1,35 @@
+.hero-unit{
+	background: -webkit-radial-gradient(rgba(255,255,255,1.0),rgba(255,255,255,0));
+	background: -o-radial-gradient(rgba(255,255,255,1.0),rgba(255,255,255,0)); 
+	background: -moz-radial-gradient(rgba(255,255,255,1.0),rgba(255,255,255,0) );
+	background: radial-gradient(rgba(255,255,255,1.0),rgba(255,255,255,0));
+	
+	margin-left: 50px;
+}
+
+#title{
+	color: #000;
+	text-align: center;
+	font-size: 30px; 
+}
+
+table{
+	margin-top: 80px;
+	tr{
+		td{
+			padding-left: 10px;
+			padding-right: 10px;
+			padding-bottom: 20px;
+			.content{
+				padding-left: 5%;
+				font-size: 20px;
+			}
+			.name{
+				padding-top: 10px;
+				padding-right: 20%;
+				text-align: right;
+			}
+		}
+	}
+	
+}
