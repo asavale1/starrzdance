@@ -5,31 +5,58 @@
 	background: radial-gradient(rgba(255,255,255,1.0),rgba(255,255,255,0));
 	
 	margin-left: 50px;
-}
 
-#title{
-	color: #000;
-	text-align: center;
-	font-size: 30px; 
-}
+	#title{
+		color: #000;
+		text-align: center;
+		font-size: 30px; 
+	}
 
-table{
-	margin-top: 80px;
-	tr{
-		td{
-			padding-left: 10px;
-			padding-right: 10px;
-			padding-bottom: 20px;
-			.content{
-				padding-left: 5%;
-				font-size: 20px;
+	#add-div{
+		text-align: right;
+		margin-top: 30px;
+		a{
+			background: none;
+			text-shadow: none;
+			border: none !important;
+			color: #000;
+
+			#add-img{
+				width: 30px;
+				margin-right: 10px;
 			}
-			.name{
-				padding-top: 10px;
-				padding-right: 20%;
-				text-align: right;
+			.add{
+				float: left;
+			}
+			h4.add{
+				font-size: 15px;
 			}
 		}
 	}
-	
+
+	table{
+		margin-top: 50px;
+		width: 100%;
+		tr{
+			width: 100%;
+			td{
+				padding-left: 10px;
+				padding-right: 10px;
+				padding-bottom: 30px;
+				width: 100%;
+
+				.content{
+					padding-left: 5%;
+					font-size: 20px;
+				}
+				.name{
+					padding-top: 10px;
+					padding-right: 20%;
+					text-align: right;
+				}
+			}
+		}
+		
+	}
 }
+

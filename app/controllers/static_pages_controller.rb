@@ -26,7 +26,21 @@ class StaticPagesController < ApplicationController
 	end
 
 	def testimonials
+		unless params[:result].nil?
+			@result = params[:result]
+		end
 		@testimonials = Testimonial.where("show = ?", true)
+	end
+
+	def testimonials_new
+		testimonial = Testimonial.new
+		testimonial.name = params[:name]
+		testimonial.content = params[:content]
+		testimonial.show = false
+		puts testimonial
+		testimonial.save
+
+		redirect_to action: "testimonials", :result => true
 	end
 
 	def schedule

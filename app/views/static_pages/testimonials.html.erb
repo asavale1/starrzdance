@@ -2,9 +2,24 @@
 <%= render 'layouts/header' %>
 
 <%= stylesheet_link_tag "static_pages/testimonials.css" %>
+<%= javascript_include_tag "static_pages/testimonials.js" %>
 
 <div class="hero-unit">
 	<h2 id='title'>Here's what people are saying</h2>
+	
+	<% if @result %>
+		<div class="alert alert-success center">
+	    	<p>Testimonial submitted</p>
+	    </div>
+	<% end %>
+
+	<div id="add-div">
+		<a href="#" class="btn" data-toggle="modal" data-target="#addTestimonial">
+			<%= image_tag "add.png", id:"add-img", class: "add" %>
+			<h4 class="add">Add testimonial!</h4>
+		</a>
+		
+	</div>
 	<table>
 		<% @testimonials.each do |testimonial| %>
 			<tr>
@@ -20,4 +35,31 @@
 			</tr>
 		<% end %>
 	</table>
+</div>
+
+<div id="addTestimonial" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+		<h3>Testimonial</h3>
+		</div>
+		<div class="modal-body">
+			<%= form_tag({:action => 'testimonials_new'}, :multipart => true) do %>
+				<div class="control-group" id="name-group">
+					<%= label_tag(:name, "Name *") %>
+					<div class="controls" style="margin-left: 0px;">
+						<%= text_field_tag(:name, nil, onkeyup: "verifyName(this)") %>
+					</div>
+				</div>
+				<div class="control-group" id="content-group">
+					<%= label_tag(:content, "Review *") %>
+					<div class="controls" style="margin-left: 0px;">
+						<%= text_area_tag(:content, nil, onkeyup: "verifyContent(this)") %>
+					</div>
+				</div>
+				<br /><br/><%= submit_tag("Submit", class: "btn btn-primary submit") %>
+			<% end %>
+		</div>
+		<div class="modal-footer">
+		<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+		</div>
 </div>
