@@ -1,0 +1,21 @@
+- provide(:title, "Admin Company")
+= render 'layouts/admin_header'
+
+
+div.center.hero-unit
+	h2 Starrz Dance
+	h3 Admin Panel
+	
+	br
+
+	h3 Add Admin
+	=form_tag({action: "admin_new"}, multipart: true)
+		= label_tag(:email, "Email")
+		= text_field_tag(:email, nil)
+		= label_tag(:password, "Password")
+		= password_field_tag(:password, nil)
+		= label_tag(:confirm, "Confirm Password")
+		= password_field_tag(:confirm, nil)
+		br
+		= submit_tag("Create", name: "submit", class: "btn btn-primary")
+

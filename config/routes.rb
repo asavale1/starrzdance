@@ -16,11 +16,15 @@ Starrzdance::Application.routes.draw do
   match '/testimonials', to: 'static_pages#testimonials', via: 'get'
   match '/testimonials_new', to: 'static_pages#testimonials_new', via: 'post'
 
-  # => Admin Routes 
-  match '/admin', to: 'admin#home', via: 'get'
-  match '/admin_home_new', to: 'admin#home_new', via: 'post'
-  match '/admin_home_edit', to: 'admin#home_edit', via: 'post'
+  # => Admin Routes
+  match '/admin', to: 'admin#admin', via: 'get'
+  match '/admin_new', to: 'admin#admin_new', via: 'post'
   
+
+  match '/home', to: 'admin#home', via: 'get'
+  match '/edit_home_new', to: 'admin#home_new', via: 'post'
+  match '/edit_home_edit', to: 'admin#home_edit', via: 'post'
+
   match '/edit_faq', to: 'admin#faq', via: 'get'
   match '/edit_faq_new', to: 'admin#faq_new', via: 'post'
   match '/edit_faq_edit', to: 'admin#faq_edit', via: 'post'

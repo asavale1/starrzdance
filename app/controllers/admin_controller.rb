@@ -3,6 +3,28 @@ class AdminController < ApplicationController
 
 	include AdminHelper
 
+	def admin
+		puts params[:flash]
+	end
+
+	def admin_new
+		admin = Admin.new
+		admin.email = params[:email]
+		admin.password = params[:password]
+		admin.password_confirmation = params[:confirm]
+		if !(params[:email] =~ /^\S+@\S+$/)
+			flash[:alert] = "Invalid email"
+			redirect_to action: "admin"
+		elsif params[:password] != params[:confirm]
+			flash[:alert] = "Passwords do not match"
+			redirect_to action: "admin"
+		else
+			admin.save!(:validate => false)
+			flash[:notice] = "Admin created"
+			redirect_to action: "admin"
+		end
+	end
+
 	def home
 		unless params[:result].nil?
 			@result = params[:result]
@@ -396,4 +418,5 @@ class AdminController < ApplicationController
 			redirect_to action: 'video', :result => false
 		end
 	end
+
 end
