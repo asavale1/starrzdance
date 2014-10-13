@@ -14,8 +14,10 @@ div.center.hero-unit
 		= text_field_tag(:email, nil)
 		= label_tag(:password, "Password")
 		= password_field_tag(:password, nil)
-		= label_tag(:confirm, "Confirm Password")
-		= password_field_tag(:confirm, nil)
+		= label_tag(:password_confirmation, "Confirm Password")
+		= password_field_tag(:password_confirmation, nil)
 		br
 		= submit_tag("Create", name: "submit", class: "btn btn-primary")
+
+
 

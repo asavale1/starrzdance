@@ -11,21 +11,21 @@ class AdminController < ApplicationController
 		admin = Admin.new
 		admin.email = params[:email]
 		admin.password = params[:password]
-		admin.password_confirmation = params[:confirm]
+		admin.password_confirmation = params[:password_confirmation]
 		if !(params[:email] =~ /^\S+@\S+$/)
 			flash[:alert] = "Invalid email"
 			redirect_to action: "admin"
 		elsif params[:password].strip.empty?
 			flash[:alert] = "Password cannot be blank"
 			redirect_to action: "admin"
-		elsif params[:password] != params[:confirm]
+		elsif params[:password] != params[:password_confirmation]
 			flash[:alert] = "Passwords do not match"
 			redirect_to action: "admin"
 		elsif params[:password].strip.length < 8
 			flash[:alert] = "Password must be at least 8 characters long"
 			redirect_to action: "admin"
 		else
-			#admin.save!(:validate => false)
+			admin.save!(:validate => false)
 			flash[:notice] = "Admin created"
 			redirect_to action: "admin"
 		end
