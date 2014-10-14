@@ -21,7 +21,7 @@ Starrzdance::Application.routes.draw do
   match '/admin_new', to: 'admin#admin_new', via: 'post'
   
 
-  match '/home', to: 'admin#home', via: 'get'
+  match '/edit_home', to: 'admin#home', via: 'get'
   match '/edit_home_new', to: 'admin#home_new', via: 'post'
   match '/edit_home_edit', to: 'admin#home_edit', via: 'post'
 
