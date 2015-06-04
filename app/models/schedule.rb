@@ -7,6 +7,7 @@
 # fee			=> varchar(255)
 # capacity 		=> integer
 # enrolled		=> integer
+# workshop		=> boolean
 #
 
 class Schedule < ActiveRecord::Base
@@ -19,4 +20,5 @@ class Schedule < ActiveRecord::Base
 	validates :fee, presence: true, numericality: true
 	validates :capacity, presence: true, numericality: { only_integer: true }
 	validates :enrolled, numericality: { only_integer: true }
+	validates :workshop, presence: true
 end

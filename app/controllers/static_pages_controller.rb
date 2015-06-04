@@ -102,9 +102,12 @@ class StaticPagesController < ApplicationController
 				
 	end
 
+	def workshop_registration
+
+	end
+
 	def review
 		@order_info = params[:order_info]
-
 	end
 
 	def photo
