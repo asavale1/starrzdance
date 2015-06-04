@@ -102,8 +102,53 @@ class StaticPagesController < ApplicationController
 				
 	end
 
-	def workshop_registration
+	def workshop
+		@scheduled = Schedule.where(:workshop => true)
 
+	end
+
+	def workshop_register
+		student = Student.new
+		student.student_name = params[:student_name].strip
+		student.age = params[:age].strip
+		student.parent_name = params[:parent_name].strip
+		student.email = params[:email].strip
+		student.phone = clean_phone_input(params[:phone].strip)
+		student.city = params[:city].strip
+		student.state = params[:state].strip
+		student.zipcode = params[:zipcode].strip
+		student.schedule_id = params[:schedule]
+
+		
+		if params[:submit] == "Register"
+			student.paid = "not paid"
+			student.save
+
+			schedule = Schedule.find(student.schedule_id)
+			schedule.enrolled = schedule.enrolled + 1
+			schedule.save
+			
+			redirect_to action: 'workshop', :notification => {
+				:result => true, :message => "Registration Successful" }
+		else
+			student.paid = "online"
+			student.save
+			
+			schedule = Schedule.find(student.schedule_id)
+			schedule.enrolled = schedule.enrolled + 1
+			schedule.save
+
+			order_info =	{ 	:fees => schedule.fee,
+								:name => student.student_name,
+								:email => student.email,
+								:group => schedule.group,
+								:time => schedule.time,
+								:location => schedule.location,
+								:id => schedule.id
+							}
+			redirect_to action: "review", order_info: order_info
+			
+		end
 	end
 
 	def review

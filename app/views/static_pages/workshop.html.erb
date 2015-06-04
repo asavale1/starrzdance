@@ -1,0 +1,159 @@
+<% provide(:title, "Workshop")%>
+<%= render 'layouts/header' %>
+
+<%= stylesheet_link_tag "static_pages/about.css" %>
+<%= javascript_include_tag "static_pages/register.js" %>
+
+
+<div class="hero-unit">
+	<h2>Siddhesh Pai <br/>Workshop Registration</h2>
+	
+	<% if @result == 'true'%>
+		<div class="alert alert-success center">
+	    	<p><%= @message %></p>
+	    </div>
+	<% elsif @result=='false'%>
+		<div class="alert alert-error center">
+	    	<p><%= @message %></p>
+	    </div>
+	<% end %>
+
+	<h6>* required fields</h6>
+	<%= form_tag( { :action => 'workshop_register' }, :multipart => true, class: "form-horizontal") do %>
+		<table class="table">
+			<tr>
+				<td>
+					<div class="control-group" id="name-group">
+						<h5><%= label_tag(:student_name, "Student Name *") %></h5>
+						<span class="help-inline" id="name-help" style="font-size: 12px; display:block;">
+							Name required
+						</span>
+						<div class="controls" style="margin-left: 0px;">
+							<%= text_field_tag(:student_name, nil, :id => "student_name", onkeyup: "verifyName(this)") %>
+						</div>
+					</div>	
+					<div class="control-group" id="age-group">
+						<%= label_tag(:age, "Age *") %>
+						<span class="help-inline" id="age-help" style="font-size: 12px; display:block;">
+							Age required
+						</span>
+						<div class="controls" style="margin-left: 0px">
+							<%= text_field_tag(:age, nil, :id => "age", onkeyup: "verifyAge(this)") %>	
+						</div>		
+					</div>
+					<div class="control-group">
+						<%= label_tag(:parent_name, "Parent Name") %>
+						<div class="controls" style="margin-left: 0px">
+							<%= text_field_tag(:parent_name, nil, :id => "parent_name") %>
+						</div>
+					</div>
+					<div class="control-group" id="email-group">
+						<%= label_tag(:email, "Email *") %>
+						<span class="help-inline" id="email-help" style="font-size: 12px; display:block;">
+							Email required
+						</span>
+						<div class="controls" style='margin-left: 0px'>
+							<%= text_field_tag(:email, nil, :id => "email", onkeyup: "verifyEmail(this)") %>
+						</div>
+					</div>
+					<div class="control-group">
+						<%= label_tag(:phone, "Phone Number") %>
+						<div class="controls" style="margin-left: 0px">
+							<%= text_field_tag(:phone, nil, :id => "phone") %>
+						</div>
+						
+					</div>
+					<div class="control-group">
+						<%= label_tag(:city, "City") %>
+						<div class="controls" style="margin-left: 0px">
+							<%= text_field_tag(:city, nil, :id => "city") %>
+						</div>
+					</div>
+					<div class="control-group">
+						<%= label_tag(:state, "State") %>
+						<div class="controls" style="margin-left: 0px">
+							<%= text_field_tag(:state, nil, :id => "state") %>
+						</div>
+					</div>
+					<div class="control-group">
+						<%= label_tag(:zipcode, "Zipcode") %>
+						<div class="controls" style="margin-left: 0px">
+							<%= text_field_tag(:zipcode, nil, :id => "zipcode") %>
+						</div>
+					</div>
+					<div class="control-group error" id="sched-group">
+						<%= label_tag("Select class *") %>
+						<span class="help-inline" id="sched-help" style="font-size: 12px; display:block;">
+							Session required
+						</span>
+					</div>
+				</td>
+				<td>
+					<%= image_tag("hip-hop-1.png") %>
+				</td>
+			</tr>
+		</table>
+		<table class="table">
+			<tr>
+				<th></th>
+				<th>Group</th>
+				<th>Session</th>
+				<th>Time</th>
+				<th>Location</th>
+				<th>Instructor</th>
+				<th>Fee ($)</th>
+				<th>Status</th>
+			</tr>
+			<% @scheduled.each do |sched| %>
+				<tr>
+					<td>
+						<% if @student.nil? %>
+							<% if sched.capacity <= sched.students.length or sched.capacity <= sched.enrolled %>
+								<%= radio_button_tag(:schedule, sched.id, false, disabled: true ) %>
+							<% else %>
+								<%= radio_button_tag(:schedule, sched.id, false, onclick: "checkSchedule(this)") %>
+							<% end %>
+						<% else %>
+							<% if sched.id == @student["schedule"].to_i %>
+								<%= radio_button_tag(:schedule, sched.id, :checked => true) %>
+							<% else %>
+								<% if sched.capacity <= sched.students.length  or sched.capacity <= sched.enrolled%>
+									<%= radio_button_tag(:schedule, sched.id, false, disabled: true ) %>
+								<% else %>
+									<%= radio_button_tag(:schedule, sched.id, false, onclick: "checkSchedule(this)") %>
+								<% end %>
+							<% end %>
+						<% end %>
+					</td>
+					<td>
+						<%= sched.group %>
+					</td>
+					<td>
+						<%= sched.session %>
+					</td>
+					<td>
+						<%= sched.time %>
+					</td>
+					<td>
+						<%= sched.location %>
+					</td>
+					<td>
+						<%= sched.instructor %>
+					</td>
+					<td>
+						$<%= sched.fee %>
+					</td>
+					<td>
+						<% if sched.capacity == sched.enrolled %>
+							Not Available
+						<% else %>
+							Available
+						<% end %>
+					</td>
+				</tr>
+			<% end %>
+		</table> 
+		<%= submit_tag("Register", name: "submit",class: "register btn btn-primary", disabled: "disabled") %>
+		<%= submit_tag("Register & Pay", name: "submit", class: "register btn btn-primary", disabled: "disabled") %>
+	<% end%>
+</div>

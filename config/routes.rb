@@ -15,8 +15,8 @@ Starrzdance::Application.routes.draw do
   match '/events', to: 'static_pages#events', via: 'get'
   match '/testimonials', to: 'static_pages#testimonials', via: 'get'
   match '/testimonials_new', to: 'static_pages#testimonials_new', via: 'post'
-  match '/workshop', to: 'static_pages#workshop_registration', via: 'get'
-
+  match '/workshop', to: 'static_pages#workshop', via: 'get'
+  match '/workshop_register', to: 'static_pages#workshop_register', via: 'post'
   # => Admin Routes
   match '/admin', to: 'admin#admin', via: 'get'
   match '/admin_new', to: 'admin#admin_new', via: 'post'
