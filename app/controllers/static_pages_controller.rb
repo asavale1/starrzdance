@@ -103,6 +103,10 @@ class StaticPagesController < ApplicationController
 	end
 
 	def workshop
+		unless params[:notification].nil?
+			@result = params[:notification]["result"]
+			@message = params[:notification]["message"]
+		end
 		@scheduled = Schedule.where(:workshop => true)
 
 	end
