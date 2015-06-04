@@ -53,7 +53,7 @@ class StaticPagesController < ApplicationController
 			@result = params[:notification]["result"]
 			@message = params[:notification]["message"]
 		end
-		@schedule = Schedule.all
+		@schedule = Schedule.where(:workshop => false)
 	end
 
 	def register_new
