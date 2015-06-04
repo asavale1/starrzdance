@@ -6,7 +6,7 @@
 
 
 <div class="hero-unit">
-	<h2>Siddhesh Pai <br/>Workshop Registration</h2>
+	<h2 style="padding-bottom: 10%;">Siddhesh Pai <br/>Workshop Registration</h2>
 	
 	<% if @result == 'true'%>
 		<div class="alert alert-success center">
@@ -18,11 +18,18 @@
 	    </div>
 	<% end %>
 
-	<h6>* required fields</h6>
+	<h6 style="display:inline-block">* required fields</h6>
+	<%= image_tag("SiddheshPai-crop.png", style: "display:inline-block; position: absolute; right: 30%; top: 21%;") %>
+
 	<%= form_tag( { :action => 'workshop_register' }, :multipart => true, class: "form-horizontal") do %>
 		<table class="table">
 			<tr>
 				<td>
+					<div class="control-group" id="number-group">
+						<h5><%= label_tag(:number_of_students, "Number of students") %></h5>
+						<div class="controls" style="margin-left: 0px;">
+						</div>
+					</div>
 					<div class="control-group" id="name-group">
 						<h5><%= label_tag(:student_name, "Student Name *") %></h5>
 						<span class="help-inline" id="name-help" style="font-size: 12px; display:block;">
@@ -88,8 +95,12 @@
 						</span>
 					</div>
 				</td>
-				<td>
-					<%= image_tag("hip-hop-1.png") %>
+				<td style="vertical-align:center;text-align:center; padding-top: 5%;">
+					<%= image_tag("did-logo.png", style: "margin-bottom: 5%;") %>
+					<h2>Finalist of Dance India Dance Season One</h2>
+					<h3>&</h3>
+					<h2>Skipper from Dance India Dance Supermoms !</h2>
+					
 				</td>
 			</tr>
 		</table>
