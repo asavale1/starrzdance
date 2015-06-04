@@ -20,5 +20,5 @@ class Schedule < ActiveRecord::Base
 	validates :fee, presence: true, numericality: true
 	validates :capacity, presence: true, numericality: { only_integer: true }
 	validates :enrolled, numericality: { only_integer: true }
-	validates :workshop, presence: true
+	#validates :workshop, presence: true
 end
