@@ -137,7 +137,7 @@ class AdminController < ApplicationController
 		sched.fee = check_nil(params[:fee])
 		sched.capacity = check_nil(params[:capacity])
 		sched.enrolled = check_nil(params[:enrolled])
-		sched.workshop = false
+		sched.workshop = params[:workshop]
 		
 		if sched.save
 			redirect_to action: 'schedule', :result => true

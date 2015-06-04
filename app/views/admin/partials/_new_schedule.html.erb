@@ -15,5 +15,7 @@
 	<%= text_field_tag(:capacity, nil, :id => 'new-number') %>
 	<%= label_tag(:enrolled, "Enrolled") %>
 	<%= text_field_tag(:enrolled, 0, :id => 'new-number') %>
+	<%= label_tag(:workshop, "Workshop") %>
+	<%= select_tag(:workshop, options_for_select([true, false], false)) %>
 	<br /><br/><%= submit_tag("Add entry", class: "btn btn-primary") %>
 <% end %>
