@@ -78,7 +78,7 @@ class StaticPagesController < ApplicationController
 			schedule.enrolled = schedule.enrolled + 1
 			schedule.save
 			
-			Mailer.register_email(student, schedule).deliver
+			RegisterMailer.register_email(student, schedule).deliver
 
 			redirect_to action: 'register', :notification => {
 				:result => true, :message => "Registration Successful" }
@@ -99,8 +99,8 @@ class StaticPagesController < ApplicationController
 								:id => schedule.id
 							}
 
-			Mailer.register_email(student, schedule).deliver
-			
+			RegisterMailer.register_email(student, schedule).deliver
+
 			redirect_to action: "review", order_info: order_info
 			
 		end
