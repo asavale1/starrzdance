@@ -16,15 +16,13 @@ Starrzdance::Application.configure do
   config.action_mailer.raise_delivery_errors = false
   config.action_mailer.default :charset => "utf-8"
   config.action_mailer.smtp_settings = {
-    address: "smtp.gmail.com",
-    port: 587,
-    tls: true,
-    domain: "gmail.com",
-    authentication: "plain",
-    enable_starttls_auto: true,
-    :openssl_verify_mode  => 'none',
-    user_name: ENV["GMAIL_USERNAME"],
-    password: ENV["GMAIL_PASSWORD"]
+    :user_name => ENV['SENDGRID_USERNAME'],
+    :password => ENV['SENDGRID_PASSWORD'],
+    :domain => 'quiet-springs-7387.herokuapp.com',
+    :address => 'smtp.sendgrid.net',
+    :port => 587,
+    :authentication => :plain,
+    :enable_starttls_auto => true
   }
 
   Paperclip.options[:command_path] = "/app/vendor/ffmpeg/bin"
