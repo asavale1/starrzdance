@@ -70,10 +70,13 @@
 						</div>
 						
 					</div>
-					<div class="control-group">
-						<%= label_tag(:city, "City") %>
+					<div class="control-group" id="city-group">
+						<%= label_tag(:city, "City *") %>
+						<span class="help-inline" id="city-help" style="font-size: 12px; display:block;">
+							City required
+						</span>
 						<div class="controls" style="margin-left: 0px">
-							<%= text_field_tag(:city, nil, :id => "city") %>
+							<%= text_field_tag(:city, nil, :id => "city", onkeyup: "verifyCity(this)") %>
 						</div>
 					</div>
 					<div class="control-group">

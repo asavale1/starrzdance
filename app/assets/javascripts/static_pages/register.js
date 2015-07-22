@@ -2,6 +2,7 @@ var valid_name = false;
 var valid_age = false;
 var valid_email = false;
 var valid_sched = false;
+var valid_city = false;
 
 var ERROR = 1;
 var SUCCESS = 0;
@@ -24,6 +25,7 @@ $(document).ready(function(){
 	verifyName(document.getElementById("student_name"));
 	verifyAge(document.getElementById("age"));
 	verifyEmail(document.getElementById('email'));
+	verifyCity(document.getElementById('city'));
 });
 
 function verifyName(elem){
@@ -97,8 +99,23 @@ function checkSchedule(elem){
 	validate();
 }
 
+function verifyCity(elem){
+	if(elem.value.trim()){
+		valid_city = true;
+		colorSet("city-group", SUCCESS);
+		$('#city-help').css("display","none");
+
+	}else{
+		valid_city = false;
+		colorSet("city-group", ERROR);
+		$('#city-help').css("display","block");
+		$('#city-help').text('City required');
+	}
+	validate();
+}
+
 function validate(){
-	var valid = valid_name && valid_email && valid_age && valid_sched;
+	var valid = valid_name && valid_email && valid_age && valid_sched && valid_city;
 	console.log(valid_name + "\t" + valid_email + "\t" + valid_age + "\t" + valid_sched);
 	if(valid){
 		$('.register').removeAttr("disabled");
