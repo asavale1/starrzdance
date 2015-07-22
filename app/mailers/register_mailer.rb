@@ -4,7 +4,12 @@ class RegisterMailer < ActionMailer::Base
   def register_email(student, schedule)
   	@student = student
   	@schedule = schedule
-    mail(to: "gsavale@yahoo.com", subject: "#{student.student_name} registered")
+    mail(to: "contact@starrzdance.com", subject: "#{student.student_name} registered")
   end
 
+  def confirmation_email(student, schedule)
+  	@student = student
+  	@schedule = schedule
+  	mail(to: @student.email, subject: "Workshop registration confirmed")
+  end
 end
