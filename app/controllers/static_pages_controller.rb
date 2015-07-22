@@ -79,7 +79,6 @@ class StaticPagesController < ApplicationController
 			schedule.save
 			
 			RegisterMailer.register_email(student, schedule).deliver
-			RegisterMailer.confirmation_email(student, schedule).deliver
 			redirect_to action: 'register', :notification => {
 				:result => true, :message => "Registration Successful" }
 		else
@@ -100,7 +99,6 @@ class StaticPagesController < ApplicationController
 							}
 
 			RegisterMailer.register_email(student, schedule).deliver
-			RegisterMailer.confirmation_email(student, schedule).deliver
 			redirect_to action: "review", order_info: order_info
 			
 		end
