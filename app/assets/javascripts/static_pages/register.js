@@ -25,7 +25,7 @@ $(document).ready(function(){
 	verifyName(document.getElementById("student_name"));
 	verifyAge(document.getElementById("age"));
 	verifyEmail(document.getElementById('email'));
-	verifyCity(document.getElementById('city'));
+	//verifyCity(document.getElementById('city'));
 });
 
 function verifyName(elem){
@@ -115,7 +115,7 @@ function verifyCity(elem){
 }
 
 function validate(){
-	var valid = valid_name && valid_email && valid_age && valid_sched && valid_city;
+	var valid = valid_name && valid_email && valid_age && valid_sched; //&& valid_city;
 	console.log(valid_name + "\t" + valid_email + "\t" + valid_age + "\t" + valid_sched);
 	if(valid){
 		$('.register').removeAttr("disabled");
