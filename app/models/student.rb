@@ -20,7 +20,7 @@ class Student < ActiveRecord::Base
 	validates :student_name, presence: true, format: {with: LETTERS_REGEX}
 	validates :parent_name, format: {with: LETTERS_REGEX}, :allow_blank => true
 	validates :email, presence: true
-	validates :phone, :allow_blank => true
+	validates :phone, format: {with: LETTERS_REGEX}, :allow_blank => true
 	validates :age, presence: true, numericality: { only_integer: true }
 	validates :zipcode, numericality: { only_integer: true }, length: { is: 5}, :allow_blank => true
 	validates :city, format: {with: LETTERS_REGEX}, :allow_blank => true
