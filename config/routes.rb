@@ -46,6 +46,7 @@ Starrzdance::Application.routes.draw do
   match '/edit_schedule', to: 'admin#schedule', via: 'get'
   match '/edit_schedule_new', to: 'admin#schedule_new', via: 'post'
   match '/edit_schedule_update', to: 'admin#schedule_update', via: 'post'
+  match '/delete_schedule', to: 'admin#schedule_delete', via: 'post'
 
   match '/edit_testimonials', to: 'admin#testimonials', via: "get"
   match '/edit_testimonials_new', to: "admin#testimonials_new", via: "post"

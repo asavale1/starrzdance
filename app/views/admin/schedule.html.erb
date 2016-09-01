@@ -54,6 +54,10 @@
 		    					<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
 		  					</div>
 						</div>
+						<%= form_tag({:action => 'schedule_delete'}, :multipart => true) do %>
+							<%= hidden_field_tag(:id, sched.id) %>
+							<%= submit_tag("Delete", class: "btn btn-danger") %>
+						<% end %>
 					</td>
 				</tr>
 			<% end %>

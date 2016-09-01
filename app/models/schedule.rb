@@ -11,7 +11,7 @@
 #
 
 class Schedule < ActiveRecord::Base
-	has_many :students
+	has_many :students, :dependent => :destroy
 
 	validates :group, presence: true
 	validates :session, presence: true

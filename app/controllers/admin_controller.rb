@@ -165,6 +165,12 @@ class AdminController < ApplicationController
 		end
 	end
 
+	def schedule_delete
+		s = Schedule.find(params[:id])
+		s.destroy
+		redirect_to action: "schedule", :result => true
+	end
+
 	#
 	# => FAQ Management
 	#

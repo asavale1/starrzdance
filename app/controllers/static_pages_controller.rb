@@ -72,7 +72,7 @@ class StaticPagesController < ApplicationController
 		
 		if params[:submit] == "Register"
 			student.paid = "not paid"
-			student.save
+			student.save!
 
 			schedule = Schedule.find(student.schedule_id)
 			schedule.enrolled = schedule.enrolled + 1
@@ -83,11 +83,11 @@ class StaticPagesController < ApplicationController
 				:result => true, :message => "Registration Successful" }
 		else
 			student.paid = "online"
-			student.save
+			student.save!
 			
 			schedule = Schedule.find(student.schedule_id)
 			schedule.enrolled = schedule.enrolled + 1
-			schedule.save
+			schedule.save!
 
 			order_info =	{ 	:fees => schedule.fee,
 								:name => student.student_name,
