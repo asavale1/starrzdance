@@ -63,7 +63,11 @@
 			</td>
 		</tr>
 	</table>
-	<%= form_tag( "https://www.paypal.com/cgi-bin/webscr", :multipart => true, class: "form-horizontal", target: "_blank") do %>
+
+	<div class="purchase">
+		<%= link_to("Confirm Registration", "https://www.paypal.me/starrzdance", id: "confirm", class: "btn btn-primary", target: "_blank", onclick: "onSubmit()") %>
+	</div>
+	<!--<%= form_tag( "https://www.paypal.com/cgi-bin/webscr", :multipart => true, class: "form-horizontal", target: "_blank") do %>
 		<%= hidden_field_tag("cmd", "_xclick") %>
 		<%= hidden_field_tag("business", "M9N8Y8G8WPT6U") %>
 		<%= hidden_field_tag("lc", "US") %>
@@ -78,7 +82,7 @@
 		<div class="purchase">
 			<%= submit_tag("Confirm Registration", name: "submit",class: "register btn btn-primary",id: "confirm", onclick: "onSubmit()") %>
 		</div>
-	<% end%>
+	<% end%>-->
 
 	<div class="purchase">
 		<%= link_to("Home", root_path, id: "home", class: "btn btn-primary") %>
