@@ -65,7 +65,25 @@
 	</table>
 
 	<div class="purchase">
+		<br />
 		<%= link_to("Confirm Registration", "https://www.paypal.me/starrzdance", id: "confirm", class: "btn btn-primary", target: "_blank", onclick: "onSubmit()") %>
+
+		<br/>
+		<br/>
+		<label for="confirm">
+			<h3>
+			** Disclaimer **
+			</h3>
+			<h5>
+			After clicking 'Confirm Registration', do NOT check the box which states:
+			<h5>
+			<h4>
+			<i>"Paying for a good or a service? Tick this box and your eligible purchases are covered by PayPal Purchase Protection."</i>
+			</h4>
+			<h5>
+			in the paypal page. If you do, you will be held responsible for paying the transaction fee of (2.9% + $0.30).
+			</h5>
+		</label>
 	</div>
 	<!--<%= form_tag( "https://www.paypal.com/cgi-bin/webscr", :multipart => true, class: "form-horizontal", target: "_blank") do %>
 		<%= hidden_field_tag("cmd", "_xclick") %>
