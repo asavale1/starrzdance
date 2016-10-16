@@ -6,7 +6,7 @@
 
 
 <div class="hero-unit">
-	<h2 style="padding-bottom: 10%;">Siddhesh Pai <br/>Workshop Registration</h2>
+	<h2 style="padding-bottom: 10%;">Workshop Registration</h2>
 	
 	<% if @result == 'true'%>
 		<div class="alert alert-success center">
@@ -19,7 +19,7 @@
 	<% end %>
 
 	<h6 style="display:inline-block">* required fields</h6>
-	<%= image_tag("SiddheshPai-crop.png", style: "display:inline-block; position: absolute; right: 30%; top: 21%;") %>
+	<!--<%= image_tag("SiddheshPai-crop.png", style: "display:inline-block; position: absolute; right: 30%; top: 21%;") %>-->
 
 	<%= form_tag( { :action => 'workshop_register' }, :multipart => true, class: "form-horizontal") do %>
 		<table class="table">
@@ -99,10 +99,15 @@
 					</div>
 				</td>
 				<td style="vertical-align:center;text-align:center; padding-top: 5%;">
-					<%= image_tag("did-logo.png", style: "margin-bottom: 8%;") %>
-					<h2>Finalist of Dance India Dance Season One</h2>
-					<h3>&</h3>
-					<h2>Skipper from Dance India Dance Supermoms 2015!</h2>
+					<!--<%= image_tag("did-logo.png", style: "margin-bottom: 8%;") %>-->
+					<h2>Learn dance from the top choreographers in bollywood, Mahesh & Geeta! </h2>
+
+					<%= image_tag("Mahesh.png", style: "margin-bottom: 8%; width: 45%") %>
+						
+					<%= image_tag("Geeta.png", style: "margin-bottom: 8%; width: 45%;") %>
+						
+					
+					
 					
 				</td>
 			</tr>
