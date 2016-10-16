@@ -25,8 +25,24 @@ $(document).ready(function(){
 	verifyName(document.getElementById("student_name"));
 	verifyAge(document.getElementById("age"));
 	verifyEmail(document.getElementById('email'));
+
+	var fadeOut = true
+	for(i = 0; i < 8; i++){
+		console.log("HERE");
+		if(fadeOut){
+			$("#flash").fadeOut(1000);
+			fadeOut = false;
+		}else{
+			$("#flash").fadeIn(1000);
+			fadeOut = true;
+		}
+	}
+	
+
 	//verifyCity(document.getElementById('city'));
 });
+
+
 
 function verifyName(elem){
 	if(elem.value.trim()){

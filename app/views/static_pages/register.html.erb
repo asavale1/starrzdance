@@ -2,11 +2,22 @@
 <%= render 'layouts/header' %>
 
 <%= javascript_include_tag "static_pages/register.js" %>
+<style>
+.blink_me {
+  animation: blinker 2s linear infinite;
+}
+
+@keyframes blinker {  
+  50% { opacity: 0; }
+}
+
+
+</style>
 
 <div class="hero-unit">
 	<h2>Registration</h2>
 
-	<a href="/workshop"><h3 style="float: right">Click Here For Workshop Registration</h3></a>
+	<a id="flash" href="/workshop"><h3 style="float: right">Click Here For Workshop Registration</h3></a>
 	
 	<% if @result == 'true'%>
 		<div class="alert alert-success center">
