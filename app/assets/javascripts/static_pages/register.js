@@ -28,7 +28,6 @@ $(document).ready(function(){
 
 	var fadeOut = true
 	for(i = 0; i < 8; i++){
-		console.log("HERE");
 		if(fadeOut){
 			$("#flash").fadeOut(1000);
 			fadeOut = false;
@@ -41,8 +40,6 @@ $(document).ready(function(){
 
 	//verifyCity(document.getElementById('city'));
 });
-
-
 
 function verifyName(elem){
 	if(elem.value.trim()){
@@ -116,7 +113,9 @@ function checkSchedule(elem){
 }
 
 function verifyCity(elem){
-	if(elem.value.trim()){
+	valid_city = true;
+	
+	/*if(elem.value.trim()){
 		valid_city = true;
 		colorSet("city-group", SUCCESS);
 		$('#city-help').css("display","none");
@@ -126,7 +125,7 @@ function verifyCity(elem){
 		colorSet("city-group", ERROR);
 		$('#city-help').css("display","block");
 		$('#city-help').text('City required');
-	}
+	}*/
 	validate();
 }
 

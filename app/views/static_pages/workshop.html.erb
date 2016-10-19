@@ -36,7 +36,7 @@
 							Name required
 						</span>
 						<div class="controls" style="margin-left: 0px;">
-							<%= text_field_tag(:student_name, nil, :id => "student_name", onkeyup: "verifyName(this)") %>
+							<%= text_field_tag(:student_name, nil, :id => "student_name", onchange: "verifyName(this)", onkeyup: "verifyName(this)", onblur: "verifyName(this)") %>
 						</div>
 					</div>	
 					<div class="control-group" id="age-group">
@@ -45,7 +45,7 @@
 							Age required
 						</span>
 						<div class="controls" style="margin-left: 0px">
-							<%= text_field_tag(:age, nil, :id => "age", onkeyup: "verifyAge(this)") %>	
+							<%= text_field_tag(:age, nil, :id => "age", onchange: "verifyAge(this)", onkeyup: "verifyAge(this)", onblur: "verifyAge(this)") %>	
 						</div>		
 					</div>
 					<div class="control-group">
@@ -60,7 +60,7 @@
 							Email required
 						</span>
 						<div class="controls" style='margin-left: 0px'>
-							<%= text_field_tag(:email, nil, :id => "email", onkeyup: "verifyEmail(this)") %>
+							<%= text_field_tag(:email, nil, :id => "email", onchange: "verifyEmail(this)", onkeyup: "verifyEmail(this)", onblur: "verifyEmail(this)") %>
 						</div>
 					</div>
 					<div class="control-group">
@@ -71,12 +71,12 @@
 						
 					</div>
 					<div class="control-group" id="city-group">
-						<%= label_tag(:city, "City *") %>
-						<span class="help-inline" id="city-help" style="font-size: 12px; display:block;">
+						<%= label_tag(:city, "City") %>
+						<!--<span class="help-inline" id="city-help" style="font-size: 12px; display:block;">
 							City required
-						</span>
+						</span>-->
 						<div class="controls" style="margin-left: 0px">
-							<%= text_field_tag(:city, nil, :id => "city", onkeyup: "verifyCity(this)") %>
+							<%= text_field_tag(:city, nil, :id => "city", onchange: "verifyCity(this)", onkeyup: "verifyCity(this)", onblur: "verifyCity(this)") %>
 						</div>
 					</div>
 					<div class="control-group">
